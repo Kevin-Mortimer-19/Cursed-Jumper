@@ -17,9 +17,9 @@ ground_speed = 200.0
 ground_accel = 0.5
 ground_friction = 0.5
 air_speed = 200.0
-air_accel = 0.5
-air_friction = 0.5
-modifiers_move_options = 15
+air_accel = 0.13
+air_friction = 0.18
+modifiers_move_options = 13
 
 [node name="TEMP SPRITE" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
