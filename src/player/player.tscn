@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1h5r22o1065g"]
+
+[ext_resource type="Script" path="res://src/player/player.gd" id="1_mw0sy"]
+[ext_resource type="Texture2D" uid="uid://p8lt1vra4tmw" path="res://icon.svg" id="2_cfp2k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_anaty"]
+radius = 16.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 2
+script = ExtResource("1_mw0sy")
+sprite = NodePath("AnimatedSprite2D")
+jump_strength_full = 330.0
+jump_strength_half = 165.0
+gravity = 784.8
+ground_speed = 200.0
+ground_accel = 0.5
+ground_friction = 0.5
+air_speed = 200.0
+air_accel = 0.5
+air_friction = 0.5
+modifiers_move_options = 15
+
+[node name="TEMP SPRITE" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_cfp2k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_anaty")
