@@ -6,7 +6,7 @@ extends Node2D
 
 @export var fire_sound: AudioStream
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$Sprite.flip_v = (fmod(abs(rotation_degrees), 360) >= 90 and fmod(abs(rotation_degrees), 360) <= 270)
 
 func shoot(amount: int) -> void:
