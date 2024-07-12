@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1h5r22o1065g"]
 
 [ext_resource type="Script" path="res://src/entities/player/player.gd" id="1_mw0sy"]
-[ext_resource type="Texture2D" uid="uid://p8lt1vra4tmw" path="res://icon.svg" id="2_cfp2k"]
+[ext_resource type="Texture2D" uid="uid://diejfwbuv5nho" path="res://assets/sprites/player.png" id="2_rmpg3"]
 [ext_resource type="PackedScene" uid="uid://c7sf81jnb21uh" path="res://src/entities/player/shotgun.tscn" id="3_sn701"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_anaty"]
-radius = 16.0
+radius = 8.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shotgun")]
 collision_layer = 2
@@ -24,8 +24,7 @@ air_friction = 0.18
 modifiers_move_options = 15
 
 [node name="TEMP SPRITE" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_cfp2k")
+texture = ExtResource("2_rmpg3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 

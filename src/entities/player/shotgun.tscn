@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://src/entities/player/shotgun.gd" id="1_1psyf"]
 [ext_resource type="PackedScene" uid="uid://b38lx3p0fw2jb" path="res://src/projectiles/shotgun_bullet/shotgun_bullet.tscn" id="2_f5u5c"]
-[ext_resource type="Texture2D" uid="uid://p8lt1vra4tmw" path="res://icon.svg" id="3_1dsel"]
 [ext_resource type="AudioStream" uid="uid://c1if5xmg8nc1p" path="res://assets/sounds/shotgun_sfx/shotgun_boom_1.wav" id="3_ci0wr"]
 [ext_resource type="AudioStream" uid="uid://cfmbtu0wo1630" path="res://assets/sounds/shotgun_sfx/shotgun_boom_2.wav" id="4_3sslp"]
 [ext_resource type="AudioStream" uid="uid://cg4ccfjkg1ou" path="res://assets/sounds/shotgun_sfx/shotgun_boom_3.wav" id="5_jrp1f"]
+[ext_resource type="Texture2D" uid="uid://bttu20yk87niq" path="res://assets/sprites/shotgun.png" id="6_w646f"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qmw5n"]
 streams_count = 3
@@ -23,6 +23,5 @@ bullet_scene = ExtResource("2_f5u5c")
 fire_sound = SubResource("AudioStreamRandomizer_qmw5n")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(16, 0)
-scale = Vector2(0.3, 0.05)
-texture = ExtResource("3_1dsel")
+texture = ExtResource("6_w646f")
+offset = Vector2(8, 0)
