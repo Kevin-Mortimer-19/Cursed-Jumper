@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2s2o762gjx5x"]
+[gd_scene load_steps=7 format=3 uid="uid://c2s2o762gjx5x"]
 
 [ext_resource type="Texture2D" uid="uid://p8lt1vra4tmw" path="res://icon.svg" id="1_lpbh3"]
-[ext_resource type="PackedScene" uid="uid://d1h5r22o1065g" path="res://src/player/player.tscn" id="2_5oqym"]
+[ext_resource type="PackedScene" uid="uid://d1h5r22o1065g" path="res://src/entities/player/player.tscn" id="2_5oqym"]
+[ext_resource type="Script" path="res://src/utils/camera_juice_2d.gd" id="3_85px2"]
+[ext_resource type="PackedScene" uid="uid://bedmi1dr6o0bg" path="res://src/entities/enemies/base_enemy.tscn" id="5_dsmne"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_agl7q"]
 texture = ExtResource("1_lpbh3")
@@ -85,6 +87,17 @@ layer_0/tile_data = PackedInt32Array(65529, 1, 0, 131065, 1, 1, 196601, 1, 2, 26
 
 [node name="Player" parent="." instance=ExtResource("2_5oqym")]
 position = Vector2(0, -64)
+ground_accel = 0.25
+ground_friction = 0.2
+air_accel = 0.07
+air_friction = 0.03
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("3_85px2")
+target = NodePath("../Player")
+leeway_percent = 0.1
 metadata/_edit_lock_ = true
+
+[node name="Enemy" parent="." instance=ExtResource("5_dsmne")]
+position = Vector2(170, -96)

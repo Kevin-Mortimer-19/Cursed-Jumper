@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="SSJ24"
-run/main_scene="res://src/levels/world.tscn"
+run/main_scene="res://src/game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+EventBus="*res://src/autoloads/event_bus.gd"
+SoundManager="*res://src/autoloads/sound_manager.gd"
 
 [display]
 
