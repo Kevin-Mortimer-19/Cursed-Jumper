@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://b38lx3p0fw2jb"]
+
+[ext_resource type="Script" path="res://src/projectiles/projectile.gd" id="1_1bc6r"]
+[ext_resource type="Texture2D" uid="uid://p8lt1vra4tmw" path="res://icon.svg" id="2_8xxhj"]
+[ext_resource type="AudioStream" uid="uid://dnvx0en6ohpbw" path="res://assets/sounds/shotgun_sfx/bullet_wall_impact.wav" id="2_aixal"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_46j7g"]
+radius = 8.0
+height = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7i2lo"]
+radius = 8.0
+height = 32.0
+
+[node name="ShotgunBullet" type="CharacterBody2D" node_paths=PackedStringArray("hitbox")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_1bc6r")
+damage = 1
+move_speed = 450.0
+lifetime = 0.5
+environment_impact = ExtResource("2_aixal")
+hitbox = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 9.53674e-07)
+rotation = 1.5708
+scale = Vector2(0.125, 0.25)
+texture = ExtResource("2_8xxhj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_46j7g")
+
+[node name="Area2D" type="Area2D" parent="."]
+rotation = 1.5708
+collision_layer = 0
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_7i2lo")
