@@ -17,7 +17,8 @@ func _physics_process(_delta: float) -> void:
 	var distance_from_target = target.global_position.distance_to(global_position)
 	
 	if distance_from_target > _allowed_range.length():
-		global_position = lerp(global_position, target.global_position, lerp_speed)
+		var target_position = target.global_position
+		global_position = lerp(global_position, target_position, lerp_speed)
 
 
 
