@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bedmi1dr6o0bg"]
+[gd_scene load_steps=6 format=3 uid="uid://bedmi1dr6o0bg"]
 
 [ext_resource type="Script" path="res://src/entities/enemies/ground_enemy/ground_enemy.gd" id="1_v1ydc"]
 [ext_resource type="Texture2D" uid="uid://diejfwbuv5nho" path="res://assets/sprites/player.png" id="2_npdpu"]
@@ -6,9 +6,24 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_dbg4y"]
 radius = 8.0
 
-[node name="GroundEnemy" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ved64"]
+radius = 64.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iq88x"]
+radius = 8.0
+
+[node name="GroundEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "player_detection_radius", "hitbox", "raycast_edge", "raycast_obstacle", "raycast_can_jump_obstacle")]
 collision_layer = 8
 script = ExtResource("1_v1ydc")
+move_speed = 50.0
+gravity = 392.4
+jump_force = 140.0
+sprite = NodePath("Sprite2D")
+player_detection_radius = NodePath("PlayerDetectionRadius")
+hitbox = NodePath("Hitbox")
+raycast_edge = NodePath("Raycasts/EdgeDetector")
+raycast_obstacle = NodePath("Raycasts/ObstacleDetector")
+raycast_can_jump_obstacle = NodePath("Raycasts/CanJumpObstacleDetector")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0.0721513, 0.475114, 1)
@@ -16,3 +31,40 @@ texture = ExtResource("2_npdpu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dbg4y")
+metadata/_edit_lock_ = true
+
+[node name="PlayerDetectionRadius" type="Area2D" parent="."]
+editor_description = "From how far away an enemy can detect the player."
+visible = false
+collision_layer = 0
+collision_mask = 2
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionRadius"]
+shape = SubResource("CircleShape2D_ved64")
+debug_color = Color(0.9633, 0, 0.512576, 0.419608)
+
+[node name="Raycasts" type="Node2D" parent="."]
+visible = false
+
+[node name="EdgeDetector" type="RayCast2D" parent="Raycasts"]
+editor_description = "Detects if there's a block below this drop that it can walk on."
+position = Vector2(8, 8)
+target_position = Vector2(0, 24)
+
+[node name="ObstacleDetector" type="RayCast2D" parent="Raycasts"]
+editor_description = "Detects a block in front of the enemy that it needs to hop over."
+target_position = Vector2(16, 0)
+
+[node name="CanJumpObstacleDetector" type="RayCast2D" parent="Raycasts"]
+editor_description = "Detects if there is an empty block above the forward obstacle."
+position = Vector2(0, -16)
+target_position = Vector2(16, 0)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_iq88x")
+debug_color = Color(0.961332, 2.69532e-06, 0.523645, 0.419608)
