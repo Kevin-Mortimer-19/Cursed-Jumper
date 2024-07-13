@@ -222,6 +222,7 @@ func _setup_timers() -> void:
 
 
 func _reload() -> void:
+	# TODO: Play reload sound effect
 	shots_remaining = num_shots_before_reload
 
 

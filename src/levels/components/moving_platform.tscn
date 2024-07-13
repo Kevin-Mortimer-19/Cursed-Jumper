@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cppm5nvc1lnr6"]
+
+[ext_resource type="Texture2D" uid="uid://bevdswhuty0gt" path="res://assets/tilemaps/tilemap_test.png" id="1_otpvk"]
+[ext_resource type="Script" path="res://src/levels/components/moving_platform.gd" id="1_s2gpv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k27ss"]
+atlas = ExtResource("1_otpvk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmdns"]
+size = Vector2(64, 16)
+
+[node name="MovingPlatform" type="PathFollow2D"]
+rotates = false
+script = ExtResource("1_s2gpv")
+
+[node name="MovingPlatform" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingPlatform"]
+scale = Vector2(4, 1)
+texture = SubResource("AtlasTexture_k27ss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform"]
+shape = SubResource("RectangleShape2D_wmdns")
