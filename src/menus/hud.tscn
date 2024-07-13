@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjqk3rxrilc5g"]
+
+[ext_resource type="Script" path="res://src/menus/HUD.gd" id="1_8dtst"]
+
+[node name="HUD" type="MarginContainer" node_paths=PackedStringArray("curse_icon_1", "curse_icon_2", "curse_icon_3")]
+mouse_filter = 2
+theme_override_constants/margin_bottom = 600
+script = ExtResource("1_8dtst")
+curse_icon_1 = NodePath("HBoxContainer/Curse List/Curse 1")
+curse_icon_2 = NodePath("HBoxContainer/Curse List/Curse 2")
+curse_icon_3 = NodePath("HBoxContainer/Curse List/Curse 3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Health" type="TextureProgressBar" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Coins" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Coins x 3"
+
+[node name="Curse List" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Curse 1" type="TextureRect" parent="HBoxContainer/Curse List"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch_mode = 5
+
+[node name="Curse 2" type="TextureRect" parent="HBoxContainer/Curse List"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch_mode = 5
+
+[node name="Curse 3" type="TextureRect" parent="HBoxContainer/Curse List"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch_mode = 5

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsrb7ajkfi6d8"]
+[gd_scene load_steps=14 format=3 uid="uid://dsrb7ajkfi6d8"]
 
 [ext_resource type="Script" path="res://src/game_manager.gd" id="1_nknhp"]
 [ext_resource type="PackedScene" uid="uid://c2s2o762gjx5x" path="res://src/levels/world.tscn" id="1_xghpg"]
@@ -12,8 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://vq6dlpib11b4" path="res://assets/sprites/curse icons/instant death curse.png" id="8_g56d8"]
 [ext_resource type="Texture2D" uid="uid://cqlb2b2gi4kwg" path="res://assets/sprites/curse icons/double gravity curse.png" id="9_gyyby"]
 [ext_resource type="Texture2D" uid="uid://dbj5fc48yxg76" path="res://assets/sprites/curse icons/ice physics curse.png" id="10_gihnc"]
+[ext_resource type="PackedScene" uid="uid://bjqk3rxrilc5g" path="res://src/menus/hud.tscn" id="13_donf2"]
 
-[node name="Game" type="MarginContainer" node_paths=PackedStringArray("game_world", "curse_menu")]
+[node name="Game" type="MarginContainer" node_paths=PackedStringArray("game_world", "curse_menu", "HUD")]
 process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +24,7 @@ grow_vertical = 2
 script = ExtResource("1_nknhp")
 game_world = NodePath("SubViewportContainer/SubViewport/World")
 curse_menu = NodePath("CanvasLayer/Curse Shuffle Menu")
+HUD = NodePath("HUD")
 no_walk_icon = ExtResource("2_t7lup")
 no_jump_icon = ExtResource("3_dh0rw")
 no_move_midair_icon = ExtResource("4_srrkm")
@@ -57,6 +59,5 @@ follow_viewport_enabled = true
 visible = false
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="HUD" parent="." instance=ExtResource("13_donf2")]
 layout_mode = 2
-mouse_filter = 2

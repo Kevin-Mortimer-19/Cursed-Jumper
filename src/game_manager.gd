@@ -4,6 +4,8 @@ extends MarginContainer
 
 @export var curse_menu: MarginContainer
 
+@export var HUD: MarginContainer
+
 @export_group("Curse Icons")
 @export var no_walk_icon: Texture2D
 @export var no_jump_icon: Texture2D
@@ -41,6 +43,10 @@ func toggle_curse_menu() -> void:
 
 func change_curse_UI(curse_data: Array[int]):
 	curse_menu.refresh_curse_UI(find_curse_icon(curse_data[0]),
+			find_curse_icon(curse_data[1]),
+			find_curse_icon(curse_data[2]))
+	
+	HUD.refresh_curse_UI(find_curse_icon(curse_data[0]),
 			find_curse_icon(curse_data[1]),
 			find_curse_icon(curse_data[2]))
 
