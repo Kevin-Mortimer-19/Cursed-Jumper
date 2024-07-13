@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c7sf81jnb21uh" path="res://src/entities/player/shotgun.tscn" id="3_sn701"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_anaty"]
-radius = 8.0
+radius = 7.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shotgun")]
 collision_layer = 2

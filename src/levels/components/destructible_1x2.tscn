@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdu7gyig5k36f"]
+
+[ext_resource type="Script" path="res://src/entities/enemies/base_enemy.gd" id="1_y1bsq"]
+[ext_resource type="Texture2D" uid="uid://b1kjen1xf2nu1" path="res://assets/tilemaps/destructibles.png" id="2_4tabf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6udg8"]
+atlas = ExtResource("2_4tabf")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x6qv"]
+size = Vector2(16, 32)
+
+[node name="Destructible1x2" type="CharacterBody2D"]
+position = Vector2(0, -8)
+script = ExtResource("1_y1bsq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_6udg8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_0x6qv")
