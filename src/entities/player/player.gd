@@ -221,6 +221,7 @@ func _setup_timers() -> void:
 	add_child(_minimum_cd_timer)
 
 func _reload() -> void:
+	# TODO: Play reload sound effect
 	shots_remaining = num_shots_before_reload
 
 

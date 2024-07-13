@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bylkv7aa7wq8x"]
+
+[ext_resource type="Texture2D" uid="uid://bevdswhuty0gt" path="res://assets/tilemaps/tilemap_test.png" id="1_7ymyb"]
+[ext_resource type="PackedScene" uid="uid://bedmi1dr6o0bg" path="res://src/entities/enemies/ground_enemy/ground_enemy.tscn" id="2_eilh5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cr8li"]
+texture = ExtResource("1_7ymyb")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_cmt0k"]
+resource_name = "Enemies"
+scenes/1/scene = ExtResource("2_eilh5")
+
+[sub_resource type="TileSet" id="TileSet_vb67a"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_cr8li")
+sources/1 = SubResource("TileSetScenesCollectionSource_cmt0k")
+
+[node name="LevelTileMap" type="TileMap"]
+tile_set = SubResource("TileSet_vb67a")
+format = 2
