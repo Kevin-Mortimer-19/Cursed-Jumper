@@ -1,9 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://c2s2o762gjx5x"]
+
 [ext_resource type="PackedScene" uid="uid://bylkv7aa7wq8x" path="res://src/levels/level_tile_map.tscn" id="1_85lic"]
+[ext_resource type="Script" path="res://src/levels/world.gd" id="1_smyah"]
 [ext_resource type="PackedScene" uid="uid://d1h5r22o1065g" path="res://src/entities/player/player.tscn" id="2_5oqym"]
 [ext_resource type="Script" path="res://src/utils/camera_juice_2d.gd" id="3_85px2"]
 [ext_resource type="PackedScene" uid="uid://cppm5nvc1lnr6" path="res://src/levels/components/moving_platform.tscn" id="4_uthyh"]
 [ext_resource type="PackedScene" uid="uid://fvo1j5bganqj" path="res://src/levels/components/lever.tscn" id="5_jsxbh"]
+[ext_resource type="PackedScene" uid="uid://bdhbba7kc2w6a" path="res://src/objects/checkpoint.tscn" id="6_exrug"]
 
 [sub_resource type="Curve2D" id="Curve2D_py3ls"]
 _data = {
@@ -12,7 +15,7 @@ _data = {
 point_count = 3
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("checkpoint", "player")]
-script = ExtResource("1_trysb")
+script = ExtResource("1_smyah")
 checkpoint = NodePath("Checkpoint")
 player = NodePath("Player")
 
@@ -35,7 +38,6 @@ node_to_trigger = NodePath("../Path2D/MovingPlatform")
 
 [node name="Player" parent="." instance=ExtResource("2_5oqym")]
 position = Vector2(-48, -24)
-collision_mask = 5
 jump_strength_full = 165.0
 jump_strength_half = 83.0
 gravity = 392.4
@@ -55,8 +57,5 @@ lerp_speed = 0.02
 leeway_percent = 0.1
 metadata/_edit_lock_ = true
 
-[node name="Enemy" parent="." instance=ExtResource("5_dsmne")]
-position = Vector2(170, -96)
-
-[node name="Checkpoint" parent="." instance=ExtResource("5_jdqs2")]
-position = Vector2(-77, -65)
+[node name="Checkpoint" parent="." instance=ExtResource("6_exrug")]
+position = Vector2(-96, -96)
