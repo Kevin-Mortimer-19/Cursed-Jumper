@@ -66,8 +66,24 @@ var _was_on_floor: bool = false
 
 var has_double_jumped: bool = false
 
+## Bit flag used to keep track of which curses are active.
+## 1: Cannot walk
+## 2: Cannot move midair
+## 4: Cannot jump
+## 8: Double gravity
+## 16: Ice physics
+## 32: No damage
+## 64: Die instantly
+## 128: Fast enemies
+## 256: More enemies
+var curse_1: int = 0
+var curse_2: int = 0
+var curse_3: int = 0
 
+var curses: Array[int] = []
+var curse_locks: Array[bool] = [false, false, false]
 
+signal curses_applied(curses: Array[int])
 
 
 func get_movement() -> float:
@@ -102,9 +118,10 @@ func has_ice_physics() -> bool:
 
 
 func _ready() -> void:
-	generate_curses()
+	curses = [curse_1, curse_2, curse_3]
 	_setup_timers()
 	shots_remaining = num_shots_before_reload
+	call_deferred("generate_curses")
 
 
 func _input(event: InputEvent) -> void:
@@ -232,10 +249,11 @@ func heal() -> void:
 
 
 func generate_curses():
-	var curses: Array[int] = []
+	var curse_list: Array[int] = []
 	for i in 3:
-		curses.append(generate_random_from_set(1,9,curses))
-		apply_curse(curses[i])
+		curse_list.append(generate_random_from_set(1,9,curse_list))
+		curses[i] ^= apply_curse(curse_list[i])
+	curses_applied.emit(curses)
 
 
 ## Recursive function to generate a random number between values start and end (inclusve).
@@ -253,25 +271,35 @@ func generate_random_from_set(start: int, end: int, exclusions: Array[int]) -> i
 
 ## Translates a randomly generated number from 1-9
 ## into a curse that is then applied to the player.
-func apply_curse(number: int) -> void:
+func apply_curse(number: int) -> int:
 	match number:
 		1: # Cannot walk
 			modifiers_move_options ^= 1
+			return 1
 		2: # Cannot move midair
 			modifiers_move_options ^= 2
+			return 2
 		3: # Cannot jump
 			modifiers_move_options ^= 8
+			return 4
 		4: # Double gravity
 			modifiers_movement |= 2
+			return 8
 		5: # Ice physics
 			modifiers_movement |= 4
+			return 16
 		6: # Deal no damage
 			modifiers_combat ^= 1
+			return 32
 		7: # Die instantly
 			modifiers_combat |= 2
+			return 64
 		8: # Fast enemies
 			modifiers_combat |= 4
+			return 128
 		9: # More enemies
 			modifiers_combat |= 8
+			return 256
 		_: # Default case
-			pass
+			return 0
+

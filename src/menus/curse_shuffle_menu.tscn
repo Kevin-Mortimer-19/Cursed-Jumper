@@ -1,0 +1,96 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsc64e5xfn8w7"]
+
+[ext_resource type="Script" path="res://src/menus/curse_shuffle_menu.gd" id="1_sublg"]
+
+[node name="Curse Shuffle Menu" type="MarginContainer" node_paths=PackedStringArray("curse_texture_1", "curse_texture_2", "curse_texture_3")]
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 75
+script = ExtResource("1_sublg")
+curse_texture_1 = NodePath("VBoxContainer/MarginContainer/VBoxContainer/Curse 1/MarginContainer/TextureRect")
+curse_texture_2 = NodePath("VBoxContainer/MarginContainer/VBoxContainer/Curse 2/MarginContainer/TextureRect")
+curse_texture_3 = NodePath("VBoxContainer/MarginContainer/VBoxContainer/Curse 3/MarginContainer/TextureRect")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Curse 1" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Curse 1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/VBoxContainer/Curse 1/MarginContainer"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/Curse 1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lock"
+
+[node name="Curse 2" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Curse 2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/VBoxContainer/Curse 2/MarginContainer"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/Curse 2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lock"
+
+[node name="Curse 3" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Curse 3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/VBoxContainer/Curse 3/MarginContainer"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/Curse 3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lock"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 100
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Shuffle"
