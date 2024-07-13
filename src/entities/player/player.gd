@@ -133,10 +133,13 @@ func _handle_move() -> void:
 			rate = ground_accel if input else ground_friction
 			speed = input * ground_speed
 		else:
+			rate = ground_friction
 			speed = 0
-	elif can_control_air():
-		rate = air_accel if input else air_friction
-		speed = input * air_speed
+	else:
+		if can_control_air():
+			rate = air_accel if input else air_friction
+			speed = input * air_speed
+		
 	
 	if has_ice_physics():
 		rate = 0.03

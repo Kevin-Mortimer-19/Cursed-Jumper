@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkja53ti37d50"]
+
+[ext_resource type="Texture2D" uid="uid://de6lu44lua28n" path="res://assets/tilemaps/coin.png" id="1_bmuqw"]
+[ext_resource type="Script" path="res://src/objects/coin.gd" id="1_jsgr3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kwbu"]
+atlas = ExtResource("1_bmuqw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_no35c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kwbu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q5bsr"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_713ou"]
+
+[node name="Coin" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "area")]
+collision_layer = 0
+script = ExtResource("1_jsgr3")
+sprite = NodePath("Sprite")
+area = NodePath("Detection")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_no35c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q5bsr")
+
+[node name="Detection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+shape = SubResource("CircleShape2D_713ou")
