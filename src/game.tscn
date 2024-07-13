@@ -1,15 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsrb7ajkfi6d8"]
+[gd_scene load_steps=3 format=3 uid="uid://dsrb7ajkfi6d8"]
 
+[ext_resource type="Script" path="res://src/game_manager.gd" id="1_itvby"]
 [ext_resource type="PackedScene" uid="uid://c2s2o762gjx5x" path="res://src/levels/world.tscn" id="1_xghpg"]
 
-[node name="Game" type="MarginContainer"]
+[node name="Game" type="MarginContainer" node_paths=PackedStringArray("game_world", "curse_menu")]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_itvby")
+game_world = NodePath("SubViewportContainer/SubViewport/World")
+curse_menu = NodePath("CanvasLayer/Curse Shuffle Menu")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+process_mode = 1
 layout_mode = 2
 stretch = true
 
@@ -23,3 +29,96 @@ size_2d_override_stretch = true
 render_target_update_mode = 4
 
 [node name="World" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_xghpg")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Curse Shuffle Menu" type="MarginContainer" parent="CanvasLayer"]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 75
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Curse Shuffle Menu"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+color = Color(1, 0.215686, 1, 1)
+
+[node name="Button" type="Button" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lock"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer"]
+layout_mode = 2
+color = Color(0.2, 0.960784, 1, 1)
+
+[node name="Button" type="Button" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lock"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/MarginContainer"]
+layout_mode = 2
+color = Color(0.933333, 0.960784, 0.247059, 1)
+
+[node name="Button" type="Button" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lock"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 100
+
+[node name="Button" type="Button" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Shuffle"

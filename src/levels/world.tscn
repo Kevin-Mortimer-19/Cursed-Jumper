@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2s2o762gjx5x"]
+[gd_scene load_steps=9 format=3 uid="uid://c2s2o762gjx5x"]
 
 [ext_resource type="Texture2D" uid="uid://p8lt1vra4tmw" path="res://icon.svg" id="1_lpbh3"]
+[ext_resource type="Script" path="res://src/levels/world.gd" id="1_trysb"]
 [ext_resource type="PackedScene" uid="uid://d1h5r22o1065g" path="res://src/entities/player/player.tscn" id="2_5oqym"]
 [ext_resource type="Script" path="res://src/utils/camera_juice_2d.gd" id="3_85px2"]
 [ext_resource type="PackedScene" uid="uid://bedmi1dr6o0bg" path="res://src/entities/enemies/base_enemy.tscn" id="5_dsmne"]
+[ext_resource type="PackedScene" uid="uid://bdhbba7kc2w6a" path="res://src/objects/checkpoint.tscn" id="5_jdqs2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_agl7q"]
 texture = ExtResource("1_lpbh3")
@@ -78,7 +80,10 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_agl7q")
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" node_paths=PackedStringArray("checkpoint", "player")]
+script = ExtResource("1_trysb")
+checkpoint = NodePath("Checkpoint")
+player = NodePath("Player")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vb67a")
@@ -86,7 +91,8 @@ format = 2
 layer_0/tile_data = PackedInt32Array(65529, 1, 0, 131065, 1, 1, 196601, 1, 2, 262137, 1, 3, 65530, 65537, 0, 131066, 65537, 1, 196602, 65537, 2, 262138, 65537, 3, 65531, 131073, 0, 131067, 131073, 1, 196603, 131073, 2, 262139, 131073, 3, 65532, 196609, 0, 131068, 196609, 1, 196604, 196609, 2, 262140, 196609, 3, 65533, 1, 0, 131069, 1, 1, 196605, 1, 2, 262141, 1, 3, 65534, 65537, 0, 131070, 65537, 1, 196606, 65537, 2, 262142, 65537, 3, 65535, 131073, 0, 131071, 131073, 1, 196607, 131073, 2, 262143, 131073, 3, 0, 196609, 0, 65536, 196609, 1, 131072, 196609, 2, 196608, 196609, 3, 1, 1, 0, 65537, 1, 1, 131073, 1, 2, 196609, 1, 3, 2, 65537, 0, 65538, 65537, 1, 131074, 65537, 2, 196610, 65537, 3, 3, 131073, 0, 65539, 131073, 1, 131075, 131073, 2, 196611, 131073, 3, 4, 196609, 0, 65540, 196609, 1, 131076, 196609, 2, 196612, 196609, 3, 5, 1, 0, 65541, 1, 1, 131077, 1, 2, 196613, 1, 3, 6, 65537, 0, 65542, 65537, 1, 131078, 65537, 2, 196614, 65537, 3, 7, 131073, 0, 65543, 131073, 1, 131079, 131073, 2, 196615, 131073, 3, 8, 196609, 0, 65544, 196609, 1, 131080, 196609, 2, 196616, 196609, 3, 9, 1, 0, 65545, 1, 1, 131081, 1, 2, 196617, 1, 3, 10, 65537, 0, 65546, 65537, 1, 131082, 65537, 2, 196618, 65537, 3, 11, 131073, 0, 65547, 131073, 1, 131083, 131073, 2, 196619, 131073, 3, 12, 196609, 0, 65548, 196609, 1, 131084, 196609, 2, 196620, 196609, 3, -65525, 1, 3, -131061, 1, 0, -131060, 196609, 0, -65524, 196609, 3, -65543, 1, 0, -7, 1, 3, -65542, 196609, 0, -6, 196609, 3, -131068, 1, 0, -65532, 1, 3, -131067, 196609, 0, -65531, 196609, 3, -65533, 196609, 0, -65534, 1, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_5oqym")]
-position = Vector2(0, -64)
+position = Vector2(18, -71)
+collision_mask = 5
 ground_accel = 0.25
 ground_friction = 0.2
 air_accel = 0.07
@@ -101,3 +107,6 @@ metadata/_edit_lock_ = true
 
 [node name="Enemy" parent="." instance=ExtResource("5_dsmne")]
 position = Vector2(170, -96)
+
+[node name="Checkpoint" parent="." instance=ExtResource("5_jdqs2")]
+position = Vector2(-77, -65)
