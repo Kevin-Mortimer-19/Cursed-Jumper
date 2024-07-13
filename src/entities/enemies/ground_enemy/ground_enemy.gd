@@ -1,5 +1,7 @@
 extends Enemy
 
+@export_range(0.0, 1.0, 0.01) var coin_drop_chance: float = 0.3
+@export_category("Stats")
 @export var move_speed: float = 100
 @export var accel: float = 0.2
 @export var gravity: float = 98.1
@@ -12,9 +14,9 @@ extends Enemy
 @export var hitbox: Area2D
 @export_subgroup("Raycasts", "raycast_")
 @export var raycast_edge: RayCast2D
+@export var raycast_edge_2: RayCast2D
 @export var raycast_obstacle: RayCast2D
 @export var raycast_can_jump_obstacle: RayCast2D
-
 
 var target: Node2D
 var direction: Vector2
@@ -68,7 +70,7 @@ func _handle_movement() -> void:
 		return
 	
 	# If there's a ledge
-	if not raycast_edge.is_colliding():
+	if not raycast_edge.is_colliding() and not raycast_edge_2.is_colliding():
 		velocity.x = 0
 	else:
 		velocity.x = direction.normalized().x * move_speed
@@ -95,7 +97,12 @@ func _apply_gravity(delta: float) -> void:
 
 func _on_died() -> void:
 	# TODO: Play death animation/sound
-	# TODO: Add coin
+	
+	var rng:= RandomNumberGenerator.new()
+	rng.randomize()
+	if rng.randf() <= coin_drop_chance:
+		EventBus.coin_created.emit(global_position)
+	
 	queue_free()
 
 func _on_hitbox_body_detected(body: Node2D) -> void:
