@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdhbba7kc2w6a"]
+
+[ext_resource type="Script" path="res://src/objects/checkpoint.gd" id="1_ht700"]
+[ext_resource type="Texture2D" uid="uid://p8lt1vra4tmw" path="res://icon.svg" id="2_e8iq1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65k23"]
+size = Vector2(126, 129)
+
+[node name="Checkpoint" type="Area2D" node_paths=PackedStringArray("checkpoint_activate_UI")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_ht700")
+checkpoint_activate_UI = NodePath("Label")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_65k23")
+
+[node name="Temp Sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.137255)
+texture = ExtResource("2_e8iq1")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -28.0
+offset_top = -61.0
+offset_right = 27.0
+offset_bottom = -38.0
+text = "Press E"

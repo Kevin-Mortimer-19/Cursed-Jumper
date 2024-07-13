@@ -52,7 +52,7 @@ class_name Player extends BaseEntity
 ) var modifiers_movement: int
 
 @export_flags(
-	"Can Deal Damage", "Dies Instantly", 
+	"Can Deal Damage", "Dies Instantly", "Fast Enemies", "More Enemies"
 ) var modifiers_combat: int
 
 var shots_remaining: int = 2
@@ -65,7 +65,6 @@ var _minimum_cd_timer: Timer
 var _was_on_floor: bool = false
 
 var has_double_jumped: bool = false
-
 
 
 
@@ -103,11 +102,12 @@ func has_ice_physics() -> bool:
 
 
 func _ready() -> void:
+	generate_curses()
 	_setup_timers()
 	shots_remaining = num_shots_before_reload
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if Input.is_action_pressed("attack"):
 		_handle_attack(event)
 	if event is InputEventMouseMotion:
@@ -220,11 +220,58 @@ func _setup_timers() -> void:
 	_minimum_cd_timer.wait_time = minimum_time_between_shots
 	add_child(_minimum_cd_timer)
 
+
 func _reload() -> void:
 	# TODO: Play reload sound effect
 	shots_remaining = num_shots_before_reload
 
 
+func heal() -> void:
+	cur_health = max_health
+	healed.emit()
 
 
+func generate_curses():
+	var curses: Array[int] = []
+	for i in 3:
+		curses.append(generate_random_from_set(1,9,curses))
+		apply_curse(curses[i])
 
+
+## Recursive function to generate a random number between values start and end (inclusve).
+## If the value generated matches a value within the exclusions set,
+## the function will try again until it finds a unique value.
+func generate_random_from_set(start: int, end: int, exclusions: Array[int]) -> int:
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var candidate = rng.randi_range(start, end)
+	if exclusions.has(candidate):
+		return generate_random_from_set(start, end, exclusions)
+	else:
+		return candidate
+
+
+## Translates a randomly generated number from 1-9
+## into a curse that is then applied to the player.
+func apply_curse(number: int) -> void:
+	match number:
+		1: # Cannot walk
+			modifiers_move_options ^= 1
+		2: # Cannot move midair
+			modifiers_move_options ^= 2
+		3: # Cannot jump
+			modifiers_move_options ^= 8
+		4: # Double gravity
+			modifiers_movement |= 2
+		5: # Ice physics
+			modifiers_movement |= 4
+		6: # Deal no damage
+			modifiers_combat ^= 1
+		7: # Die instantly
+			modifiers_combat |= 2
+		8: # Fast enemies
+			modifiers_combat |= 4
+		9: # More enemies
+			modifiers_combat |= 8
+		_: # Default case
+			pass
