@@ -23,6 +23,7 @@ var curse_menu_open: bool = false
 func _ready():
 	game_world.open_curse_shuffle_menu.connect(toggle_curse_menu)
 	game_world.refresh_curse_UI.connect(change_curse_UI)
+	curse_menu.shuffle.connect(game_world.shuffle_curse)
 
 
 func _process(_delta):

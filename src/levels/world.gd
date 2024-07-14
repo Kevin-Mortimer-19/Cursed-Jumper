@@ -20,3 +20,6 @@ func checkpoint_activated() -> void:
 
 func _curses_applied(curses: Array[int]) -> void:
 	refresh_curse_UI.emit(curses)
+
+func shuffle_curse():
+	player.shuffle_curse()

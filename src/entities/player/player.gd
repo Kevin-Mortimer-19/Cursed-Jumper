@@ -83,6 +83,8 @@ var curse_3: int = 0
 var curses: Array[int] = []
 var curse_locks: Array[bool] = [false, false, false]
 
+var rng: RandomNumberGenerator
+
 signal curses_applied(curses: Array[int])
 
 
@@ -118,6 +120,8 @@ func has_ice_physics() -> bool:
 
 
 func _ready() -> void:
+	rng = RandomNumberGenerator.new()
+	rng.randomize()
 	curses = [curse_1, curse_2, curse_3]
 	_setup_timers()
 	shots_remaining = num_shots_before_reload
@@ -151,6 +155,7 @@ func _handle_move() -> void:
 			speed = input * ground_speed
 		else:
 			speed = 0
+			rate = ground_friction
 	elif can_control_air():
 		rate = air_accel if input else air_friction
 		speed = input * air_speed
@@ -248,11 +253,14 @@ func heal() -> void:
 	healed.emit()
 
 
+#region Curses
+
+
 func generate_curses():
 	var curse_list: Array[int] = []
 	for i in 3:
 		curse_list.append(generate_random_from_set(1,9,curse_list))
-		curses[i] ^= apply_curse(curse_list[i])
+		curses[i] |= apply_curse(curse_list[i])
 	curses_applied.emit(curses)
 
 
@@ -260,8 +268,6 @@ func generate_curses():
 ## If the value generated matches a value within the exclusions set,
 ## the function will try again until it finds a unique value.
 func generate_random_from_set(start: int, end: int, exclusions: Array[int]) -> int:
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
 	var candidate = rng.randi_range(start, end)
 	if exclusions.has(candidate):
 		return generate_random_from_set(start, end, exclusions)
@@ -303,3 +309,113 @@ func apply_curse(number: int) -> int:
 		_: # Default case
 			return 0
 
+
+func remove_curse(number: int) -> int:
+	match number:
+		1: # Cannot walk
+			modifiers_move_options |= 1
+			return 1
+		2: # Cannot move midair
+			modifiers_move_options |= 2
+			return 2
+		3: # Cannot jump
+			modifiers_move_options |= 8
+			return 4
+		4: # Double gravity
+			modifiers_movement ^= 2
+			return 8
+		5: # Ice physics
+			modifiers_movement ^= 4
+			return 16
+		6: # Deal no damage
+			modifiers_combat |= 1
+			return 32
+		7: # Die instantly
+			modifiers_combat ^= 2
+			return 64
+		8: # Fast enemies
+			modifiers_combat ^= 4
+			return 128
+		9: # More enemies
+			modifiers_combat ^= 8
+			return 256
+		_: # Default case
+			return 0
+
+
+func translate_rn_into_curse_data(rn: int) -> int:
+	match rn:
+		1: # Cannot walk
+			return 1
+		2: # Cannot move midair
+			return 2
+		3: # Cannot jump
+			return 4
+		4: # Double gravity
+			return 8
+		5: # Ice physics
+			return 16
+		6: # Deal no damage
+			return 32
+		7: # Die instantly
+			return 64
+		8: # Fast enemies
+			return 128
+		9: # More enemies
+			return 256
+		_: # Default case
+			return 0
+
+
+func translate_curse_data_into_index(data: int) -> int:
+	match data:
+		1: # Cannot walk
+			return 1
+		2: # Cannot move midair
+			return 2
+		4: # Cannot jump
+			return 3
+		8: # Double gravity
+			return 4
+		16: # Ice physics
+			return 5
+		32: # Deal no damage
+			return 6
+		64: # Die instantly
+			return 7
+		128: # Fast enemies
+			return 8
+		256: # More enemies
+			return 9
+		_: # Default case
+			return 0
+
+
+func shuffle_curse():
+	if curse_locks == [true, true, true]:
+		pass
+	else:
+		var curse_to_shuffle = find_unlocked_curse_index()
+		print(str(curses[curse_to_shuffle]))
+		var current_curses: Array[int] = []
+		for i in curses:
+			current_curses.append(translate_curse_data_into_index(i))
+		var new_curse = generate_random_from_set(1,9,current_curses)
+		remove_curse(translate_curse_data_into_index(curses[curse_to_shuffle]))
+		curses[curse_to_shuffle] = apply_curse(new_curse)
+		curses_applied.emit(curses)
+
+
+func find_unlocked_curse_index() -> int:
+	# Check again to make sure we don't enter an infinite loop
+	# by accidentally calling this function
+	if curse_locks == [true, true, true]:
+		return -1
+	else:
+		var candidate = rng.randi_range(0,2)
+		if curse_locks[candidate]:
+			return find_unlocked_curse_index()
+		else:
+			return candidate
+
+#endregion
