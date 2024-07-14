@@ -1,0 +1,14 @@
+~ overseer_end_game
+
+Overseer: [[Welcome|Greetings]], you have reached the end of the game.
+Overseer: What will you choose?
+- Kill the overseer
+	Overseer: You dare?!
+- Break the shotgun
+	Overseer: Yes, join me!
+- Both! 
+	Overseer: Not an option!
+	=> overseer_end_game
+- Where's the door? => END
+
+=> END
