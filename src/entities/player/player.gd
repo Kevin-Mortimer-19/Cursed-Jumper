@@ -105,6 +105,10 @@ func _ready() -> void:
 	generate_curses()
 	_setup_timers()
 	shots_remaining = num_shots_before_reload
+<<<<<<< Updated upstream
+=======
+	#call_deferred("generate_curses")
+>>>>>>> Stashed changes
 
 
 func _input(event: InputEvent) -> void:

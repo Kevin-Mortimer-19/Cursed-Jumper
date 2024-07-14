@@ -8,7 +8,7 @@ atlas = ExtResource("1_otpvk")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wmdns"]
-size = Vector2(64, 16)
+size = Vector2(64.9163, 32.0051)
 
 [node name="MovingPlatform" type="PathFollow2D"]
 rotates = false
