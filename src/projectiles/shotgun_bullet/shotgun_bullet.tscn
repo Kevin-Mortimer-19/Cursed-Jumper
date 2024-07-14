@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://b38lx3p0fw2jb"]
+[gd_scene load_steps=6 format=3 uid="uid://b38lx3p0fw2jb"]
 
 [ext_resource type="Script" path="res://src/projectiles/projectile.gd" id="1_1bc6r"]
 [ext_resource type="AudioStream" uid="uid://dnvx0en6ohpbw" path="res://assets/sounds/shotgun_sfx/bullet_wall_impact.wav" id="2_aixal"]
-[ext_resource type="Texture2D" uid="uid://dxki4fkfcabx4" path="res://assets/sprites/bullet.png" id="3_ubsvi"]
+[ext_resource type="Texture2D" uid="uid://drjvksqwafuf0" path="res://assets/sprites/bullets.png" id="3_1ehxm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_env6n"]
+atlas = ExtResource("3_1ehxm")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktja6"]
-size = Vector2(6, 16)
+size = Vector2(8, 8)
 
 [node name="ShotgunBullet" type="CharacterBody2D" node_paths=PackedStringArray("hitbox")]
 collision_layer = 0
@@ -19,7 +23,7 @@ hitbox = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 9.53674e-07)
-texture = ExtResource("3_ubsvi")
+texture = SubResource("AtlasTexture_env6n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

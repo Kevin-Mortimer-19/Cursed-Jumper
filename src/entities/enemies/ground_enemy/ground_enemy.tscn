@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bedmi1dr6o0bg"]
 
 [ext_resource type="Script" path="res://src/entities/enemies/ground_enemy/ground_enemy.gd" id="1_v1ydc"]
-[ext_resource type="Texture2D" uid="uid://diejfwbuv5nho" path="res://assets/sprites/player.png" id="2_npdpu"]
+[ext_resource type="Texture2D" uid="uid://lhw1mifyubu" path="res://assets/sprites/mechworker.png" id="2_qyb2o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dbg4y"]
 radius = 8.0
@@ -27,8 +27,7 @@ raycast_obstacle = NodePath("Raycasts/ObstacleDetector")
 raycast_can_jump_obstacle = NodePath("Raycasts/CanJumpObstacleDetector")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(1, 0.0721513, 0.475114, 1)
-texture = ExtResource("2_npdpu")
+texture = ExtResource("2_qyb2o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dbg4y")
