@@ -52,10 +52,14 @@ class_name Player extends BaseEntity
 ) var modifiers_movement: int
 
 @export_flags(
-	"Can Deal Damage", "Dies Instantly", "Fast Enemies", "More Enemies"
+	"Can Deal Damage:1", "Dies Instantly:2", "Fast Enemies:4", "More Enemies:8"
 ) var modifiers_combat: int
 
+## Prevents movement for the purposes of cutscenes, death, etc.	
+var is_movement_locked: bool = false
+
 var shots_remaining: int = 2
+var _has_double_jumped: bool = false
 
 var _coyote_timer: Timer
 var _jump_buffer_timer: Timer
@@ -64,7 +68,6 @@ var _minimum_cd_timer: Timer
 
 var _was_on_floor: bool = false
 
-var has_double_jumped: bool = false
 
 ## Bit flag used to keep track of which curses are active.
 ## 1: Cannot walk
@@ -91,6 +94,16 @@ signal curses_applied(curses: Array[int])
 func get_movement() -> float:
 	return Input.get_axis("move_left", "move_right")
 
+func take_damage(amount: int) -> void:
+	if has_die_oneshot():
+		died.emit()
+	else:
+		super(amount)
+
+func heal() -> void:
+	cur_health = max_health
+	healed.emit()
+
 
 #region Modifiers
 func can_move_ground() -> bool:
@@ -108,13 +121,23 @@ func can_jump() -> bool:
 
 
 func can_double_jump() -> bool:
-	return modifiers_movement & 1 and not has_double_jumped
+	return modifiers_movement & 1 and not _has_double_jumped
 
 func has_double_gravity() -> bool:
 	return modifiers_movement & 2
 
 func has_ice_physics() -> bool:
 	return modifiers_movement & 4
+
+
+
+func can_deal_damage() -> bool:
+	return modifiers_combat & 1
+
+func has_die_oneshot() -> bool:
+	return modifiers_combat & 2
+
+
 
 #endregion
 
@@ -132,13 +155,16 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_pressed("attack"):
 		_handle_attack(event)
 	if event is InputEventMouseMotion:
-		shotgun.look_at(get_global_mouse_position())
+		var mouse_pos:= get_global_mouse_position()
+		sprite.flip_h = sign(mouse_pos.x - global_position.x) < 0
+		shotgun.look_at(mouse_pos)
 
 
 func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)
-	_handle_move()
-	_handle_jump()
+	if not is_movement_locked:
+		_handle_move()
+		_handle_jump()
 	
 	_was_on_floor = is_on_floor()
 	
@@ -186,7 +212,7 @@ func _handle_jump() -> void:
 			):
 				velocity.y = -jump_strength_full
 				if not is_on_floor():
-					has_double_jumped = true
+					_has_double_jumped = true
 			# Begin jump buffer
 			else:
 				_jump_buffer_timer.start()
@@ -200,7 +226,7 @@ func _handle_jump() -> void:
 		_coyote_timer.start()
 	# Jump buffer check
 	elif not _was_on_floor and is_on_floor():
-		has_double_jumped = false
+		_has_double_jumped = false
 		if not _jump_buffer_timer.is_stopped():
 			velocity.y = -jump_strength_full if Input.is_action_pressed("jump") else -jump_strength_half
 
@@ -210,12 +236,12 @@ func _handle_attack(_event: InputEvent) -> void:
 	if shots_remaining <= 0 or not _minimum_cd_timer.is_stopped():
 		return
 	
-	shotgun.shoot(number_of_shots_per_fire)
 	shots_remaining -= 1
 	_minimum_cd_timer.start()
 	var mouse_dir:= global_position.direction_to(get_global_mouse_position())
 	velocity = -mouse_dir * knockback_amount
 	_reload_timer.start()
+	shotgun.shoot(number_of_shots_per_fire, can_deal_damage())
 
 
 
@@ -248,10 +274,6 @@ func _reload() -> void:
 	# TODO: Play reload sound effect
 	shots_remaining = num_shots_before_reload
 
-
-func heal() -> void:
-	cur_health = max_health
-	healed.emit()
 
 
 #region Curses
@@ -303,6 +325,7 @@ func apply_curse(number: int) -> int:
 			return 64
 		8: # Fast enemies
 			modifiers_combat |= 4
+			EventBus.faster_enemy_curse_active = true
 			return 128
 		9: # More enemies
 			modifiers_combat |= 8
@@ -336,6 +359,7 @@ func remove_curse(number: int) -> int:
 			return 64
 		8: # Fast enemies
 			modifiers_combat ^= 4
+			EventBus.faster_enemy_curse_active = false
 			return 128
 		9: # More enemies
 			modifiers_combat ^= 8
