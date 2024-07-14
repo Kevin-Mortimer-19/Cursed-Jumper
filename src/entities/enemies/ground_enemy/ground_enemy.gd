@@ -1,8 +1,8 @@
 extends Enemy
 
-@export_range(0.0, 1.0, 0.01) var coin_drop_chance: float = 0.3
+@export_range(0.0, 1.0, 0.01) var coin_drop_chance: float = 1.0
 @export_category("Stats")
-@export var move_speed: float = 100
+@export var move_speed: float = 100 : get = get_move_speed
 @export var accel: float = 0.2
 @export var gravity: float = 98.1
 @export var jump_force: float = 80
@@ -25,6 +25,11 @@ var _query = PhysicsRayQueryParameters2D
 
 var _had_los: bool = false
 
+
+func get_move_speed() -> float:
+	return move_speed * 2 if EventBus.faster_enemy_curse_active else move_speed
+
+
 func _ready() -> void:
 	player_detection_radius.body_entered.connect(_on_body_detected)
 	hitbox.body_entered.connect(_on_hitbox_body_detected)
@@ -37,6 +42,7 @@ func _ready() -> void:
 			0b1, 
 			[self.get_rid()]
 		)
+
 
 func _on_body_detected(body: Node2D) -> void:
 	if body is Player:
@@ -53,7 +59,6 @@ func _physics_process(delta: float) -> void:
 		_had_los = result.is_empty()
 		if not _had_los:
 			return
-	
 	
 	# We only care about x direction
 	direction = global_position.direction_to(target.global_position)
@@ -73,7 +78,7 @@ func _handle_movement() -> void:
 	if not raycast_edge.is_colliding() and not raycast_edge_2.is_colliding():
 		velocity.x = 0
 	else:
-		velocity.x = direction.normalized().x * move_speed
+		velocity.x = direction.normalized().x * get_move_speed()
 	
 	# If there's a block in the way
 	if raycast_obstacle.is_colliding():
