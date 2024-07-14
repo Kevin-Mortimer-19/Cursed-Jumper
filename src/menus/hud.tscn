@@ -2,29 +2,32 @@
 
 [ext_resource type="Script" path="res://src/menus/HUD.gd" id="1_8dtst"]
 
-[node name="HUD" type="MarginContainer" node_paths=PackedStringArray("curse_icon_1", "curse_icon_2", "curse_icon_3")]
+[node name="HUD" type="MarginContainer" node_paths=PackedStringArray("coin_label", "curse_icon_1", "curse_icon_2", "curse_icon_3")]
 mouse_filter = 2
 theme_override_constants/margin_bottom = 600
 script = ExtResource("1_8dtst")
+coin_label = NodePath("HBoxContainer/Coins")
 curse_icon_1 = NodePath("HBoxContainer/Curse List/Curse 1")
 curse_icon_2 = NodePath("HBoxContainer/Curse List/Curse 2")
 curse_icon_3 = NodePath("HBoxContainer/Curse List/Curse 3")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Health" type="TextureProgressBar" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="Coins" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Coins x 3"
 
 [node name="Curse List" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="Curse 1" type="TextureRect" parent="HBoxContainer/Curse List"]
 layout_mode = 2

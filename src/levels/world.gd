@@ -5,17 +5,18 @@ signal open_curse_shuffle_menu
 @export var checkpoint: Area2D
 @export var player: CharacterBody2D
 
-var coin_amount: int = 0
-
-
+var coin_amount: int = 2
 
 static var _coin_scene: PackedScene = preload("res://src/objects/coin.tscn")
 
+signal change_coin_amount
 
 signal refresh_curse_UI(curses: Array[int])
 
+
 func _ready() -> void:
 	_connect_signals()
+
 
 func _connect_signals():
 	checkpoint.checkpoint_entered.connect(player.heal)
@@ -24,22 +25,26 @@ func _connect_signals():
 	EventBus.coin_created.connect(_create_coin)
 	EventBus.coin_picked_up.connect(_gain_coin)
 
+
 func checkpoint_activated() -> void:
 	open_curse_shuffle_menu.emit()
+
 
 func _curses_applied(curses: Array[int]) -> void:
 	refresh_curse_UI.emit(curses)
 
+
 func shuffle_curse():
 	player.shuffle_curse()
+
 
 func lock_curse(index: int):
 	player.lock_curse(index)
 
+
 func unlock_curse(index: int):
 	player.unlock_curse(index)
-  
-  
+
 
 func _create_coin(global_pos: Vector2) -> void:
 	var rng:= RandomNumberGenerator.new()
@@ -51,6 +56,11 @@ func _create_coin(global_pos: Vector2) -> void:
 	coin.global_position = global_pos
 	call_deferred("add_child",coin)
 
+
 func _gain_coin(amount: int) -> void:
 	coin_amount += amount
-	print(coin_amount)
+	change_coin_amount.emit()
+
+
+func _spend_coin(amount: int) -> void:
+	coin_amount -= amount

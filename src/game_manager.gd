@@ -23,14 +23,29 @@ var curse_menu_open: bool = false
 func _ready():
 	game_world.open_curse_shuffle_menu.connect(toggle_curse_menu)
 	game_world.refresh_curse_UI.connect(change_curse_UI)
+	
 	curse_menu.shuffle.connect(game_world.shuffle_curse)
+	curse_menu.shuffle.connect(spend_coin)
+	
 	curse_menu.lock_curse.connect(game_world.lock_curse)
+	curse_menu.lock_curse.connect(spend_coin)
+	
 	curse_menu.unlock_curse.connect(game_world.unlock_curse)
+	curse_menu.unlock_curse.connect(spend_coin)
+	
+	game_world.change_coin_amount.connect(update_coin_UI)
+	update_coin_UI()
 
 
 func _process(_delta):
 	if Input.is_action_just_pressed("cancel") and curse_menu_open:
 		toggle_curse_menu()
+
+
+func spend_coin(_msg = {}) -> void:
+	game_world._spend_coin(curse_menu.price)
+	curse_menu.price_check(game_world.coin_amount)
+	update_coin_UI()
 
 
 func toggle_curse_menu() -> void:
@@ -39,6 +54,7 @@ func toggle_curse_menu() -> void:
 		curse_menu_open = false
 		get_tree().paused = false
 	else:
+		curse_menu.price_check(game_world.coin_amount)
 		curse_menu.visible = true
 		curse_menu_open = true
 		get_tree().paused = true
@@ -76,3 +92,7 @@ func find_curse_icon(data: int) -> Texture2D:
 			return more_enemies_icon
 		_:
 			return no_walk_icon
+
+
+func update_coin_UI():
+	HUD.update_coin_tracker(game_world.coin_amount)

@@ -7,6 +7,9 @@ var locked_text: String = "Unlock"
 
 var locked: bool = false
 
+var lock_price = 5
+
+
 signal lock_curse(index: int)
 signal unlock_curse(index: int)
 
