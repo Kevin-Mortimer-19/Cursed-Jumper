@@ -24,6 +24,8 @@ func _ready():
 	game_world.open_curse_shuffle_menu.connect(toggle_curse_menu)
 	game_world.refresh_curse_UI.connect(change_curse_UI)
 	curse_menu.shuffle.connect(game_world.shuffle_curse)
+	curse_menu.lock_curse.connect(game_world.lock_curse)
+	curse_menu.unlock_curse.connect(game_world.unlock_curse)
 
 
 func _process(_delta):

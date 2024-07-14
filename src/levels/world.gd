@@ -23,3 +23,9 @@ func _curses_applied(curses: Array[int]) -> void:
 
 func shuffle_curse():
 	player.shuffle_curse()
+
+func lock_curse(index: int):
+	player.lock_curse(index)
+
+func unlock_curse(index: int):
+	player.unlock_curse(index)

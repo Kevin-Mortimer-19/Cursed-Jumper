@@ -396,7 +396,6 @@ func shuffle_curse():
 		pass
 	else:
 		var curse_to_shuffle = find_unlocked_curse_index()
-		print(str(curses[curse_to_shuffle]))
 		var current_curses: Array[int] = []
 		for i in curses:
 			current_curses.append(translate_curse_data_into_index(i))
@@ -417,5 +416,13 @@ func find_unlocked_curse_index() -> int:
 			return find_unlocked_curse_index()
 		else:
 			return candidate
+
+
+func lock_curse(index: int) -> void:
+	curse_locks[index] = true
+
+
+func unlock_curse(index: int) -> void:
+	curse_locks[index] = false
 
 #endregion
