@@ -154,6 +154,7 @@ func _handle_move() -> void:
 			rate = ground_accel if input else ground_friction
 			speed = input * ground_speed
 		else:
+			rate = ground_friction
 			speed = 0
 			rate = ground_friction
 	elif can_control_air():

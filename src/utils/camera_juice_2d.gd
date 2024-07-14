@@ -4,7 +4,11 @@ class_name CameraJuice2D extends Camera2D
 
 @export var target: Node2D
 @export_range(0, 1, .01) var lerp_speed: float = 0.1
-@export_range(0, 1, .01) var leeway_percent: float
+@export_range(0, 1, .01) var leeway_percent: float :
+	set(val):
+		leeway_percent = val
+		if is_inside_tree():
+			_allowed_range = get_viewport_rect().size * leeway_percent
 
 var _allowed_range: Vector2
 

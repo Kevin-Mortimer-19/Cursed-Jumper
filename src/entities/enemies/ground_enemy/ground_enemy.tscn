@@ -10,9 +10,9 @@ radius = 8.0
 radius = 64.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iq88x"]
-radius = 8.0
+radius = 7.5
 
-[node name="GroundEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "player_detection_radius", "hitbox", "raycast_edge", "raycast_obstacle", "raycast_can_jump_obstacle")]
+[node name="GroundEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "player_detection_radius", "hitbox", "raycast_edge", "raycast_edge_2", "raycast_obstacle", "raycast_can_jump_obstacle")]
 collision_layer = 8
 script = ExtResource("1_v1ydc")
 move_speed = 50.0
@@ -22,6 +22,7 @@ sprite = NodePath("Sprite2D")
 player_detection_radius = NodePath("PlayerDetectionRadius")
 hitbox = NodePath("Hitbox")
 raycast_edge = NodePath("Raycasts/EdgeDetector")
+raycast_edge_2 = NodePath("Raycasts/EdgeDetector2")
 raycast_obstacle = NodePath("Raycasts/ObstacleDetector")
 raycast_can_jump_obstacle = NodePath("Raycasts/CanJumpObstacleDetector")
 
@@ -52,6 +53,11 @@ visible = false
 editor_description = "Detects if there's a block below this drop that it can walk on."
 position = Vector2(8, 8)
 target_position = Vector2(0, 24)
+
+[node name="EdgeDetector2" type="RayCast2D" parent="Raycasts"]
+editor_description = "Detects if there's a block below this drop that it can walk on."
+position = Vector2(8, 4)
+target_position = Vector2(0, 20)
 
 [node name="ObstacleDetector" type="RayCast2D" parent="Raycasts"]
 editor_description = "Detects a block in front of the enemy that it needs to hop over."
