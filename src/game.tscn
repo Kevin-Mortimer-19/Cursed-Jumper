@@ -1,9 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsrb7ajkfi6d8"]
+[gd_scene load_steps=14 format=3 uid="uid://dsrb7ajkfi6d8"]
 
 [ext_resource type="Script" path="res://src/game_manager.gd" id="1_nknhp"]
 [ext_resource type="PackedScene" uid="uid://c2s2o762gjx5x" path="res://src/levels/world.tscn" id="1_xghpg"]
+[ext_resource type="Texture2D" uid="uid://uphhnkx0axet" path="res://assets/sprites/curse icons/no walk curse.png" id="2_t7lup"]
+[ext_resource type="PackedScene" uid="uid://dsc64e5xfn8w7" path="res://src/menus/curse_shuffle_menu.tscn" id="3_0qbir"]
+[ext_resource type="Texture2D" uid="uid://dl3cu6urdjkly" path="res://assets/sprites/curse icons/no jump curse.png" id="3_dh0rw"]
+[ext_resource type="Texture2D" uid="uid://uhpaa08iekmd" path="res://assets/sprites/curse icons/no midair curse.png" id="4_srrkm"]
+[ext_resource type="Texture2D" uid="uid://dw5ikfn35stmf" path="res://assets/sprites/curse icons/no damage curse.png" id="5_qroy2"]
+[ext_resource type="Texture2D" uid="uid://b6638ps50dbld" path="res://assets/sprites/curse icons/more enemies curse.png" id="6_hdjvi"]
+[ext_resource type="Texture2D" uid="uid://kscguwrxouw8" path="res://assets/sprites/curse icons/fast enemies curse.png" id="7_kuwtk"]
+[ext_resource type="Texture2D" uid="uid://vq6dlpib11b4" path="res://assets/sprites/curse icons/instant death curse.png" id="8_g56d8"]
+[ext_resource type="Texture2D" uid="uid://cqlb2b2gi4kwg" path="res://assets/sprites/curse icons/double gravity curse.png" id="9_gyyby"]
+[ext_resource type="Texture2D" uid="uid://dbj5fc48yxg76" path="res://assets/sprites/curse icons/ice physics curse.png" id="10_gihnc"]
+[ext_resource type="PackedScene" uid="uid://bjqk3rxrilc5g" path="res://src/menus/hud.tscn" id="13_donf2"]
 
-[node name="Game" type="MarginContainer" node_paths=PackedStringArray("game_world", "curse_menu")]
+[node name="Game" type="MarginContainer" node_paths=PackedStringArray("game_world", "curse_menu", "HUD")]
 process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +24,16 @@ grow_vertical = 2
 script = ExtResource("1_nknhp")
 game_world = NodePath("SubViewportContainer/SubViewport/World")
 curse_menu = NodePath("CanvasLayer/Curse Shuffle Menu")
+HUD = NodePath("HUD")
+no_walk_icon = ExtResource("2_t7lup")
+no_jump_icon = ExtResource("3_dh0rw")
+no_move_midair_icon = ExtResource("4_srrkm")
+no_damage_icon = ExtResource("5_qroy2")
+more_enemies_icon = ExtResource("6_hdjvi")
+fast_enemies_icon = ExtResource("7_kuwtk")
+instant_death_icon = ExtResource("8_g56d8")
+double_gravity_icon = ExtResource("9_gyyby")
+ice_physics_icon = ExtResource("10_gihnc")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 process_mode = 1
@@ -23,7 +44,7 @@ stretch = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 audio_listener_enable_2d = true
-size = Vector2i(2, 2)
+size = Vector2i(1280, 720)
 size_2d_override = Vector2i(320, 180)
 size_2d_override_stretch = true
 render_target_update_mode = 4
@@ -34,92 +55,9 @@ render_target_update_mode = 4
 process_mode = 3
 follow_viewport_enabled = true
 
-[node name="Curse Shuffle Menu" type="MarginContainer" parent="CanvasLayer"]
+[node name="Curse Shuffle Menu" parent="CanvasLayer" instance=ExtResource("3_0qbir")]
 visible = false
-offset_right = 1280.0
-offset_bottom = 720.0
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 75
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 75
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Curse Shuffle Menu"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
 mouse_filter = 2
-mouse_force_pass_scroll_events = false
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 150
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer"]
+[node name="HUD" parent="." instance=ExtResource("13_donf2")]
 layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
-layout_mode = 2
-color = Color(1, 0.215686, 1, 1)
-
-[node name="Button" type="Button" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Lock"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer"]
-layout_mode = 2
-color = Color(0.2, 0.960784, 1, 1)
-
-[node name="Button" type="Button" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Lock"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/MarginContainer"]
-layout_mode = 2
-color = Color(0.933333, 0.960784, 0.247059, 1)
-
-[node name="Button" type="Button" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Lock"
-
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 300
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 300
-theme_override_constants/margin_bottom = 100
-
-[node name="Button" type="Button" parent="CanvasLayer/Curse Shuffle Menu/VBoxContainer/MarginContainer2"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Shuffle"
