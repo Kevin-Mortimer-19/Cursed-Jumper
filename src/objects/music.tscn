@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx76txfgfewgb"]
+
+[ext_resource type="AudioStream" uid="uid://b48h6oocorp34" path="res://assets/sounds/spaced - rough.mp3" id="1_dw06a"]
+
+[node name="Music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_dw06a")
+autoplay = true
+bus = &"Music"
