@@ -152,8 +152,6 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_pressed("attack"):
-		_handle_attack(event)
 	if event is InputEventMouseMotion:
 		var mouse_pos:= get_global_mouse_position()
 		sprite.flip_h = sign(mouse_pos.x - global_position.x) < 0
@@ -166,6 +164,9 @@ func _physics_process(delta: float) -> void:
 		_handle_move()
 		_handle_jump()
 	
+	if Input.is_action_pressed("attack"):
+		_handle_attack()
+	
 	_was_on_floor = is_on_floor()
 	
 	move_and_slide()
@@ -173,14 +174,13 @@ func _physics_process(delta: float) -> void:
 
 func _handle_move() -> void:
 	var input = get_movement()
-	var speed: float
-	var rate: float
+	var speed: float = 0
+	var rate: float = ground_friction
 	if is_on_floor():
 		if can_move_ground():
 			rate = ground_accel if input else ground_friction
 			speed = input * ground_speed
 		else:
-			rate = ground_friction
 			speed = 0
 			rate = ground_friction
 	elif can_control_air():
@@ -231,7 +231,7 @@ func _handle_jump() -> void:
 			velocity.y = -jump_strength_full if Input.is_action_pressed("jump") else -jump_strength_half
 
 
-func _handle_attack(_event: InputEvent) -> void:
+func _handle_attack() -> void:
 	# Not reloading and not in the brief window in between
 	if shots_remaining <= 0 or not _minimum_cd_timer.is_stopped():
 		return
