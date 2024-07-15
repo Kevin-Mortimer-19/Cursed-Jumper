@@ -36,6 +36,7 @@ func _ready():
 	DialogueManager.dialogue_ended.connect(end_dialogue)
 	
 	game_world.change_coin_amount.connect(update_coin_UI)
+	HUD.set_up_healthbar(game_world.player)
 	update_coin_UI()
 
 

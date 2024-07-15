@@ -75,7 +75,7 @@ func _on_player_died() -> void:
 	# TODO: UI prompt to respawn?
 	# TODO: Fade screen to black transition to iron this out
 	player.global_position = checkpoint.global_position
-	player.cur_health = player.max_health
+	player.heal()
 	camera.global_position = player.global_position
 
 

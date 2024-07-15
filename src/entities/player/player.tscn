@@ -38,6 +38,8 @@ air_accel = 0.07
 air_friction = 0.03
 modifiers_move_options = 11
 modifiers_combat = 1
+max_health = 3
+cur_health = 3
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fb772")
