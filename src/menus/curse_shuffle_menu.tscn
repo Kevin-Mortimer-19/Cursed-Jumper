@@ -13,8 +13,11 @@ font = ExtResource("3_hh3gj")
 font_size = 24
 
 [node name="Curse Shuffle Menu" type="MarginContainer" node_paths=PackedStringArray("curse_texture_1", "curse_texture_2", "curse_texture_3", "lock_button_1", "lock_button_2", "lock_button_3", "shuffle_button")]
-offset_right = 1280.0
-offset_bottom = 720.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_sublg")
 curse_texture_1 = NodePath("Body/MarginContainer/Body/Curse 1/MarginContainer/TextureRect")
 curse_texture_2 = NodePath("Body/MarginContainer/Body/Curse 2/MarginContainer/TextureRect")
