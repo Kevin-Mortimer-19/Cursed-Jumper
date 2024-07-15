@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://c2s2o762gjx5x"]
+[gd_scene load_steps=66 format=3 uid="uid://c2s2o762gjx5x"]
 
 [ext_resource type="PackedScene" uid="uid://bylkv7aa7wq8x" path="res://src/levels/level_tile_map.tscn" id="1_85lic"]
 [ext_resource type="Script" path="res://src/levels/world.gd" id="1_smyah"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bjsfryacaa8d1" path="res://src/levels/components/destructible_2x2.tscn" id="9_6q4ax"]
 [ext_resource type="PackedScene" uid="uid://ycpls2kswsg4" path="res://src/objects/chridplatform.tscn" id="9_r4em3"]
 [ext_resource type="PackedScene" uid="uid://dao0vats5m2q5" path="res://src/levels/components/Door.tscn" id="11_kjf7c"]
+[ext_resource type="PackedScene" uid="uid://bx76txfgfewgb" path="res://src/objects/music.tscn" id="13_jy7gj"]
 
 [sub_resource type="Animation" id="Animation_ng2q4"]
 resource_name = "Moving"
@@ -1180,3 +1181,5 @@ position = Vector2(-30, -16)
 position = Vector2(30, 16)
 position_smoothing_enabled = true
 metadata/_edit_lock_ = true
+
+[node name="Music" parent="." instance=ExtResource("13_jy7gj")]
