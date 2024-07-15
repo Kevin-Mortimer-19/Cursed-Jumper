@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ycpls2kswsg4"]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/Steel Bar.png" id="1_cnm3l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mcx7"]
+size = Vector2(32, 16)
+
+[node name="Platform" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 1)
+texture = ExtResource("1_cnm3l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8mcx7")
+one_way_collision = true
