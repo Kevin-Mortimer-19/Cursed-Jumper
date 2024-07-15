@@ -27,7 +27,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is BaseEntity or (can_damage_enemy and body is Enemy):
+	var c1:= (body is Enemy and !(body is GroundEnemy))
+	var c2:= (can_damage_enemy and body is GroundEnemy)
+	if c1 or c2:
 		(body as BaseEntity).take_damage(damage)
 		if enemy_impact and damage > 0:
 			SoundManager.play_sound_from_position(enemy_impact, global_position)

@@ -1,4 +1,4 @@
-extends Enemy
+class_name GroundEnemy extends Enemy
 
 @export_range(0.0, 1.0, 0.01) var coin_drop_chance: float = 1.0
 @export_category("Stats")
