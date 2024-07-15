@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://cnhh8lhqv6dyo"
+path="res://.godot/imported/overseer_end_dialogue.dialogue-fdc8e19de3140fde7db45f3f8ed8cf16.tres"
+
+[deps]
+
+source_file="res://src/dialogue/overseer_end_dialogue.dialogue"
+dest_files=["res://.godot/imported/overseer_end_dialogue.dialogue-fdc8e19de3140fde7db45f3f8ed8cf16.tres"]
+
+[params]
+
+defaults=true
