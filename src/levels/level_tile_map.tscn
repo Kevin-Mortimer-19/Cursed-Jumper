@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bylkv7aa7wq8x"]
+[gd_scene load_steps=14 format=3 uid="uid://bylkv7aa7wq8x"]
 
-[ext_resource type="Texture2D" uid="uid://dff1hna0jpc2m" path="res://assets/tilemaps/spacebricks.png" id="1_frlcl"]
+[ext_resource type="Texture2D" path="res://assets/tilemaps/spacebricks.png" id="1_frlcl"]
 [ext_resource type="PackedScene" uid="uid://bedmi1dr6o0bg" path="res://src/entities/enemies/ground_enemy/ground_enemy.tscn" id="2_eilh5"]
 [ext_resource type="PackedScene" uid="uid://cnj48bxcnwi50" path="res://src/levels/components/destructible_1x1.tscn" id="3_01vq6"]
 [ext_resource type="PackedScene" uid="uid://cdu7gyig5k36f" path="res://src/levels/components/destructible_1x2.tscn" id="4_vrs42"]
 [ext_resource type="PackedScene" uid="uid://bjsfryacaa8d1" path="res://src/levels/components/destructible_2x2.tscn" id="5_ggysw"]
+[ext_resource type="Texture2D" path="res://assets/tilemaps/chridplate.png" id="6_kxgwl"]
+[ext_resource type="Texture2D" path="res://assets/tilemaps/chridtrash.png" id="7_m7kxx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6mulq"]
 texture = ExtResource("1_frlcl")
@@ -41,11 +43,27 @@ scenes/1/scene = ExtResource("3_01vq6")
 scenes/2/scene = ExtResource("4_vrs42")
 scenes/3/scene = ExtResource("5_ggysw")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_subh4"]
+texture = ExtResource("6_kxgwl")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ufhp"]
+texture = ExtResource("7_m7kxx")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
 [sub_resource type="TileSet" id="TileSet_vb67a"]
 physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_6mulq")
 sources/1 = SubResource("TileSetScenesCollectionSource_cmt0k")
 sources/2 = SubResource("TileSetScenesCollectionSource_ufo0s")
-sources/0 = SubResource("TileSetAtlasSource_6mulq")
+sources/5 = SubResource("TileSetAtlasSource_subh4")
+sources/6 = SubResource("TileSetAtlasSource_7ufhp")
 
 [node name="LevelTileMap" type="TileMap"]
 tile_set = SubResource("TileSet_vb67a")
