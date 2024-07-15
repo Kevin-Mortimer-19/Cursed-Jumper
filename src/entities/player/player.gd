@@ -186,6 +186,9 @@ func _handle_move() -> void:
 	elif can_control_air():
 		rate = air_accel if input else air_friction
 		speed = input * air_speed
+	else:
+		speed = velocity.x
+		rate = 1.0
 	
 	if has_ice_physics():
 		rate = 0.03

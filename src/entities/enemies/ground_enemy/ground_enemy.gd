@@ -101,6 +101,9 @@ func _apply_gravity(delta: float) -> void:
 		velocity.y += gravity * delta
 
 func _on_died() -> void:
+	if is_queued_for_deletion():
+		return
+	
 	# TODO: Play death animation/sound
 	
 	var rng:= RandomNumberGenerator.new()
