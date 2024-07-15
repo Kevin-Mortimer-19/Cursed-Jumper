@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bedmi1dr6o0bg"]
 
 [ext_resource type="Script" path="res://src/entities/enemies/ground_enemy/ground_enemy.gd" id="1_v1ydc"]
-[ext_resource type="Texture2D" uid="uid://lhw1mifyubu" path="res://assets/sprites/mechworker.png" id="2_qyb2o"]
+[ext_resource type="Texture2D" path="res://assets/sprites/mechworker.png" id="2_qyb2o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dbg4y"]
 radius = 8.0
@@ -56,7 +56,7 @@ target_position = Vector2(0, 24)
 [node name="EdgeDetector2" type="RayCast2D" parent="Raycasts"]
 editor_description = "Detects if there's a block below this drop that it can walk on."
 position = Vector2(8, 4)
-target_position = Vector2(0, 20)
+target_position = Vector2(0, 24)
 
 [node name="ObstacleDetector" type="RayCast2D" parent="Raycasts"]
 editor_description = "Detects a block in front of the enemy that it needs to hop over."
