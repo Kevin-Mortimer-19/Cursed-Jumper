@@ -1,10 +1,9 @@
-[gd_scene load_steps=66 format=3 uid="uid://c2s2o762gjx5x"]
+[gd_scene load_steps=65 format=3 uid="uid://c2s2o762gjx5x"]
 
 [ext_resource type="PackedScene" uid="uid://bylkv7aa7wq8x" path="res://src/levels/level_tile_map.tscn" id="1_85lic"]
 [ext_resource type="Script" path="res://src/levels/world.gd" id="1_smyah"]
 [ext_resource type="PackedScene" uid="uid://d1h5r22o1065g" path="res://src/entities/player/player.tscn" id="2_5oqym"]
 [ext_resource type="PackedScene" uid="uid://d3pxwguordrj2" path="res://src/objects/NPC_with_dialogue.tscn" id="2_kwig1"]
-[ext_resource type="Resource" uid="uid://cnhh8lhqv6dyo" path="res://src/dialogue/overseer_end_dialogue.dialogue" id="3_1y2jw"]
 [ext_resource type="Texture2D" uid="uid://bok556q8ptxwr" path="res://assets/sprites/overseer.png" id="4_nssfv"]
 [ext_resource type="PackedScene" uid="uid://cppm5nvc1lnr6" path="res://src/levels/components/moving_platform.tscn" id="4_uthyh"]
 [ext_resource type="PackedScene" uid="uid://bdhbba7kc2w6a" path="res://src/objects/checkpoint.tscn" id="6_exrug"]
@@ -634,7 +633,6 @@ camera = NodePath("Player/Camera2D")
 
 [node name="NPC" parent="." instance=ExtResource("2_kwig1")]
 position = Vector2(-24, 168)
-dialogue = ExtResource("3_1y2jw")
 first_line = "overseer_end_game"
 sprite_image = ExtResource("4_nssfv")
 
