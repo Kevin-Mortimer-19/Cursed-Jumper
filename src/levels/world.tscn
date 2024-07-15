@@ -1185,3 +1185,4 @@ position_smoothing_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="Music" parent="." instance=ExtResource("13_jy7gj")]
+process_mode = 3
