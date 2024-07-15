@@ -11,7 +11,7 @@ class_name Projectile extends CharacterBody2D
 @export_group("Node References")
 @export var hitbox: Area2D
 
-
+var can_damage_enemy: bool = true
 var _lifetime_remaining: float = 0.0
 
 
@@ -27,8 +27,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	
-	if body is BaseEntity:
+	if body is BaseEntity or (can_damage_enemy and body is Enemy):
 		(body as BaseEntity).take_damage(damage)
 		if enemy_impact and damage > 0:
 			SoundManager.play_sound_from_position(enemy_impact, global_position)
