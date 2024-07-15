@@ -21,7 +21,9 @@ func _ready() -> void:
 
 func trigger(__) -> void:
 	is_currently_moving = !is_currently_moving
-	_wait_timer.start()
+	if wait_time_at_ends > 0.0:
+		_wait_timer.start()
+
 
 
 func _physics_process(delta: float) -> void:

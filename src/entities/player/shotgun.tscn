@@ -24,4 +24,4 @@ fire_sound = SubResource("AudioStreamRandomizer_qmw5n")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("6_w646f")
-offset = Vector2(8, 0)
+offset = Vector2(8, 3)

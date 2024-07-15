@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dao0vats5m2q5"]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/door.png" id="1_ilv51"]
+[ext_resource type="Script" path="res://src/levels/components/moving_platform.gd" id="1_p24wn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmdns"]
+size = Vector2(32, 64)
+
+[node name="Door" type="PathFollow2D"]
+rotates = false
+script = ExtResource("1_p24wn")
+
+[node name="MovingPlatform" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingPlatform"]
+rotation = -1.56573
+scale = Vector2(4, 1)
+texture = ExtResource("1_ilv51")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform"]
+shape = SubResource("RectangleShape2D_wmdns")

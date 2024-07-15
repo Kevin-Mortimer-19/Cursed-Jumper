@@ -25,6 +25,7 @@ SoundManager="*res://src/autoloads/sound_manager.gd"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://assets/sprites/reticle4x.png"
 
 [editor_plugins]
 

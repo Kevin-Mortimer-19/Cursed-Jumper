@@ -1,17 +1,19 @@
 extends Node
 
 signal open_curse_shuffle_menu
-
-@export var checkpoint: Area2D
-@export var player: CharacterBody2D
-
-var coin_amount: int = 2
+signal change_coin_amount
+signal refresh_curse_UI(curses: Array[int])
 
 static var _coin_scene: PackedScene = preload("res://src/objects/coin.tscn")
 
-signal change_coin_amount
+@export var checkpoint: Area2D
+@export var player: Player
+@export var camera: Camera2D
 
-signal refresh_curse_UI(curses: Array[int])
+var coin_amount: int = 2
+
+
+
 
 
 func _ready() -> void:
@@ -21,7 +23,10 @@ func _ready() -> void:
 func _connect_signals():
 	checkpoint.checkpoint_entered.connect(player.heal)
 	checkpoint.checkpoint_activated.connect(checkpoint_activated)
+	
 	player.curses_applied.connect(_curses_applied)
+	player.died.connect(_on_player_died)
+	
 	EventBus.coin_created.connect(_create_coin)
 	EventBus.coin_picked_up.connect(_gain_coin)
 
@@ -64,3 +69,17 @@ func _gain_coin(amount: int) -> void:
 
 func _spend_coin(amount: int) -> void:
 	coin_amount -= amount
+	change_coin_amount.emit()
+
+func _on_player_died() -> void:
+	# TODO: UI prompt to respawn?
+	# TODO: Fade screen to black transition to iron this out
+	player.global_position = checkpoint.global_position
+	player.cur_health = player.max_health
+	camera.global_position = player.global_position
+
+
+
+
+
+

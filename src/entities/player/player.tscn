@@ -1,8 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1h5r22o1065g"]
+[gd_scene load_steps=7 format=3 uid="uid://d1h5r22o1065g"]
 
 [ext_resource type="Script" path="res://src/entities/player/player.gd" id="1_mw0sy"]
 [ext_resource type="Texture2D" uid="uid://diejfwbuv5nho" path="res://assets/sprites/player.png" id="2_rmpg3"]
 [ext_resource type="PackedScene" uid="uid://c7sf81jnb21uh" path="res://src/entities/player/shotgun.tscn" id="3_sn701"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdcrk"]
+atlas = ExtResource("2_rmpg3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fb772"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdcrk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_anaty"]
 radius = 7.0
@@ -10,24 +25,22 @@ radius = 7.0
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shotgun")]
 collision_layer = 2
 script = ExtResource("1_mw0sy")
-sprite = NodePath("AnimatedSprite2D")
+sprite = NodePath("Sprite")
 shotgun = NodePath("Shotgun")
 jump_strength_full = 330.0
 jump_strength_half = 165.0
 gravity = 784.8
-ground_speed = 200.0
-ground_accel = 0.5
-ground_friction = 0.5
-air_speed = 200.0
-air_accel = 0.13
-air_friction = 0.18
+ground_speed = 150.22
+ground_accel = 0.1
+ground_friction = 0.25
+air_speed = 150.0
+air_accel = 0.07
+air_friction = 0.03
 modifiers_move_options = 11
 modifiers_combat = 1
 
-[node name="TEMP SPRITE" type="Sprite2D" parent="."]
-texture = ExtResource("2_rmpg3")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fb772")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_anaty")
