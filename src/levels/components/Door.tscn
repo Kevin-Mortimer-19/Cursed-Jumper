@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dao0vats5m2q5"]
 
-[ext_resource type="Texture2D" path="res://assets/sprites/door.png" id="1_ilv51"]
+[ext_resource type="Texture2D" uid="uid://bs26lb4uu3y2b" path="res://assets/sprites/door.png" id="1_ilv51"]
 [ext_resource type="Script" path="res://src/levels/components/moving_platform.gd" id="1_p24wn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wmdns"]

@@ -647,7 +647,7 @@ gravity = 392.4
 
 [node name="Hydroponic" parent="Progress Levers" node_paths=PackedStringArray("node_to_trigger") instance=ExtResource("8_8c4ln")]
 position = Vector2(1032, -328)
-node_to_trigger = NodePath(".")
+node_to_trigger = NodePath("../../Doors/Hydroponic/HydroponicDoor")
 
 [node name="Control Room Lever" parent="Progress Levers" node_paths=PackedStringArray("node_to_trigger") instance=ExtResource("8_8c4ln")]
 position = Vector2(-72, -184)
@@ -1123,6 +1123,7 @@ curve = SubResource("Curve2D_g6uhd")
 [node name="MovingPlatform" parent="Doors/Control Deck" instance=ExtResource("4_uthyh")]
 position = Vector2(1, -1)
 loop = false
+is_one_shot = true
 move_speed = 0.1
 
 [node name="WaterPurif" type="Path2D" parent="Doors"]
@@ -1131,6 +1132,7 @@ curve = SubResource("Curve2D_2mmn0")
 [node name="WaterPurif Door" parent="Doors/WaterPurif" instance=ExtResource("11_kjf7c")]
 position = Vector2(-201, -80)
 loop = false
+is_one_shot = true
 move_speed = 0.1
 
 [node name="Hydroponic" type="Path2D" parent="Doors"]
@@ -1139,6 +1141,7 @@ curve = SubResource("Curve2D_3pkpr")
 [node name="HydroponicDoor" parent="Doors/Hydroponic" instance=ExtResource("11_kjf7c")]
 position = Vector2(-248, -81)
 loop = false
+is_one_shot = true
 move_speed = 0.1
 
 [node name="Door1" type="Path2D" parent="Doors"]
@@ -1147,6 +1150,7 @@ curve = SubResource("Curve2D_4wvng")
 [node name="MovingPlatform" parent="Doors/Door1" instance=ExtResource("4_uthyh")]
 position = Vector2(-42, -1840)
 loop = false
+is_one_shot = true
 move_speed = 0.1
 
 [node name="Door 2" type="Path2D" parent="Doors"]
@@ -1155,6 +1159,7 @@ curve = SubResource("Curve2D_okany")
 [node name="MovingPlatform2" parent="Doors/Door 2" instance=ExtResource("4_uthyh")]
 position = Vector2(137, -1904)
 loop = false
+is_one_shot = true
 move_speed = 0.1
 
 [node name="Door 3" type="Path2D" parent="Doors"]
@@ -1163,6 +1168,7 @@ curve = SubResource("Curve2D_o7aqg")
 [node name="MovingPlatform3" parent="Doors/Door 3" instance=ExtResource("4_uthyh")]
 position = Vector2(-41, -1967)
 loop = false
+is_one_shot = true
 move_speed = 0.1
 
 [node name="Door 4" type="Path2D" parent="Doors"]
@@ -1171,6 +1177,7 @@ curve = SubResource("Curve2D_qwilx")
 [node name="MovingPlatform4" parent="Doors/Door 4" instance=ExtResource("4_uthyh")]
 position = Vector2(137, -2031)
 loop = false
+is_one_shot = true
 move_speed = 0.1
 
 [node name="TileMap" parent="." instance=ExtResource("1_85lic")]
@@ -1180,8 +1187,7 @@ layer_0/tile_data = PackedInt32Array(65532, 5, 0, 65533, 5, 0, 65534, 5, 0, 6553
 position = Vector2(-30, -16)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(30, 16)
-position_smoothing_enabled = true
+zoom = Vector2(0.5, 0.5)
 metadata/_edit_lock_ = true
 
 [node name="Music" parent="." instance=ExtResource("13_jy7gj")]
