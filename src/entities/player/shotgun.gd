@@ -18,8 +18,7 @@ func shoot(amount: int, does_damage: bool = true) -> void:
 	var rng:= RandomNumberGenerator.new() 
 	for i in range(amount):
 		var bullet:= bullet_scene.instantiate() as Projectile
-		if not does_damage:
-			bullet.damage = 0
+		bullet.can_damage_enemy = does_damage
 		
 		add_child(bullet)
 		bullet.set_as_top_level(true)
