@@ -33,6 +33,8 @@ func _ready():
 	curse_menu.unlock_curse.connect(game_world.unlock_curse)
 	curse_menu.unlock_curse.connect(spend_coin)
 	
+	DialogueManager.dialogue_ended.connect(end_dialogue)
+	
 	game_world.change_coin_amount.connect(update_coin_UI)
 	update_coin_UI()
 
@@ -96,3 +98,15 @@ func find_curse_icon(data: int) -> Texture2D:
 
 func update_coin_UI():
 	HUD.update_coin_tracker(game_world.coin_amount)
+
+
+func end_dialogue(d: DialogueResource) -> void:
+	unpause_game()
+
+
+func pause_game():
+	get_tree().paused = true
+
+
+func unpause_game():
+	get_tree().paused = false

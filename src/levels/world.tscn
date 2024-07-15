@@ -1,18 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2s2o762gjx5x"]
+[gd_scene load_steps=9 format=3 uid="uid://c2s2o762gjx5x"]
 
 [ext_resource type="PackedScene" uid="uid://bylkv7aa7wq8x" path="res://src/levels/level_tile_map.tscn" id="1_85lic"]
 [ext_resource type="Script" path="res://src/levels/world.gd" id="1_smyah"]
 [ext_resource type="PackedScene" uid="uid://d1h5r22o1065g" path="res://src/entities/player/player.tscn" id="2_5oqym"]
 [ext_resource type="Script" path="res://src/utils/camera_juice_2d.gd" id="3_85px2"]
-[ext_resource type="Script" path="res://src/objects/NPC_with_dialogue.gd" id="4_h34g2"]
 [ext_resource type="PackedScene" uid="uid://cppm5nvc1lnr6" path="res://src/levels/components/moving_platform.tscn" id="4_uthyh"]
-[ext_resource type="Resource" uid="uid://cnhh8lhqv6dyo" path="res://src/dialogue/overseer_end_dialogue.dialogue" id="5_irrv4"]
 [ext_resource type="Texture2D" uid="uid://cblil3vvsq8wq" path="res://assets/tilemaps/lever.png" id="6_2x4ej"]
 [ext_resource type="PackedScene" uid="uid://bdhbba7kc2w6a" path="res://src/objects/checkpoint.tscn" id="6_exrug"]
-[ext_resource type="Texture2D" uid="uid://c5ipv8mjrepk5" path="res://assets/sprites/overseer sprite.png" id="8_t7d67"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o11n4"]
-size = Vector2(16, 16)
 
 [sub_resource type="Curve2D" id="Curve2D_261wn"]
 bake_interval = 0.01
@@ -31,19 +25,6 @@ layer_0/tile_data = PackedInt32Array(65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 6553
 
 [node name="Checkpoint" parent="." instance=ExtResource("6_exrug")]
 position = Vector2(-25, -16)
-
-[node name="Overseer" type="Area2D" parent="."]
-position = Vector2(-161, -72)
-collision_mask = 2
-script = ExtResource("4_h34g2")
-dialogue = ExtResource("5_irrv4")
-first_line = "overseer_end_game"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Overseer"]
-shape = SubResource("RectangleShape2D_o11n4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Overseer"]
-texture = ExtResource("8_t7d67")
 
 [node name="Player" parent="." instance=ExtResource("2_5oqym")]
 position = Vector2(0, -16)
