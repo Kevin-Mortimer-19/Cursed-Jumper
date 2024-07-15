@@ -1,12 +1,17 @@
 extends MarginContainer
 
-var coin_text = "Coins x "
+var coin_text = "x"
 
+@export_group("Node References")
+@export var health_bar: TextureProgressBar
 @export var coin_label: Label
 
 @export var curse_icon_1: TextureRect
 @export var curse_icon_2: TextureRect
 @export var curse_icon_3: TextureRect
+
+
+
 
 
 func refresh_curse_UI(icon_1: Texture2D, icon_2: Texture2D, icon_3: Texture2D) -> void:
