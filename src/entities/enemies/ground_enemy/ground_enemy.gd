@@ -1,12 +1,6 @@
 class_name GroundEnemy extends Enemy
 
-@export_range(0.0, 1.0, 0.01) var coin_drop_chance: float = 1.0
-@export_category("Stats")
-@export var move_speed: float = 100 : get = get_move_speed
-@export var accel: float = 0.2
-@export var gravity: float = 98.1
-@export var jump_force: float = 80
-@export var damage: int = 1
+
 
 @export_group("Node References")
 @export var sprite: Sprite2D
@@ -18,6 +12,8 @@ class_name GroundEnemy extends Enemy
 @export var raycast_obstacle: RayCast2D
 @export var raycast_can_jump_obstacle: RayCast2D
 
+
+
 var target: Node2D
 var direction: Vector2
 var _direct_space: PhysicsDirectSpaceState2D
@@ -25,9 +21,6 @@ var _query = PhysicsRayQueryParameters2D
 
 var _had_los: bool = false
 
-
-func get_move_speed() -> float:
-	return move_speed * 2 if EventBus.faster_enemy_curse_active else move_speed
 
 
 func _ready() -> void:
@@ -87,7 +80,6 @@ func _handle_movement() -> void:
 		elif is_on_floor():
 			# TODO: Play jump animation
 			velocity.y = -jump_force
-	
 
 
 func _handle_sprite() -> void:
@@ -100,18 +92,6 @@ func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-func _on_died() -> void:
-	if is_queued_for_deletion():
-		return
-	
-	# TODO: Play death animation/sound
-	
-	var rng:= RandomNumberGenerator.new()
-	rng.randomize()
-	if rng.randf() <= coin_drop_chance:
-		EventBus.coin_created.emit(global_position)
-	
-	queue_free()
 
 func _on_hitbox_body_detected(body: Node2D) -> void:
 	if body is Player:
