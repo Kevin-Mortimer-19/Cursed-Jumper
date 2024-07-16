@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=3 uid="uid://bylkv7aa7wq8x"]
 
-[ext_resource type="Texture2D" path="res://assets/tilemaps/spacebricks.png" id="1_frlcl"]
+[ext_resource type="Texture2D" uid="uid://dff1hna0jpc2m" path="res://assets/tilemaps/spacebricks.png" id="1_frlcl"]
 [ext_resource type="PackedScene" uid="uid://bedmi1dr6o0bg" path="res://src/entities/enemies/ground_enemy/ground_enemy.tscn" id="2_eilh5"]
 [ext_resource type="PackedScene" uid="uid://cnj48bxcnwi50" path="res://src/levels/components/destructible_1x1.tscn" id="3_01vq6"]
 [ext_resource type="PackedScene" uid="uid://cdu7gyig5k36f" path="res://src/levels/components/destructible_1x2.tscn" id="4_vrs42"]
 [ext_resource type="PackedScene" uid="uid://bjsfryacaa8d1" path="res://src/levels/components/destructible_2x2.tscn" id="5_ggysw"]
-[ext_resource type="Texture2D" path="res://assets/tilemaps/chridplate.png" id="6_kxgwl"]
-[ext_resource type="Texture2D" path="res://assets/tilemaps/chridtrash.png" id="7_m7kxx"]
+[ext_resource type="Texture2D" uid="uid://bri1xa1jeg43t" path="res://assets/tilemaps/chridplate.png" id="6_kxgwl"]
+[ext_resource type="Texture2D" uid="uid://carjv7avmix7c" path="res://assets/tilemaps/chridtrash.png" id="7_m7kxx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6mulq"]
 texture = ExtResource("1_frlcl")
