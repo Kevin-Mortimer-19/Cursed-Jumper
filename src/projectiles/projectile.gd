@@ -27,8 +27,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	var c1:= (body is Enemy and !(body is GroundEnemy))
-	var c2:= (can_damage_enemy and body is GroundEnemy)
+	var c1:= (body is DestructibleEntity)
+	var c2:= (can_damage_enemy and body is Enemy)
 	if c1 or c2:
 		(body as BaseEntity).take_damage(damage)
 		if enemy_impact and damage > 0:

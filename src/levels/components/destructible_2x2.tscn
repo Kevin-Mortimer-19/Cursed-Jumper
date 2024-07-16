@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjsfryacaa8d1"]
 
-[ext_resource type="Script" path="res://src/entities/enemies/base_enemy.gd" id="1_rtead"]
+[ext_resource type="Script" path="res://src/entities/destructible_entity.gd" id="1_k33jj"]
 [ext_resource type="Texture2D" uid="uid://b1kjen1xf2nu1" path="res://assets/tilemaps/destructibles.png" id="2_7c7wy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nih2h"]
@@ -11,7 +11,7 @@ region = Rect2(0, 32, 32, 32)
 size = Vector2(32, 32)
 
 [node name="Destructible2x2" type="CharacterBody2D"]
-script = ExtResource("1_rtead")
+script = ExtResource("1_k33jj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8, -8)
