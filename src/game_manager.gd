@@ -17,6 +17,20 @@ extends MarginContainer
 @export var double_gravity_icon: Texture2D
 @export var ice_physics_icon: Texture2D
 
+
+
+const CurseDescriptions: Dictionary = {
+	"NoWalk": "Cannot move on the ground voluntarily.",
+	"NoMoveAir": "Cannot move in the air voluntarily.",
+	"NoJump": "Cannot manually jump.",
+	"DoubleGravity": "Gravity is doubled.",
+	"IcePhysics": "Maneuverability greatly reduced.",
+	"NoDamage": "Cannot deal damage to foes.",
+	"InstantDeath": "Die in one hit.",
+	"FastEnemy": "Enemies move much more quickly.",
+	"MoreEnemy": "Enemies are more plentiful.",
+}
+
 var curse_menu_open: bool = false
 
 
@@ -73,28 +87,28 @@ func change_curse_UI(curse_data: Array[int]):
 			find_curse_icon(curse_data[2]))
 
 
-func find_curse_icon(data: int) -> Texture2D:
+func find_curse_icon(data: int) -> Array:
 	match data:
 		1:
-			return no_walk_icon
+			return [no_walk_icon, CurseDescriptions.NoWalk]
 		2:
-			return no_move_midair_icon
+			return [no_move_midair_icon, CurseDescriptions.NoMoveAir]
 		4:
-			return no_jump_icon
+			return [no_jump_icon, CurseDescriptions.NoJump]
 		8:
-			return double_gravity_icon
+			return [double_gravity_icon, CurseDescriptions.DoubleGravity]
 		16:
-			return ice_physics_icon
+			return [ice_physics_icon, CurseDescriptions.IcePhysics]
 		32:
-			return no_damage_icon
+			return [no_damage_icon, CurseDescriptions.NoDamage]
 		64:
-			return instant_death_icon
+			return [instant_death_icon, CurseDescriptions.InstantDeath]
 		128:
-			return fast_enemies_icon
+			return [fast_enemies_icon, CurseDescriptions.FastEnemy]
 		256:
-			return more_enemies_icon
+			return [more_enemies_icon, CurseDescriptions.MoreEnemy]
 		_:
-			return no_walk_icon
+			return [no_walk_icon, CurseDescriptions.NoWalk]
 
 
 func update_coin_UI():

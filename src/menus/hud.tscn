@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjqk3rxrilc5g"]
+[gd_scene load_steps=14 format=3 uid="uid://bjqk3rxrilc5g"]
 
 [ext_resource type="Script" path="res://src/menus/HUD.gd" id="1_8dtst"]
 [ext_resource type="Texture2D" uid="uid://72wtm151fdtd" path="res://assets/ui/HeartEmptyHud.png" id="2_7n4yf"]
@@ -6,6 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://cxbw416vjxkcf" path="res://assets/ui/Coin Hud.png" id="2_d7xcg"]
 [ext_resource type="FontFile" uid="uid://omfxbfatu8j2" path="res://assets/fonts/Outfit-Bold.ttf" id="2_fl1lf"]
 [ext_resource type="FontFile" uid="uid://qyfgxb15b1ug" path="res://assets/fonts/Outfit-ExtraBold.ttf" id="3_5o7rs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a716m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7o3s0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6jjlf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6og5g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hqwxb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_osoh4"]
 font = ExtResource("3_5o7rs")
@@ -15,7 +25,7 @@ font_size = 36
 font = ExtResource("2_fl1lf")
 font_size = 24
 
-[node name="HUD" type="MarginContainer" node_paths=PackedStringArray("health_bar", "coin_label", "curse_icon_1", "curse_icon_2", "curse_icon_3")]
+[node name="HUD" type="MarginContainer" node_paths=PackedStringArray("health_bar", "coin_label", "coin_count_button", "curse_icon_1", "curse_icon_2", "curse_icon_3")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -28,10 +38,12 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 script = ExtResource("1_8dtst")
 health_bar = NodePath("HBoxContainer/Health")
-coin_label = NodePath("HBoxContainer/HSplitContainer/Coins")
+coin_label = NodePath("HBoxContainer/CoinCountLabel/Coins")
+coin_count_button = NodePath("HBoxContainer/CoinCount")
 curse_icon_1 = NodePath("HBoxContainer/VBoxContainer/Curse List/Curse 1")
 curse_icon_2 = NodePath("HBoxContainer/VBoxContainer/Curse List/Curse 2")
 curse_icon_3 = NodePath("HBoxContainer/VBoxContainer/Curse List/Curse 3")
+metadata/_edit_lock_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -48,17 +60,35 @@ value = 3.0
 texture_under = ExtResource("2_7n4yf")
 texture_progress = ExtResource("2_68f5m")
 
-[node name="HSplitContainer" type="HBoxContainer" parent="HBoxContainer"]
+[node name="CoinCount" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("3_5o7rs")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a716m")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7o3s0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6jjlf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6og5g")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hqwxb")
+text = "0"
+icon = ExtResource("2_d7xcg")
+icon_alignment = 1
+
+[node name="CoinCountLabel" type="HBoxContainer" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/HSplitContainer"]
+[node name="CoinSprite" type="TextureRect" parent="HBoxContainer/CoinCountLabel"]
 layout_mode = 2
 texture = ExtResource("2_d7xcg")
-stretch_mode = 4
+expand_mode = 3
+stretch_mode = 5
 
-[node name="Coins" type="Label" parent="HBoxContainer/HSplitContainer"]
+[node name="Coins" type="Label" parent="HBoxContainer/CoinCountLabel"]
 layout_mode = 2
 size_flags_horizontal = 3
 label_settings = SubResource("LabelSettings_osoh4")
@@ -73,7 +103,6 @@ text = "CURSES"
 label_settings = SubResource("LabelSettings_5ss7s")
 
 [node name="Curse List" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 135)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -82,14 +111,17 @@ mouse_filter = 2
 [node name="Curse 1" type="TextureRect" parent="HBoxContainer/VBoxContainer/Curse List"]
 layout_mode = 2
 size_flags_horizontal = 3
-stretch_mode = 5
+expand_mode = 5
+stretch_mode = 2
 
 [node name="Curse 2" type="TextureRect" parent="HBoxContainer/VBoxContainer/Curse List"]
 layout_mode = 2
 size_flags_horizontal = 3
-stretch_mode = 5
+expand_mode = 5
+stretch_mode = 2
 
 [node name="Curse 3" type="TextureRect" parent="HBoxContainer/VBoxContainer/Curse List"]
 layout_mode = 2
 size_flags_horizontal = 3
-stretch_mode = 5
+expand_mode = 5
+stretch_mode = 2

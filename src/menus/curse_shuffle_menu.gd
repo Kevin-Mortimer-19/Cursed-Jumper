@@ -1,8 +1,8 @@
 extends MarginContainer
 
-@export var curse_texture_1: TextureRect
-@export var curse_texture_2: TextureRect
-@export var curse_texture_3: TextureRect
+@export var curse_icon_1: TextureRect
+@export var curse_icon_2: TextureRect
+@export var curse_icon_3: TextureRect
 
 @export var lock_button_1: Button
 @export var lock_button_2: Button
@@ -27,10 +27,13 @@ func _ready() -> void:
 	lock_button_3.unlock_curse.connect(on_unlock_select)
 
 
-func refresh_curse_UI(icon_1: Texture2D, icon_2: Texture2D, icon_3: Texture2D) -> void:
-	curse_texture_1.texture = icon_1
-	curse_texture_2.texture = icon_2
-	curse_texture_3.texture = icon_3
+func refresh_curse_UI(icon_1: Array, icon_2: Array, icon_3: Array) -> void:
+	curse_icon_1.texture = icon_1[0]
+	curse_icon_1.tooltip_text = icon_1[1]
+	curse_icon_2.texture = icon_2[0]
+	curse_icon_2.tooltip_text = icon_2[1]
+	curse_icon_3.texture = icon_3[0]
+	curse_icon_3.tooltip_text = icon_3[1]
 
 
 func on_lock_select(index: int) -> void:
