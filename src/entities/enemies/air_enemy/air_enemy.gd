@@ -3,7 +3,7 @@ class_name AirEnemy extends Enemy
 @export var distance_to_attack: float = 150.0
 
 @export_group("Node References")
-@export var sprite: Sprite2D
+@export var sprite: AnimatedSprite2D
 @export var player_detection_radius: Area2D
 @export var hitbox: Area2D
 
@@ -47,6 +47,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _wander_state(_delta: float) -> void:
+	sprite.play("default")
 	velocity.x = -get_move_speed() if sprite.flip_h else get_move_speed()
 	move_and_slide()
 	
@@ -57,6 +58,7 @@ func _wander_state(_delta: float) -> void:
 
 
 func _hunt_state(_delta: float) -> void:
+	sprite.play("attack")
 	var target_position:= target.global_position
 	direction.x = global_position.x - target_position.x
 	_handle_sprite()
@@ -72,6 +74,8 @@ func _hunt_state(_delta: float) -> void:
 	
 
 func _attack_state() -> void:
+	sprite.play("attack")
+	
 	if not _tween:
 		_tween = create_tween()
 		var distance = target.global_position.distance_to(global_position)

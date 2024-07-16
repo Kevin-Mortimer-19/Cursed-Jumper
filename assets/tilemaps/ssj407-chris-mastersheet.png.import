@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de6lu44lua28n"
-path="res://.godot/imported/coin.png-1fb0229480b98017385500d7ca6622fe.ctex"
+uid="uid://clefb03mn2buj"
+path="res://.godot/imported/ssj407-chris-mastersheet.png-3f8745dd0daabdafb009e3d380cf1d89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilemaps/coin.png"
-dest_files=["res://.godot/imported/coin.png-1fb0229480b98017385500d7ca6622fe.ctex"]
+source_file="res://assets/tilemaps/ssj407-chris-mastersheet.png"
+dest_files=["res://.godot/imported/ssj407-chris-mastersheet.png-3f8745dd0daabdafb009e3d380cf1d89.ctex"]
 
 [params]
 

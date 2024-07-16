@@ -1,17 +1,17 @@
 [gd_scene load_steps=7 format=3 uid="uid://bkja53ti37d50"]
 
-[ext_resource type="Texture2D" uid="uid://de6lu44lua28n" path="res://assets/tilemaps/coin.png" id="1_bmuqw"]
 [ext_resource type="Script" path="res://src/objects/coin.gd" id="1_jsgr3"]
+[ext_resource type="Texture2D" uid="uid://clefb03mn2buj" path="res://assets/tilemaps/ssj407-chris-mastersheet.png" id="2_4dt7k"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5kwbu"]
-atlas = ExtResource("1_bmuqw")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkaho"]
+atlas = ExtResource("2_4dt7k")
+region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_no35c"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5kwbu")
+"texture": SubResource("AtlasTexture_xkaho")
 }],
 "loop": true,
 "name": &"default",

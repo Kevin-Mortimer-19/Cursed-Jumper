@@ -18,7 +18,7 @@ func _ready() -> void:
 func _on_lever_interacted(player: Player) -> void:
 	%InteractableZone.monitoring = false
 	interacted.emit(player)
-	$Sprite2D.flip_v = !$Sprite2D.flip_v
+	$Sprite2D.flip_h = !$Sprite2D.flip_h
 	if interact_sound:
 		SoundManager.play_sound_from_position(interact_sound, global_position)
 

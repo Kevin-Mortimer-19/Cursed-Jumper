@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bkja53ti37d50" path="res://src/objects/coin.tscn" id="8_tsrye"]
 [ext_resource type="PackedScene" uid="uid://bjsfryacaa8d1" path="res://src/levels/components/destructible_2x2.tscn" id="9_6q4ax"]
 [ext_resource type="PackedScene" uid="uid://ycpls2kswsg4" path="res://src/objects/chridplatform.tscn" id="9_r4em3"]
-[ext_resource type="PackedScene" uid="uid://dao0vats5m2q5" path="res://src/levels/components/Door.tscn" id="11_kjf7c"]
+[ext_resource type="PackedScene" uid="uid://dao0vats5m2q5" path="res://src/levels/components/door.tscn" id="11_kjf7c"]
 [ext_resource type="PackedScene" uid="uid://bx76txfgfewgb" path="res://src/objects/music.tscn" id="13_jy7gj"]
 [ext_resource type="Texture2D" uid="uid://vwe34itxqa37" path="res://addons/BurstParticles2D/BurstParticles2D-demo/orb_soft.png" id="14_j52el"]
 
@@ -664,7 +664,7 @@ first_line = "overseer_end_game"
 sprite_image = ExtResource("4_nssfv")
 
 [node name="Checkpoint" parent="." instance=ExtResource("6_exrug")]
-position = Vector2(0, -16)
+position = Vector2(0, -24)
 gravity = 392.4
 
 [node name="Progress Levers" type="Node" parent="."]
@@ -1112,31 +1112,31 @@ autoplay = "Moving"
 [node name="Destructibles" type="Node" parent="."]
 
 [node name="Destructible2x2" parent="Destructibles" instance=ExtResource("9_6q4ax")]
-position = Vector2(-443, 90)
+position = Vector2(-440, 88)
 
 [node name="Destructible2x3" parent="Destructibles" instance=ExtResource("9_6q4ax")]
-position = Vector2(-360, 87)
+position = Vector2(-360, 88)
 
 [node name="Destructible2x4" parent="Destructibles" instance=ExtResource("9_6q4ax")]
-position = Vector2(-360, 55)
+position = Vector2(-360, 56)
 
 [node name="Destructible2x5" parent="Destructibles" instance=ExtResource("9_6q4ax")]
 position = Vector2(1176, 296)
 
 [node name="Destructible2x6" parent="Destructibles" instance=ExtResource("9_6q4ax")]
-position = Vector2(937, 280)
+position = Vector2(936, 280)
 
 [node name="Destructible2x7" parent="Destructibles" instance=ExtResource("9_6q4ax")]
 position = Vector2(1000, 152)
 
 [node name="Destructible2x8" parent="Destructibles" instance=ExtResource("9_6q4ax")]
-position = Vector2(135, -1032)
+position = Vector2(136, -1032)
 
 [node name="Destructible2x9" parent="Destructibles" instance=ExtResource("9_6q4ax")]
-position = Vector2(-1318, -232)
+position = Vector2(-1320, -232)
 
 [node name="Destructible2x10" parent="Destructibles" instance=ExtResource("9_6q4ax")]
-position = Vector2(-1318, -280)
+position = Vector2(-1320, -280)
 
 [node name="Doors" type="Node" parent="."]
 

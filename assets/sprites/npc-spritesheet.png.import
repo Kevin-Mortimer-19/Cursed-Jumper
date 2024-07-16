@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxki4fkfcabx4"
-path="res://.godot/imported/bullet.png-f46585c7ec2413c07a04c5a8ef7289a3.ctex"
+uid="uid://3boapyeu5mv4"
+path="res://.godot/imported/npc-spritesheet.png-d6ddf104ed9cbc74d3bafac6a4efd6c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/bullet.png"
-dest_files=["res://.godot/imported/bullet.png-f46585c7ec2413c07a04c5a8ef7289a3.ctex"]
+source_file="res://assets/sprites/npc-spritesheet.png"
+dest_files=["res://.godot/imported/npc-spritesheet.png-d6ddf104ed9cbc74d3bafac6a4efd6c7.ctex"]
 
 [params]
 

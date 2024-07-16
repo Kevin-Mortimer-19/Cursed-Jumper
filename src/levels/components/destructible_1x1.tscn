@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnj48bxcnwi50"]
 
 [ext_resource type="Script" path="res://src/entities/destructible_entity.gd" id="1_ceiv1"]
-[ext_resource type="Texture2D" uid="uid://b1kjen1xf2nu1" path="res://assets/tilemaps/destructibles.png" id="2_2yf4y"]
+[ext_resource type="Texture2D" uid="uid://clefb03mn2buj" path="res://assets/tilemaps/ssj407-chris-mastersheet.png" id="2_thl15"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mntn8"]
-atlas = ExtResource("2_2yf4y")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oc1n"]
+atlas = ExtResource("2_thl15")
+region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6sevu"]
 size = Vector2(16, 16)
@@ -16,7 +16,7 @@ max_health = 2
 cur_health = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_mntn8")
+texture = SubResource("AtlasTexture_1oc1n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

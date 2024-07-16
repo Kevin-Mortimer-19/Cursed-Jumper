@@ -1,7 +1,41 @@
-[gd_scene load_steps=6 format=3 uid="uid://tbyy4e87n2nl"]
+[gd_scene load_steps=10 format=3 uid="uid://tbyy4e87n2nl"]
 
 [ext_resource type="Script" path="res://src/entities/enemies/air_enemy/air_enemy.gd" id="1_hft0f"]
-[ext_resource type="Texture2D" uid="uid://lhw1mifyubu" path="res://assets/sprites/mechworker.png" id="2_kmqnx"]
+[ext_resource type="Texture2D" uid="uid://3boapyeu5mv4" path="res://assets/sprites/npc-spritesheet.png" id="2_dmxiu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2ve5"]
+atlas = ExtResource("2_dmxiu")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0tb8"]
+atlas = ExtResource("2_dmxiu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mev8a"]
+atlas = ExtResource("2_dmxiu")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eaqhy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2ve5")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_k0tb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mev8a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ea7n0"]
 radius = 8.0
@@ -22,10 +56,10 @@ hitbox = NodePath("Hitbox")
 move_speed = 75.0
 gravity = 0.0
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
-texture = ExtResource("2_kmqnx")
-flip_v = true
+sprite_frames = SubResource("SpriteFrames_eaqhy")
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ea7n0")

@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://fvo1j5bganqj"]
+[gd_scene load_steps=9 format=3 uid="uid://fvo1j5bganqj"]
 
 [ext_resource type="Script" path="res://src/levels/components/lever.gd" id="1_5jafr"]
 [ext_resource type="PackedScene" uid="uid://bybfpe4n1ft1t" path="res://src/levels/components/subcomponents/interactable_zone.tscn" id="1_xfj5t"]
 [ext_resource type="AudioStream" uid="uid://boac66poalbhi" path="res://assets/sounds/lever_flip/select_005.ogg" id="2_tyh8c"]
 [ext_resource type="AudioStream" uid="uid://b1atd783wp458" path="res://assets/sounds/lever_flip/select_006.ogg" id="3_6tpo2"]
-[ext_resource type="Texture2D" uid="uid://cblil3vvsq8wq" path="res://assets/tilemaps/lever.png" id="4_2tu0t"]
+[ext_resource type="Texture2D" uid="uid://clefb03mn2buj" path="res://assets/tilemaps/ssj407-chris-mastersheet.png" id="4_hq3tu"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ppkoy"]
 playback_mode = 2
@@ -14,6 +14,10 @@ stream_0/weight = 1.0
 stream_1/stream = ExtResource("3_6tpo2")
 stream_1/weight = 1.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_os5d5"]
+atlas = ExtResource("4_hq3tu")
+region = Rect2(80, 32, 16, 16)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cq0hm"]
 size = Vector2(16, 16)
 
@@ -22,7 +26,7 @@ script = ExtResource("1_5jafr")
 interact_sound = SubResource("AudioStreamRandomizer_ppkoy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("4_2tu0t")
+texture = SubResource("AtlasTexture_os5d5")
 
 [node name="InteractableZone" parent="." instance=ExtResource("1_xfj5t")]
 unique_name_in_owner = true
