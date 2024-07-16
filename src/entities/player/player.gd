@@ -151,7 +151,12 @@ func _ready() -> void:
 	call_deferred("generate_curses")
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		var mouse = event as InputEventMouseButton
+		if mouse.pressed and mouse.button_index == MOUSE_BUTTON_LEFT:
+			_handle_attack()
+	
 	if event is InputEventMouseMotion:
 		var mouse_pos:= get_global_mouse_position()
 		sprite.flip_h = sign(mouse_pos.x - global_position.x) < 0
@@ -163,9 +168,6 @@ func _physics_process(delta: float) -> void:
 	if not is_movement_locked:
 		_handle_move()
 		_handle_jump()
-	
-	if Input.is_action_pressed("attack"):
-		_handle_attack()
 	
 	_was_on_floor = is_on_floor()
 	
@@ -198,7 +200,7 @@ func _handle_move() -> void:
 
 func _apply_gravity(delta: float) -> void:
 	if has_double_gravity():
-		delta *= 2
+		delta *= 1.5
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
