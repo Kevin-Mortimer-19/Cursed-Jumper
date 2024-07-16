@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://tbyy4e87n2nl"]
+
+[ext_resource type="Script" path="res://src/entities/enemies/air_enemy/air_enemy.gd" id="1_hft0f"]
+[ext_resource type="Texture2D" uid="uid://lhw1mifyubu" path="res://assets/sprites/mechworker.png" id="2_kmqnx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ea7n0"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vg3ii"]
+radius = 80.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_exify"]
+radius = 7.5
+
+[node name="AirEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "player_detection_radius", "hitbox")]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_hft0f")
+sprite = NodePath("Sprite")
+player_detection_radius = NodePath("PlayerDetectionRadius")
+hitbox = NodePath("Hitbox")
+move_speed = 75.0
+gravity = 0.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_kmqnx")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ea7n0")
+
+[node name="PlayerDetectionRadius" type="Area2D" parent="."]
+editor_description = "From how far away an enemy can detect the player."
+visible = false
+collision_layer = 0
+collision_mask = 2
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionRadius"]
+shape = SubResource("CircleShape2D_vg3ii")
+debug_color = Color(0.9633, 0, 0.512576, 0.419608)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_exify")
+debug_color = Color(0.961332, 2.69532e-06, 0.523645, 0.419608)
