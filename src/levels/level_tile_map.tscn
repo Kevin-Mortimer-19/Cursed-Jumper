@@ -194,3 +194,16 @@ sources/3 = SubResource("TileSetAtlasSource_megxe")
 [node name="LevelTileMap" type="TileMap"]
 tile_set = SubResource("TileSet_vb67a")
 format = 2
+layer_0/name = "Mid"
+layer_1/name = "Details"
+layer_1/modulate = Color(0.590441, 0.590441, 0.590441, 1)
+layer_1/z_index = -2
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Background"
+layer_2/modulate = Color(0.587751, 0.587751, 0.58775, 1)
+layer_2/z_index = -3
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "Details 2"
+layer_3/modulate = Color(0.587751, 0.587751, 0.58775, 1)
+layer_3/z_index = -1
+layer_3/tile_data = PackedInt32Array()
