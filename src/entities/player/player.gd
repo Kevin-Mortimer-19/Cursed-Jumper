@@ -6,7 +6,7 @@ signal death_finished
 
 @export_category("Node References")
 @export var sprite: AnimatedSprite2D
-@export var shotgun: Node2D
+@export var shotgun: Shotgun
 
 @export_category("Character Properties")
 @export_group("Movement Stats")
@@ -42,8 +42,6 @@ signal death_finished
 @export var time_to_reload: float = 1.0
 @export var knockback_amount: float = 400
 
-
-
 @export_group("Modifiers", "modifiers_")
 @export_flags(
 	"Can Move Ground:1", "Can Move Air:2", "Can Swim:4", "Can Jump:8",
@@ -56,6 +54,11 @@ signal death_finished
 @export_flags(
 	"Can Deal Damage:1", "Dies Instantly:2", "Fast Enemies:4", "More Enemies:8"
 ) var modifiers_combat: int
+
+@export_category("Audio")
+@export var sound_jump: AudioStream
+@export var sound_jump_land: AudioStream
+
 
 ## Prevents movement for the purposes of death
 var is_dead_locked: bool = false
@@ -298,8 +301,13 @@ func _setup_timers() -> void:
 
 
 func _reload() -> void:
-	# TODO: Play reload sound effect
+	SoundManager.play_sound_nonpositional(shotgun.reload_sound)
 	shots_remaining = num_shots_before_reload
+	
+	var tween:= create_tween()
+	tween.tween_property(shotgun.sprite, "rotation_degrees", 360, 0.25)
+	tween.chain().tween_property(shotgun.sprite, "rotation_degrees", 0, 0)
+	
 
 
 #region Curses
@@ -483,7 +491,7 @@ func unlock_curse(index: int) -> void:
 #region Animation
 
 func _animate_damage() -> void:
-	# TODO: Play sound effect
+	# TODO: Play hurt sound effect
 	EventBus.hitfreeze_requested.emit(0.1, 0.25)
 	EventBus.screenshake_requested.emit(3, 0.50)
 	
@@ -507,8 +515,6 @@ func _animate_death() -> void:
 	shotgun.sprite.stop()
 	sprite.play("death")
 	# TODO: UI prompt to respawn?
-	# TODO: Fade screen to black transition to iron this out
-	
 	await death_finished
 	await get_tree().create_timer(1.0).timeout
 	EventBus.player_respawn_requested.emit()
@@ -516,6 +522,9 @@ func _animate_death() -> void:
 
 
 func _animate_jump_up() -> void:
+	# Sound effect
+	SoundManager.play_sound_nonpositional(sound_jump)
+	
 	var tween:= create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	# squeeze
@@ -525,6 +534,9 @@ func _animate_jump_up() -> void:
 	tween.play()
 
 func _animate_jump_land() -> void:
+	# Sound effect
+	SoundManager.play_sound_nonpositional(sound_jump_land)
+	
 	var tween:= create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_ELASTIC)
 	# squash

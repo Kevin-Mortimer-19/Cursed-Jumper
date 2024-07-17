@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7sf81jnb21uh"]
+[gd_scene load_steps=14 format=3 uid="uid://c7sf81jnb21uh"]
 
 [ext_resource type="Script" path="res://src/entities/player/shotgun.gd" id="1_1psyf"]
 [ext_resource type="PackedScene" uid="uid://b38lx3p0fw2jb" path="res://src/projectiles/shotgun_bullet/shotgun_bullet.tscn" id="2_f5u5c"]
@@ -7,7 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://cfmbtu0wo1630" path="res://assets/sounds/shotgun_sfx/shotgun_boom_2.wav" id="4_3sslp"]
 [ext_resource type="AudioStream" uid="uid://cg4ccfjkg1ou" path="res://assets/sounds/shotgun_sfx/shotgun_boom_3.wav" id="5_jrp1f"]
 [ext_resource type="Texture2D" uid="uid://dqe7lth1leasf" path="res://assets/sprites/shotgun/shotgun1.png" id="6_hkx88"]
+[ext_resource type="AudioStream" uid="uid://dgm0x8s7y8qxs" path="res://assets/sounds/shotgun_sfx/shotgun_reload_1.wav" id="7_3pcok"]
 [ext_resource type="Texture2D" uid="uid://hiqkaqr6jdfj" path="res://assets/sprites/shotgun/shotgun2.png" id="7_vfk4e"]
+[ext_resource type="AudioStream" uid="uid://dnpi3qlvtdrgn" path="res://assets/sounds/shotgun_sfx/shotgun_reload_2.wav" id="8_jjb20"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qmw5n"]
 streams_count = 3
@@ -17,6 +19,13 @@ stream_1/stream = ExtResource("4_3sslp")
 stream_1/weight = 1.0
 stream_2/stream = ExtResource("5_jrp1f")
 stream_2/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0ips2"]
+streams_count = 2
+stream_0/stream = ExtResource("7_3pcok")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("8_jjb20")
+stream_1/weight = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8o5ee"]
 animations = [{
@@ -34,13 +43,17 @@ animations = [{
 
 [node name="Shotgun" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_1psyf")
-sprite = NodePath("Sprite")
+sprite = NodePath("Root/Sprite")
 spread_amount_degrees = 30.0
 bullet_scene = ExtResource("2_f5u5c")
 particles_scene = ExtResource("3_nqm2u")
 fire_sound = SubResource("AudioStreamRandomizer_qmw5n")
+reload_sound = SubResource("AudioStreamRandomizer_0ips2")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Root" type="Node2D" parent="."]
+position = Vector2(4, 1)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Root"]
 sprite_frames = SubResource("SpriteFrames_8o5ee")
 autoplay = "default"
-offset = Vector2(8, 3)
+offset = Vector2(4, 0)
