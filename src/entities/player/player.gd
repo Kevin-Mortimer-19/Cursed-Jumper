@@ -498,6 +498,10 @@ func _animate_damage() -> void:
 	tween.play()
 
 func _animate_death() -> void:
+	## Don't repeatedly die
+	if is_dead_locked:
+		return
+	
 	EventBus.hitfreeze_requested.emit(0.1, 1)
 	is_dead_locked = true
 	shotgun.sprite.stop()

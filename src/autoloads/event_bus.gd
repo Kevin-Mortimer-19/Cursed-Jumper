@@ -9,6 +9,8 @@ signal coin_created(global_position: Vector2)
 signal coin_picked_up(amount: int)
 signal coin_spent(amount: int)
 
+signal transition_in
+signal transition_out
 signal transition_finished
 
 var faster_enemy_curse_active: bool = false
