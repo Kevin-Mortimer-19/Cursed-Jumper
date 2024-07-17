@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://bm0ags0a05l7q"
+path="res://.godot/imported/Prisoner_1.dialogue-4fa717c0e6e2af436c2145667c9dcc96.tres"
+
+[deps]
+
+source_file="res://src/dialogue/Prisoner_1.dialogue"
+dest_files=["res://.godot/imported/Prisoner_1.dialogue-4fa717c0e6e2af436c2145667c9dcc96.tres"]
+
+[params]
+
+defaults=true
