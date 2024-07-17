@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdj0khswrbdvg"
-path="res://.godot/imported/Curse Management Logo.png-339555b7b3f322553e471f2a5827c5ea.ctex"
+uid="uid://byw0wlua8cksw"
+path="res://.godot/imported/OptionsHud.png-f9ccdba422f30b0d771c954b1685ce1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/Curse Management Logo.png"
-dest_files=["res://.godot/imported/Curse Management Logo.png-339555b7b3f322553e471f2a5827c5ea.ctex"]
+source_file="res://assets/ui/OptionsHud.png"
+dest_files=["res://.godot/imported/OptionsHud.png-f9ccdba422f30b0d771c954b1685ce1c.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

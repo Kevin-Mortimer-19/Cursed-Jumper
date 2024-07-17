@@ -1,0 +1,94 @@
+[gd_scene load_steps=4 format=3 uid="uid://xtb0j28xyj64"]
+
+[ext_resource type="Script" path="res://src/menus/title_menu.gd" id="1_qm807"]
+[ext_resource type="FontFile" uid="uid://qyfgxb15b1ug" path="res://assets/fonts/Outfit-ExtraBold.ttf" id="2_3rdmu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yjt4o"]
+font = ExtResource("2_3rdmu")
+font_size = 64
+
+[node name="TitleMenu" type="Control" node_paths=PackedStringArray("button_play", "button_options", "button_quit")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qm807")
+button_play = NodePath("PlayButton")
+button_options = NodePath("OptionsButton")
+button_quit = NodePath("QuitButton")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 424.0
+offset_right = 316.0
+offset_bottom = 512.0
+size_flags_vertical = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
+focus_previous = NodePath(".")
+theme_override_font_sizes/font_size = 48
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 576.0
+offset_right = 192.0
+offset_bottom = 640.0
+size_flags_vertical = 4
+focus_neighbor_left = NodePath("../PlayButton")
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_right = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../PlayButton")
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 656.0
+offset_right = 192.0
+offset_bottom = 688.0
+size_flags_vertical = 4
+focus_neighbor_left = NodePath("../OptionsButton")
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath("../OptionsButton")
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -262.5
+offset_top = -272.0
+offset_right = 262.5
+offset_bottom = -107.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CURSED
+JUMPER"
+label_settings = SubResource("LabelSettings_yjt4o")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true

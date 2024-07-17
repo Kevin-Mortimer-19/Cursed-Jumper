@@ -14,17 +14,19 @@
 [ext_resource type="Texture2D" uid="uid://dbj5fc48yxg76" path="res://assets/sprites/curse icons/ice physics curse.png" id="10_gihnc"]
 [ext_resource type="PackedScene" uid="uid://bjqk3rxrilc5g" path="res://src/menus/hud.tscn" id="13_donf2"]
 
-[node name="Game" type="MarginContainer" node_paths=PackedStringArray("game_world", "curse_menu", "HUD")]
+[node name="Game" type="MarginContainer" node_paths=PackedStringArray("game_world", "curse_menu", "HUD", "pause_modulate")]
 process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_nknhp")
 game_world = NodePath("SubViewportContainer/SubViewport/World")
 curse_menu = NodePath("CanvasLayer/Curse Shuffle Menu")
 HUD = NodePath("HUD")
+pause_modulate = NodePath("PauseModulate")
 no_walk_icon = ExtResource("2_t7lup")
 no_jump_icon = ExtResource("3_dh0rw")
 no_move_midair_icon = ExtResource("4_srrkm")
@@ -45,7 +47,7 @@ handle_input_locally = false
 canvas_item_default_texture_filter = 0
 audio_listener_enable_2d = true
 size = Vector2i(1280, 720)
-size_2d_override = Vector2i(320, 180)
+size_2d_override = Vector2i(640, 360)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
@@ -61,3 +63,9 @@ mouse_filter = 2
 
 [node name="HUD" parent="." instance=ExtResource("13_donf2")]
 layout_mode = 2
+
+[node name="PauseModulate" type="ColorRect" parent="."]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.180722, 0.180722, 0.180722, 0.760784)

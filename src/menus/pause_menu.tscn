@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://ssti7ll45vq4"]
+
+[ext_resource type="Texture2D" uid="uid://d3qx7a6ord0rr" path="res://assets/ui/PausedHud.png" id="1_n82qh"]
+[ext_resource type="Script" path="res://src/menus/pause_menu.gd" id="1_tvkq1"]
+[ext_resource type="FontFile" uid="uid://biiglpqms67tn" path="res://assets/fonts/Outfit-SemiBold.ttf" id="2_1wipd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jhxk6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c6an6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s8nny"]
+
+[node name="PauseMenu" type="CenterContainer" node_paths=PackedStringArray("button_continue", "button_options", "button_quit")]
+process_mode = 2
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tvkq1")
+button_continue = NodePath("VBoxContainer/VBoxContainer/ContinueButton")
+button_options = NodePath("VBoxContainer/VBoxContainer/OptionsButton")
+button_quit = NodePath("VBoxContainer/VBoxContainer/QuitButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 2
+
+[node name="Logo" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_n82qh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_1wipd")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jhxk6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_c6an6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jhxk6")
+text = "CONTINUE"
+flat = true
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_1wipd")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jhxk6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_c6an6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jhxk6")
+text = "OPTIONS"
+flat = true
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_s8nny")
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_1wipd")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jhxk6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_c6an6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jhxk6")
+text = "QUIT"
+flat = true

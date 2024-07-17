@@ -1,10 +1,9 @@
 extends MarginContainer
 
 @export var game_world: Node
-
 @export var curse_menu: MarginContainer
-
 @export var HUD: MarginContainer
+@export var pause_modulate: ColorRect
 
 @export_group("Curse Icons")
 @export var no_walk_icon: Texture2D
@@ -48,15 +47,27 @@ func _ready():
 	curse_menu.unlock_curse.connect(spend_coin)
 	
 	DialogueManager.dialogue_ended.connect(end_dialogue)
+	PauseMenu.visibility_changed.connect(
+		func():
+			$SubViewportContainer.mouse_filter = (
+				MOUSE_FILTER_PASS if not PauseMenu.visible else MOUSE_FILTER_IGNORE
+			)
+			pause_modulate.visible = PauseMenu.visible
+	)
 	
 	game_world.change_coin_amount.connect(update_coin_UI)
+	
 	HUD.set_up_healthbar(game_world.player)
 	update_coin_UI()
 
 
-func _process(_delta):
-	if Input.is_action_just_pressed("cancel") and curse_menu_open:
-		toggle_curse_menu()
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		if curse_menu_open:
+			toggle_curse_menu()
+		else:
+			get_tree().paused = true
+			PauseMenu.show()
 
 
 func spend_coin(_msg = {}) -> void:

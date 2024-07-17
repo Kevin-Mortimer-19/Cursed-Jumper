@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SSJ24"
-run/main_scene="res://src/game.tscn"
+run/main_scene="res://src/menus/title_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 EventBus="*res://src/autoloads/event_bus.gd"
 SoundManager="*res://src/autoloads/sound_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+OptionsMenu="*res://src/menus/options_menu.tscn"
+PauseMenu="*res://src/menus/pause_menu.tscn"
 
 [display]
 

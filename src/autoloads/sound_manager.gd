@@ -4,9 +4,25 @@ const BUS_SFX = "SFX"
 const BUS_MUSIC = "Music"
 const BUS_UI = "UI"
 
+const SOUND_BUTTON_HOVER:= preload("res://assets/sounds/ui_blips/glass_005.ogg")
+const SOUND_BUTTON_CONFIRM:= preload("res://assets/sounds/ui_blips/drop_003.ogg")
+const SOUND_DOWN:= preload("res://assets/sounds/ui_blips/switch4.ogg")
+const SOUND_UP:= preload("res://assets/sounds/ui_blips/switch5.ogg")
+
+
 var SFX_BUS_INDEX: int
 var MUSIC_BUS_INDEX: int
 var UI_BUS_INDEX: int
+
+var current_sfx_volume: float = 0.5 : 
+	set(val):
+		current_sfx_volume = clampf(val, 0.0, 1.0)
+		set_sfx_volume(current_sfx_volume)
+var current_music_volume: float = 0.5 : 
+	set(val):
+		current_music_volume = clampf(val, 0.0, 1.0)
+		set_music_volume(current_music_volume)
+
 
 
 func _ready() -> void:

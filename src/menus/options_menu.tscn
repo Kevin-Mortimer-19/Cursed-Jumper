@@ -1,0 +1,270 @@
+[gd_scene load_steps=15 format=3 uid="uid://b8u4uwn4om4i7"]
+
+[ext_resource type="Script" path="res://src/menus/options_menu.gd" id="1_a7q0a"]
+[ext_resource type="Texture2D" uid="uid://byw0wlua8cksw" path="res://assets/ui/OptionsHud.png" id="1_q3c2q"]
+[ext_resource type="FontFile" uid="uid://omfxbfatu8j2" path="res://assets/fonts/Outfit-Bold.ttf" id="2_j80fm"]
+[ext_resource type="FontFile" uid="uid://vxqcuhwk6myo" path="res://assets/fonts/Outfit-Medium.ttf" id="3_cr3h5"]
+[ext_resource type="FontFile" uid="uid://biiglpqms67tn" path="res://assets/fonts/Outfit-SemiBold.ttf" id="3_qmxef"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfsbm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ixm6d"]
+font_color = Color(0.556863, 0.45098, 0.466667, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hi7is"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uhpgm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jusi4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5su1t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2xghj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0sths"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jiw3t"]
+
+[node name="OptionsMenu" type="CenterContainer" node_paths=PackedStringArray("button_return", "option_music", "music_buttons_container", "button_music_down", "button_music_up", "label_music_volume", "option_sfx", "sfx_buttons_container", "button_sfx_down", "button_sfx_up", "label_sfx_volume", "option_fullscreen", "label_fullscreen")]
+process_mode = 3
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a7q0a")
+button_return = NodePath("Main/ReturnButton")
+option_music = NodePath("Main/Body/AudioOptions/Music/MusicLabel")
+music_buttons_container = NodePath("Main/Body/AudioOptions/Music/Buttons")
+button_music_down = NodePath("Main/Body/AudioOptions/Music/Buttons/Lessen")
+button_music_up = NodePath("Main/Body/AudioOptions/Music/Buttons/Strengthen")
+label_music_volume = NodePath("Main/Body/AudioOptions/Music/Buttons/PercentLabel")
+option_sfx = NodePath("Main/Body/AudioOptions/SFX/SfxLabel")
+sfx_buttons_container = NodePath("Main/Body/AudioOptions/SFX/Buttons")
+button_sfx_down = NodePath("Main/Body/AudioOptions/SFX/Buttons/Lessen")
+button_sfx_up = NodePath("Main/Body/AudioOptions/SFX/Buttons/Strengthen")
+label_sfx_volume = NodePath("Main/Body/AudioOptions/SFX/Buttons/PercentLabel")
+option_fullscreen = NodePath("Main/Body/VideoOptions/Fullscreen/FullscreenLabel")
+label_fullscreen = NodePath("Main/Body/VideoOptions/Fullscreen/ValueLabel")
+
+[node name="Main" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 450)
+layout_mode = 2
+alignment = 1
+
+[node name="Logo" type="TextureRect" parent="Main"]
+layout_mode = 2
+texture = ExtResource("1_q3c2q")
+expand_mode = 5
+
+[node name="Spacer" type="HSeparator" parent="Main"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xfsbm")
+
+[node name="Body" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="AudioLabel" type="Label" parent="Main/Body"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j80fm")
+text = "Audio"
+label_settings = SubResource("LabelSettings_ixm6d")
+vertical_alignment = 1
+uppercase = true
+
+[node name="AudioOptions" type="VBoxContainer" parent="Main/Body"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Music" type="HSplitContainer" parent="Main/Body/AudioOptions"]
+layout_mode = 2
+collapsed = true
+dragger_visibility = 2
+
+[node name="MusicLabel" type="Button" parent="Main/Body/AudioOptions/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath("../../SFX/SfxLabel")
+focus_next = NodePath("../../SFX/SfxLabel")
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_qmxef")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hi7is")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_uhpgm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hi7is")
+text = "MUSIC"
+flat = true
+alignment = 0
+
+[node name="Buttons" type="HBoxContainer" parent="Main/Body/AudioOptions/Music"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Lessen" type="Button" parent="Main/Body/AudioOptions/Music/Buttons"]
+layout_mode = 2
+focus_mode = 1
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_fonts/font = ExtResource("3_cr3h5")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jusi4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5su1t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2xghj")
+text = "-"
+flat = true
+
+[node name="PercentLabel" type="Label" parent="Main/Body/AudioOptions/Music/Buttons"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_fonts/font = ExtResource("3_cr3h5")
+theme_override_font_sizes/font_size = 24
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Strengthen" type="Button" parent="Main/Body/AudioOptions/Music/Buttons"]
+layout_mode = 2
+focus_mode = 1
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_fonts/font = ExtResource("3_cr3h5")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jusi4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5su1t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2xghj")
+text = "+"
+flat = true
+
+[node name="SFX" type="HSplitContainer" parent="Main/Body/AudioOptions"]
+layout_mode = 2
+collapsed = true
+dragger_visibility = 2
+
+[node name="SfxLabel" type="Button" parent="Main/Body/AudioOptions/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_qmxef")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0sths")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jiw3t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hi7is")
+text = "SFX"
+flat = true
+alignment = 0
+
+[node name="Buttons" type="HBoxContainer" parent="Main/Body/AudioOptions/SFX"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Lessen" type="Button" parent="Main/Body/AudioOptions/SFX/Buttons"]
+layout_mode = 2
+focus_mode = 1
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_fonts/font = ExtResource("3_cr3h5")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jusi4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5su1t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2xghj")
+text = "-"
+flat = true
+
+[node name="PercentLabel" type="Label" parent="Main/Body/AudioOptions/SFX/Buttons"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_fonts/font = ExtResource("3_cr3h5")
+theme_override_font_sizes/font_size = 24
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Strengthen" type="Button" parent="Main/Body/AudioOptions/SFX/Buttons"]
+layout_mode = 2
+focus_mode = 1
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_fonts/font = ExtResource("3_cr3h5")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jusi4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5su1t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2xghj")
+text = "+"
+flat = true
+
+[node name="VideoLabel" type="Label" parent="Main/Body"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j80fm")
+text = "Video"
+label_settings = SubResource("LabelSettings_ixm6d")
+vertical_alignment = 1
+uppercase = true
+
+[node name="VideoOptions" type="VBoxContainer" parent="Main/Body"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="Fullscreen" type="HSplitContainer" parent="Main/Body/VideoOptions"]
+layout_mode = 2
+
+[node name="FullscreenLabel" type="Button" parent="Main/Body/VideoOptions/Fullscreen"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../../../AudioOptions/SFX/SfxLabel")
+focus_previous = NodePath("../../../AudioOptions/SFX/SfxLabel")
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_qmxef")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hi7is")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_uhpgm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hi7is")
+text = "FULLSCREEN"
+flat = true
+alignment = 0
+
+[node name="ValueLabel" type="Label" parent="Main/Body/VideoOptions/Fullscreen"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_fonts/font = ExtResource("3_cr3h5")
+theme_override_font_sizes/font_size = 24
+text = "<OFF>"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Spacer2" type="HSeparator" parent="Main"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xfsbm")
+
+[node name="ReturnButton" type="Button" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../Body/VideoOptions/Fullscreen/FullscreenLabel")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath("../Body/VideoOptions/Fullscreen/FullscreenLabel")
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_qmxef")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hi7is")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_uhpgm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hi7is")
+text = "RETURN"
+flat = true
