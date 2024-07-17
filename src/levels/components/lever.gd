@@ -4,7 +4,7 @@ signal interacted(player)
 
 @export var node_to_trigger: Node
 @export var interact_sound: AudioStream
-
+@export var area_flag: int
 
 
 func _ready() -> void:
@@ -21,6 +21,8 @@ func _on_lever_interacted(player: Player) -> void:
 	$Sprite2D.flip_h = !$Sprite2D.flip_h
 	if interact_sound:
 		SoundManager.play_sound_from_position(interact_sound, global_position)
+	if area_flag:
+		GameState.set_area_flag(area_flag)
 
 
 
