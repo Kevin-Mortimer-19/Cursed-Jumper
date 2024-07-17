@@ -56,6 +56,7 @@ signal death_finished
 ) var modifiers_combat: int
 
 @export_category("Audio")
+@export var sound_hurt: AudioStream
 @export var sound_jump: AudioStream
 @export var sound_jump_land: AudioStream
 
@@ -272,6 +273,10 @@ func _handle_attack() -> void:
 	velocity = -mouse_dir * knockback_amount
 	_reload_timer.start()
 	shotgun.shoot(number_of_shots_per_fire, can_deal_damage())
+	
+	# Counts as a jump if going vertically
+	if velocity.y <= 0 and velocity.dot(Vector2.UP) > 0.65:
+		jump_started.emit()
 
 
 
@@ -301,13 +306,13 @@ func _setup_timers() -> void:
 
 
 func _reload() -> void:
-	SoundManager.play_sound_nonpositional(shotgun.reload_sound)
 	shots_remaining = num_shots_before_reload
 	
-	var tween:= create_tween()
-	tween.tween_property(shotgun.sprite, "rotation_degrees", 360, 0.25)
-	tween.chain().tween_property(shotgun.sprite, "rotation_degrees", 0, 0)
-	
+	if not is_dead_locked:
+		SoundManager.play_sound_nonpositional(shotgun.reload_sound)
+		var tween:= create_tween()
+		tween.tween_property(shotgun.sprite, "rotation_degrees", 360, 0.25)
+		tween.chain().tween_property(shotgun.sprite, "rotation_degrees", 0, 0)
 
 
 #region Curses
@@ -491,7 +496,9 @@ func unlock_curse(index: int) -> void:
 #region Animation
 
 func _animate_damage() -> void:
-	# TODO: Play hurt sound effect
+	# Sound effect
+	SoundManager.play_sound_nonpositional(sound_hurt)
+	
 	EventBus.hitfreeze_requested.emit(0.1, 0.25)
 	EventBus.screenshake_requested.emit(3, 0.50)
 	
