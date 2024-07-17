@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7sf81jnb21uh"]
+[gd_scene load_steps=11 format=3 uid="uid://c7sf81jnb21uh"]
 
 [ext_resource type="Script" path="res://src/entities/player/shotgun.gd" id="1_1psyf"]
 [ext_resource type="PackedScene" uid="uid://b38lx3p0fw2jb" path="res://src/projectiles/shotgun_bullet/shotgun_bullet.tscn" id="2_f5u5c"]
 [ext_resource type="AudioStream" uid="uid://c1if5xmg8nc1p" path="res://assets/sounds/shotgun_sfx/shotgun_boom_1.wav" id="3_ci0wr"]
+[ext_resource type="PackedScene" uid="uid://q0pgp1ra2mys" path="res://assets/particles/shotgun_blast.tscn" id="3_nqm2u"]
 [ext_resource type="AudioStream" uid="uid://cfmbtu0wo1630" path="res://assets/sounds/shotgun_sfx/shotgun_boom_2.wav" id="4_3sslp"]
 [ext_resource type="AudioStream" uid="uid://cg4ccfjkg1ou" path="res://assets/sounds/shotgun_sfx/shotgun_boom_3.wav" id="5_jrp1f"]
-[ext_resource type="Texture2D" uid="uid://bttu20yk87niq" path="res://assets/sprites/shotgun.png" id="6_w646f"]
+[ext_resource type="Texture2D" uid="uid://dqe7lth1leasf" path="res://assets/sprites/shotgun/shotgun1.png" id="6_hkx88"]
+[ext_resource type="Texture2D" uid="uid://hiqkaqr6jdfj" path="res://assets/sprites/shotgun/shotgun2.png" id="7_vfk4e"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qmw5n"]
 streams_count = 3
@@ -16,12 +18,29 @@ stream_1/weight = 1.0
 stream_2/stream = ExtResource("5_jrp1f")
 stream_2/weight = 1.0
 
-[node name="Shotgun" type="Node2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_8o5ee"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_hkx88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vfk4e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Shotgun" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_1psyf")
+sprite = NodePath("Sprite")
 spread_amount_degrees = 30.0
 bullet_scene = ExtResource("2_f5u5c")
+particles_scene = ExtResource("3_nqm2u")
 fire_sound = SubResource("AudioStreamRandomizer_qmw5n")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("6_w646f")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8o5ee")
+autoplay = "default"
 offset = Vector2(8, 3)
