@@ -1,17 +1,22 @@
-extends Button
+class_name LockButton extends Button
 
-var unlocked_text: String = "Lock"
-var locked_text: String = "Unlock"
+signal lock_curse(index: int)
+signal unlock_curse(index: int)
+
+var unlocked_text: String = "LOCK"
+var locked_text: String = "UNLOCK"
 
 @export var index: int
 
 var locked: bool = false
-
 var lock_price = 5
 
 
-signal lock_curse(index: int)
-signal unlock_curse(index: int)
+
+func _ready() -> void:
+	mouse_entered.connect(SoundManager.play_sound_nonpositional.bind(SoundManager.SOUND_BUTTON_HOVER))
+	focus_entered.connect(SoundManager.play_sound_nonpositional.bind(SoundManager.SOUND_BUTTON_HOVER))
+	pressed.connect(SoundManager.play_sound_nonpositional.bind(SoundManager.SOUND_BUTTON_CONFIRM))
 
 
 func _pressed():

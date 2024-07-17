@@ -4,9 +4,9 @@ extends MarginContainer
 @export var curse_icon_2: TextureRect
 @export var curse_icon_3: TextureRect
 
-@export var lock_button_1: Button
-@export var lock_button_2: Button
-@export var lock_button_3: Button
+@export var lock_button_1: LockButton
+@export var lock_button_2: LockButton
+@export var lock_button_3: LockButton
 
 @export var shuffle_button: Button
 
@@ -18,10 +18,13 @@ signal unlock_curse(index: int)
 
 
 func _ready() -> void:
+	_set_up_sfx(shuffle_button)
 	shuffle_button.pressed.connect(shuffle_curses)
+	
 	lock_button_1.lock_curse.connect(on_lock_select)
 	lock_button_2.lock_curse.connect(on_lock_select)
 	lock_button_3.lock_curse.connect(on_lock_select)
+	
 	lock_button_1.unlock_curse.connect(on_unlock_select)
 	lock_button_2.unlock_curse.connect(on_unlock_select)
 	lock_button_3.unlock_curse.connect(on_unlock_select)
@@ -59,4 +62,18 @@ func price_check(amount: int) -> void:
 		lock_button_1.disabled = false
 		lock_button_2.disabled = false
 		lock_button_3.disabled = false
-		
+
+func _set_up_sfx(button: Button) -> void:
+	button.mouse_entered.connect(SoundManager.play_sound_nonpositional.bind(SoundManager.SOUND_BUTTON_HOVER))
+	button.focus_entered.connect(SoundManager.play_sound_nonpositional.bind(SoundManager.SOUND_BUTTON_HOVER))
+	
+	button.pressed.connect(SoundManager.play_sound_nonpositional.bind(SoundManager.SOUND_BUTTON_CONFIRM))
+
+
+
+
+
+
+
+
+
