@@ -5,9 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://d1h5r22o1065g" path="res://src/entities/player/player.tscn" id="2_5oqym"]
 [ext_resource type="PackedScene" uid="uid://d3pxwguordrj2" path="res://src/objects/NPC_with_dialogue.tscn" id="2_kwig1"]
 [ext_resource type="Shader" path="res://assets/shaders/Background.gdshader" id="2_l5jcn"]
-[ext_resource type="Resource" uid="uid://cnhh8lhqv6dyo" path="res://src/dialogue/overseer_end_dialogue.dialogue" id="3_uprfx"]
-[ext_resource type="Texture2D" uid="uid://bok556q8ptxwr" path="res://assets/sprites/overseer.png" id="4_nssfv"]
+[ext_resource type="PackedScene" uid="uid://f66nck05wp2u" path="res://src/levels/components/dialogue_zone.tscn" id="3_w2j36"]
+[ext_resource type="Resource" uid="uid://bm0ags0a05l7q" path="res://src/dialogue/Prisoner_1.dialogue" id="4_uptth"]
 [ext_resource type="PackedScene" uid="uid://cppm5nvc1lnr6" path="res://src/levels/components/moving_platform.tscn" id="4_uthyh"]
+[ext_resource type="Texture2D" uid="uid://lhw1mifyubu" path="res://assets/sprites/mechworker.png" id="5_qjwtj"]
 [ext_resource type="PackedScene" uid="uid://bdhbba7kc2w6a" path="res://src/objects/checkpoint.tscn" id="6_exrug"]
 [ext_resource type="PackedScene" uid="uid://fvo1j5bganqj" path="res://src/levels/components/lever.tscn" id="8_8c4ln"]
 [ext_resource type="PackedScene" uid="uid://bkja53ti37d50" path="res://src/objects/coin.tscn" id="8_tsrye"]
@@ -33,6 +34,9 @@ shader_parameter/scroll_texture = SubResource("NoiseTexture2D_m5qg7")
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gnmw8"]
 noise = SubResource("FastNoiseLite_1d8x0")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q82gd"]
+size = Vector2(161, 91)
 
 [sub_resource type="Animation" id="Animation_ng2q4"]
 resource_name = "Moving"
@@ -735,11 +739,18 @@ position = Vector2(-936, 448)
 scale = Vector2(2.24609, 0.88672)
 texture = SubResource("NoiseTexture2D_gnmw8")
 
-[node name="NPC" parent="." instance=ExtResource("2_kwig1")]
-position = Vector2(-24, 168)
-dialogue = ExtResource("3_uprfx")
-first_line = "overseer_end_game"
-sprite_image = ExtResource("4_nssfv")
+[node name="DialogueZone" parent="." instance=ExtResource("3_w2j36")]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueZone"]
+position = Vector2(112.5, -157.5)
+shape = SubResource("RectangleShape2D_q82gd")
+
+[node name="Prisoner 1" parent="." instance=ExtResource("2_kwig1")]
+position = Vector2(144, -8)
+dialogue = ExtResource("4_uptth")
+first_line = "NPC_1_dialogue_start"
+sprite_image = ExtResource("5_qjwtj")
 
 [node name="Checkpoint" parent="." instance=ExtResource("6_exrug")]
 position = Vector2(0, -24)
@@ -750,10 +761,12 @@ gravity = 392.4
 [node name="Hydroponic" parent="Progress Levers" node_paths=PackedStringArray("node_to_trigger") instance=ExtResource("8_8c4ln")]
 position = Vector2(1032, -328)
 node_to_trigger = NodePath("../../Doors/Hydroponic/HydroponicDoor")
+area_flag = 2
 
 [node name="Control Room Lever" parent="Progress Levers" node_paths=PackedStringArray("node_to_trigger") instance=ExtResource("8_8c4ln")]
 position = Vector2(-72, -184)
 node_to_trigger = NodePath("../../Doors/Control Deck/MovingPlatform")
+area_flag = 4
 
 [node name="Door 1" parent="Progress Levers" node_paths=PackedStringArray("node_to_trigger") instance=ExtResource("8_8c4ln")]
 position = Vector2(-392, -1080)
@@ -774,6 +787,7 @@ node_to_trigger = NodePath("../../Doors/Door 4/MovingPlatform4")
 [node name="WaterPurf" parent="Progress Levers" node_paths=PackedStringArray("node_to_trigger") instance=ExtResource("8_8c4ln")]
 position = Vector2(1272, 24)
 node_to_trigger = NodePath("../../Doors/WaterPurif/WaterPurif Door")
+area_flag = 1
 
 [node name="Enemies" type="Node" parent="."]
 
