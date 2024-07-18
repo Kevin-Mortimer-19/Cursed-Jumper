@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://b2rjri83avf4o"]
+
+[ext_resource type="AudioStream" uid="uid://edgj0llfjajn" path="res://assets/sounds/jump/jump_up_1.wav" id="1_uoppg"]
+[ext_resource type="AudioStream" uid="uid://irovp3aaboqt" path="res://assets/sounds/jump/jump_up_2.wav" id="2_wag4m"]
+[ext_resource type="AudioStream" uid="uid://cf12ikkrj7jro" path="res://assets/sounds/jump/jump_up_3.wav" id="3_ketqj"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_uoppg")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_wag4m")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_ketqj")
+stream_2/weight = 1.0

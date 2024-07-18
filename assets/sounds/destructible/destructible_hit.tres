@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://cloodwtm8s2q3"]
+
+[ext_resource type="AudioStream" uid="uid://b8rd8tiitp4c1" path="res://assets/sounds/destructible/impactPlate_heavy_000.ogg" id="1_esabu"]
+[ext_resource type="AudioStream" uid="uid://db5kommqoogn1" path="res://assets/sounds/destructible/impactPlate_heavy_001.ogg" id="2_a6dj1"]
+[ext_resource type="AudioStream" uid="uid://t0hjuckv5fbr" path="res://assets/sounds/destructible/impactPlate_heavy_002.ogg" id="3_yg3c5"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_esabu")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_a6dj1")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_yg3c5")
+stream_2/weight = 1.0

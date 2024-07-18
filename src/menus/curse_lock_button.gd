@@ -14,9 +14,9 @@ var lock_price = 5
 
 
 func _ready() -> void:
-	mouse_entered.connect(SoundManager.play_sound_nonpositional.bind(SoundManager.SOUND_BUTTON_HOVER))
-	focus_entered.connect(SoundManager.play_sound_nonpositional.bind(SoundManager.SOUND_BUTTON_HOVER))
-	pressed.connect(SoundManager.play_sound_nonpositional.bind(SoundManager.SOUND_BUTTON_CONFIRM))
+	mouse_entered.connect(SoundManager.play_ui_sound.bind(SoundManager.SOUND_BUTTON_HOVER))
+	focus_entered.connect(SoundManager.play_ui_sound.bind(SoundManager.SOUND_BUTTON_HOVER))
+	pressed.connect(SoundManager.play_ui_sound.bind(SoundManager.SOUND_BUTTON_CONFIRM))
 
 
 func _pressed():

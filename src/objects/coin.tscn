@@ -1,7 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkja53ti37d50"]
+[gd_scene load_steps=11 format=3 uid="uid://bkja53ti37d50"]
 
 [ext_resource type="Script" path="res://src/objects/coin.gd" id="1_jsgr3"]
 [ext_resource type="Texture2D" uid="uid://clefb03mn2buj" path="res://assets/tilemaps/ssj407-chris-mastersheet.png" id="2_4dt7k"]
+[ext_resource type="AudioStream" uid="uid://v8bdqhn4sxuy" path="res://assets/sounds/coin/coin_pickup_1.wav" id="2_8ddki"]
+[ext_resource type="AudioStream" uid="uid://bcsdkhjo75we5" path="res://assets/sounds/coin/coin_pickup_2.wav" id="3_lc1pl"]
+[ext_resource type="AudioStream" uid="uid://cjmfu3q0ldj60" path="res://assets/sounds/coin/coin_pickup_3.wav" id="4_o4ff1"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_atv1g"]
+streams_count = 3
+stream_0/stream = ExtResource("2_8ddki")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_lc1pl")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("4_o4ff1")
+stream_2/weight = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xkaho"]
 atlas = ExtResource("2_4dt7k")
@@ -26,6 +38,7 @@ radius = 8.0
 [node name="Coin" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "area")]
 collision_layer = 0
 script = ExtResource("1_jsgr3")
+sound_pickup = SubResource("AudioStreamRandomizer_atv1g")
 sprite = NodePath("Sprite")
 area = NodePath("Detection")
 

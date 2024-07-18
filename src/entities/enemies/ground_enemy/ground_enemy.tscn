@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bedmi1dr6o0bg"]
+[gd_scene load_steps=7 format=3 uid="uid://bedmi1dr6o0bg"]
 
 [ext_resource type="Script" path="res://src/entities/enemies/ground_enemy/ground_enemy.gd" id="1_v1ydc"]
+[ext_resource type="AudioStream" uid="uid://dpdvm3q3qdbsj" path="res://assets/sounds/hurt/hurt.tres" id="2_4iwi0"]
 [ext_resource type="Texture2D" uid="uid://lhw1mifyubu" path="res://assets/sprites/mechworker.png" id="2_qyb2o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dbg4y"]
@@ -23,6 +24,7 @@ raycast_edge = NodePath("Raycasts/EdgeDetector")
 raycast_edge_2 = NodePath("Raycasts/EdgeDetector2")
 raycast_obstacle = NodePath("Raycasts/ObstacleDetector")
 raycast_can_jump_obstacle = NodePath("Raycasts/CanJumpObstacleDetector")
+sound_hurt = ExtResource("2_4iwi0")
 move_speed = 50.0
 gravity = 392.4
 jump_force = 140.0

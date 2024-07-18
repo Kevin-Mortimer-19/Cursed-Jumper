@@ -1,5 +1,7 @@
 extends Node
 
+
+
 signal open_curse_shuffle_menu
 signal change_coin_amount
 signal refresh_curse_UI(curses: Array[int])
@@ -25,7 +27,7 @@ func _connect_signals():
 	checkpoint.checkpoint_activated.connect(checkpoint_activated)
 	
 	player.curses_applied.connect(_curses_applied)
-	player.died.connect(_on_player_died)
+	EventBus.player_respawn_requested.connect(_on_player_respawn_requested)
 	
 	EventBus.coin_created.connect(_create_coin)
 	EventBus.coin_picked_up.connect(_gain_coin)
@@ -71,12 +73,21 @@ func _spend_coin(amount: int) -> void:
 	coin_amount -= amount
 	change_coin_amount.emit()
 
-func _on_player_died() -> void:
-	# TODO: UI prompt to respawn?
-	# TODO: Fade screen to black transition to iron this out
-	player.global_position = checkpoint.global_position
+func _on_player_respawn_requested() -> void:
+	EventBus.transition_in.emit()
+	await EventBus.transition_finished
+	
 	player.heal()
+	player.shotgun.sprite.play()
+	player.sprite.play("default")
+	player.global_position = checkpoint.global_position
+	player.velocity = Vector2.ZERO
 	camera.global_position = player.global_position
+	
+	EventBus.transition_out.emit()
+	await EventBus.transition_finished
+	
+	player.is_dead_locked = false
 
 
 

@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://cxihpa4chncce"]
+
+[ext_resource type="AudioStream" uid="uid://bdo7x0d63rg1h" path="res://assets/sounds/jump/jump_land_1.wav" id="1_x6sul"]
+[ext_resource type="AudioStream" uid="uid://d1ygsf465vddh" path="res://assets/sounds/jump/jump_land_2.wav" id="2_htky1"]
+[ext_resource type="AudioStream" uid="uid://cs1qj01twidkk" path="res://assets/sounds/jump/jump_land_3.wav" id="3_8k1go"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_x6sul")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_htky1")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_8k1go")
+stream_2/weight = 1.0

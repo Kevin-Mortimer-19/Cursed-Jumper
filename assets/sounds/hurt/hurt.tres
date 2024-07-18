@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://dpdvm3q3qdbsj"]
+
+[ext_resource type="AudioStream" uid="uid://b2nb84cbmet1y" path="res://assets/sounds/hurt/hurt_1.wav" id="1_tevgt"]
+[ext_resource type="AudioStream" uid="uid://c5exdettn0bc7" path="res://assets/sounds/hurt/hurt_2.wav" id="2_v7nk0"]
+[ext_resource type="AudioStream" uid="uid://bb3clrrf2f0mj" path="res://assets/sounds/hurt/hurt_3.wav" id="3_loxnr"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_tevgt")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_v7nk0")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_loxnr")
+stream_2/weight = 1.0
