@@ -12,6 +12,8 @@ static var _coin_scene: PackedScene = preload("res://src/objects/coin.tscn")
 @export var player: Player
 @export var camera: Camera2D
 
+@export var game_start_text: DialogueResource
+
 var coin_amount: int = 2
 
 
@@ -20,6 +22,12 @@ var coin_amount: int = 2
 
 func _ready() -> void:
 	_connect_signals()
+	call_deferred("_display_dialogue_at_game_start")
+
+
+func _display_dialogue_at_game_start() -> void:
+	DialogueManager.show_example_dialogue_balloon(game_start_text, "game_start")
+	get_tree().paused = true
 
 
 func _connect_signals():

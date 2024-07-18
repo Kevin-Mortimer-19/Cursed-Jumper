@@ -6,6 +6,11 @@ extends MarginContainer
 @export var pause_modulate: ColorRect
 @export var death_modulate: ColorRect
 
+@export_group("Ending Scenes")
+@export var OVERSEER_END: PackedScene
+@export var SHOTGUN_END: PackedScene
+
+
 @export_group("Curse Icons")
 @export var no_walk_icon: Texture2D
 @export var no_jump_icon: Texture2D
@@ -49,6 +54,9 @@ func _ready():
 	curse_menu.unlock_curse.connect(game_world.unlock_curse)
 	curse_menu.unlock_curse.connect(spend_coin)
 	
+	GameState.end_game.connect(transition_to_end_screen)
+	
+	
 	DialogueManager.dialogue_ended.connect(end_dialogue)
 	PauseMenu.visibility_changed.connect(
 		func():
@@ -71,6 +79,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			get_tree().paused = true
 			PauseMenu.show()
+
+
+func transition_to_end_screen() -> void:
+	DialogueManager.dialogue_ended.disconnect(end_dialogue)
+	if GameState.ending_flags & 1:
+		get_tree().change_scene_to_packed(SHOTGUN_END)
+	elif GameState.ending_flags & 2:
+		get_tree().change_scene_to_packed(OVERSEER_END)
 
 
 func spend_coin(_msg = {}) -> void:

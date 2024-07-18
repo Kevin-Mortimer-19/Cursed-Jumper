@@ -1,14 +1,17 @@
 ~ overseer_end_game
 
-Overseer: [[Welcome|Greetings]], you have reached the end of the game.
-Overseer: What will you choose?
-- Kill the overseer
-	Overseer: You dare?!
-- Break the shotgun
-	Overseer: Yes, join me!
-- Both! 
-	Overseer: Not an option!
-	=> overseer_end_game
-- Where's the door? => END
-
-=> END
+Overseer: Well, here we are. Are you ready to make your choice? To rise above your station as a mere hired hand? We can run this station together. You've already proven your mastery over the nanites. You've provided me with more data in a couple hours than I've been able to gather in years. Let us lead humanity into a new golden age... Together! What do you say, Jumper? 
+Shotgun: Well Jumper, the choice is yours pal. I'm ready to paint the walls with a shade of Overseer! Let's kickstart our journey together and show humanity what we can do! 
+Overseer: What will it be?
+- Kill the Overseer
+	Overseer: You've made a grave mistake, Jumper... Without my control, the nanites... you have no idea what you've unleased....
+	Shotgun: Woah, that was messy... Plug me in to the central console and I'll find your ship. All this power at our fingertips... I can't wait to see where you take us, Jumper.
+	do GameState.set_ending_flag(1)
+	do GameState.end_game.emit()
+	 => END
+- Join the Overseer
+	Overseer: You've made the correct choice, Jumper... With the anomaly under our control, we'll understand the nanites' true power in no time. Then, all of humanity will see the path to a better future... with the two of us at the helm.
+	Shotgun: We haven't known each other long, but I thought we had a special bond. Guess I was wrong. Huh... didn't know an anomaly like me could feel regret...
+	do GameState.set_ending_flag(2)
+	do GameState.end_game.emit()
+	=> END
