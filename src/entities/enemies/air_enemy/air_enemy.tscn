@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://tbyy4e87n2nl"]
+[gd_scene load_steps=11 format=3 uid="uid://tbyy4e87n2nl"]
 
 [ext_resource type="Script" path="res://src/entities/enemies/air_enemy/air_enemy.gd" id="1_hft0f"]
 [ext_resource type="Texture2D" uid="uid://3boapyeu5mv4" path="res://assets/sprites/npc-spritesheet.png" id="2_dmxiu"]
+[ext_resource type="AudioStream" uid="uid://dpdvm3q3qdbsj" path="res://assets/sounds/hurt/hurt.tres" id="2_wh1cg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s2ve5"]
 atlas = ExtResource("2_dmxiu")
@@ -38,7 +39,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ea7n0"]
-radius = 8.0
+radius = 7.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vg3ii"]
 radius = 128.25
@@ -53,6 +54,7 @@ script = ExtResource("1_hft0f")
 sprite = NodePath("Sprite")
 player_detection_radius = NodePath("PlayerDetectionRadius")
 hitbox = NodePath("Hitbox")
+sound_hurt = ExtResource("2_wh1cg")
 move_speed = 75.0
 gravity = 0.0
 

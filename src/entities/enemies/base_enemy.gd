@@ -1,5 +1,6 @@
 class_name Enemy extends BaseEntity
 
+@export var sound_hurt: AudioStream
 
 @export_range(0.0, 1.0, 0.01) var coin_drop_chance: float = 1.0
 @export_category("Stats")
@@ -23,7 +24,8 @@ func _on_died() -> void:
 	if is_queued_for_deletion():
 		return
 	
-	# TODO: Play death animation/sound
+	# Play death animation/sound
+	SoundManager.play_sound_from_position(sound_hurt, global_position)
 	
 	var rng:= RandomNumberGenerator.new()
 	rng.randomize()

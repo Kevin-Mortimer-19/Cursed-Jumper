@@ -34,7 +34,7 @@ func _connect_button_signals(button: Button) -> void:
 	button.focus_exited.connect(_on_button_exited.bind(button, button.size))
 
 func _on_button_entered(button: Button, initial_size: Vector2) -> void:
-	SoundManager.play_sound_nonpositional(SoundManager.SOUND_BUTTON_HOVER)
+	SoundManager.play_ui_sound(SoundManager.SOUND_BUTTON_HOVER)
 	var tween:= create_tween()
 	tween.tween_property(button, "size:x", initial_size.x * 1.5, 0.2)
 	tween.set_ease(Tween.EASE_OUT)
@@ -49,16 +49,16 @@ func _on_button_exited(button: Button, initial_size: Vector2) -> void:
 
 
 func _on_play_button_pressed() -> void:
-	SoundManager.play_sound_nonpositional(SoundManager.SOUND_BUTTON_CONFIRM)
+	SoundManager.play_ui_sound(SoundManager.SOUND_BUTTON_CONFIRM)
 	# TODO: Do opening cutscene and transitions
 	get_tree().change_scene_to_packed(SCENE_GAME)
 
 func _on_option_button_pressed() -> void:
-	SoundManager.play_sound_nonpositional(SoundManager.SOUND_BUTTON_CONFIRM)
+	SoundManager.play_ui_sound(SoundManager.SOUND_BUTTON_CONFIRM)
 	_animate_options_enter()
 
 func _on_quit_button_pressed() -> void:
-	SoundManager.play_sound_nonpositional(SoundManager.SOUND_BUTTON_CONFIRM)
+	SoundManager.play_ui_sound(SoundManager.SOUND_BUTTON_CONFIRM)
 	get_tree().quit()
 
 

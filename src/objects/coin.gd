@@ -4,6 +4,8 @@ class_name Coin extends CharacterBody2D
 @export var amount: int = 1
 @export var is_falling: bool = false
 
+@export var sound_pickup: AudioStream
+
 @export_group("Node References")
 @export var sprite: AnimatedSprite2D
 @export var area: Area2D
@@ -15,7 +17,8 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		# TODO: Play pick up sfx
+		SoundManager.play_sound_from_position(sound_pickup, global_position)
+		
 		EventBus.coin_picked_up.emit(amount)
 		# TODO: Play pick up animation
 		# sprite.play("pick_up")

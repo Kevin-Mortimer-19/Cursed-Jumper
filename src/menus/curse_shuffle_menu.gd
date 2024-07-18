@@ -64,10 +64,10 @@ func price_check(amount: int) -> void:
 		lock_button_3.disabled = false
 
 func _set_up_sfx(button: Button) -> void:
-	button.mouse_entered.connect(SoundManager.play_sound_nonpositional.bind(SoundManager.SOUND_BUTTON_HOVER))
-	button.focus_entered.connect(SoundManager.play_sound_nonpositional.bind(SoundManager.SOUND_BUTTON_HOVER))
+	button.mouse_entered.connect(SoundManager.play_ui_sound.bind(SoundManager.SOUND_BUTTON_HOVER))
+	button.focus_entered.connect(SoundManager.play_ui_sound.bind(SoundManager.SOUND_BUTTON_HOVER))
 	
-	button.pressed.connect(SoundManager.play_sound_nonpositional.bind(SoundManager.SOUND_BUTTON_CONFIRM))
+	button.pressed.connect(SoundManager.play_ui_sound.bind(SoundManager.SOUND_BUTTON_CONFIRM))
 
 
 

@@ -37,6 +37,12 @@ func set_sfx_volume(level: float) -> void:
 func set_music_volume(level: float) -> void:
 	AudioServer.set_bus_volume_db(MUSIC_BUS_INDEX, linear_to_db(level))
 
+func play_ui_sound(stream: AudioStream) -> void:
+	var player = create_generic_player(stream)
+	player.bus = BUS_UI
+	add_child(player)
+	player.play()
+
 func play_sound_nonpositional(stream: AudioStream) -> void:
 	var player = create_generic_player(stream)
 	player.bus = BUS_SFX

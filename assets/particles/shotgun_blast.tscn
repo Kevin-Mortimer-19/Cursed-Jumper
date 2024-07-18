@@ -1,0 +1,84 @@
+[gd_scene load_steps=16 format=3 uid="uid://q0pgp1ra2mys"]
+
+[ext_resource type="Script" path="res://addons/BurstParticles2D/BurstParticleGroup2D.gd" id="1_0k1vi"]
+[ext_resource type="Script" path="res://addons/BurstParticles2D/BurstParticles2D.gd" id="2_ufrxu"]
+[ext_resource type="Texture2D" uid="uid://dkyw2j1v8cs76" path="res://assets/particles/masks/circle.png" id="3_sc67u"]
+[ext_resource type="Texture2D" uid="uid://yjgjgfhvb5sj" path="res://assets/particles/masks/diamond.png" id="4_b14fi"]
+
+[sub_resource type="Gradient" id="Gradient_ml7v3"]
+offsets = PackedFloat32Array(0, 0.492958, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.543929, 0.213792, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lcvov"]
+gradient = SubResource("Gradient_ml7v3")
+
+[sub_resource type="Curve" id="Curve_ftyia"]
+_data = [Vector2(0.506024, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_7660t"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.495784), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_uvgyr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_4lcbr"]
+_data = [Vector2(0.48996, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_2hti7"]
+offsets = PackedFloat32Array(0.258216, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.680782, 0.54687, 0.264016, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3dnl8"]
+gradient = SubResource("Gradient_2hti7")
+
+[sub_resource type="Curve" id="Curve_cqqio"]
+_data = [Vector2(0, 0.495784), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_b1eop"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.586345, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_cpcmy"]
+_data = [Vector2(0.413655, 0.824621), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="ShotgunBlast" type="Node2D"]
+z_index = 1
+script = ExtResource("1_0k1vi")
+repeat = false
+
+[node name="Main Flash" type="Node2D" parent="."]
+script = ExtResource("2_ufrxu")
+num_particles = 12
+lifetime = 0.25
+texture = ExtResource("3_sc67u")
+image_scale = 0.01
+image_scale_randomness = 0.4
+gradient = SubResource("GradientTexture1D_lcvov")
+distance = 50.0
+distance_randomness = 0.5
+spread_degrees = 100.0
+distance_falloff_curve = SubResource("Curve_ftyia")
+y_scale_curve = SubResource("Curve_7660t")
+color_offset_curve = SubResource("Curve_uvgyr")
+alpha_curve = SubResource("Curve_4lcbr")
+
+[node name="Sparks" type="Node2D" parent="."]
+script = ExtResource("2_ufrxu")
+lifetime = 0.3
+texture = ExtResource("4_b14fi")
+image_scale = 0.01
+image_scale_randomness = 0.5
+gradient = SubResource("GradientTexture1D_3dnl8")
+distance = 50.0
+distance_randomness = 0.6
+start_radius = 5.0
+spread_degrees = 100.0
+y_scale_curve = SubResource("Curve_cqqio")
+color_offset_curve = SubResource("Curve_b1eop")
+alpha_curve = SubResource("Curve_cpcmy")

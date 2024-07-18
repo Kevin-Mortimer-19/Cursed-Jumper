@@ -1,10 +1,12 @@
 class_name Player extends BaseEntity
 
-
+signal jump_started
+signal jump_landed
+signal death_finished
 
 @export_category("Node References")
 @export var sprite: AnimatedSprite2D
-@export var shotgun: Node2D
+@export var shotgun: Shotgun
 
 @export_category("Character Properties")
 @export_group("Movement Stats")
@@ -40,8 +42,6 @@ class_name Player extends BaseEntity
 @export var time_to_reload: float = 1.0
 @export var knockback_amount: float = 400
 
-
-
 @export_group("Modifiers", "modifiers_")
 @export_flags(
 	"Can Move Ground:1", "Can Move Air:2", "Can Swim:4", "Can Jump:8",
@@ -55,8 +55,14 @@ class_name Player extends BaseEntity
 	"Can Deal Damage:1", "Dies Instantly:2", "Fast Enemies:4", "More Enemies:8"
 ) var modifiers_combat: int
 
-## Prevents movement for the purposes of cutscenes, death, etc.	
-var is_movement_locked: bool = false
+@export_category("Audio")
+@export var sound_hurt: AudioStream
+@export var sound_jump: AudioStream
+@export var sound_jump_land: AudioStream
+
+
+## Prevents movement for the purposes of death
+var is_dead_locked: bool = false
 
 var shots_remaining: int = 2
 var _has_double_jumped: bool = false
@@ -96,7 +102,7 @@ func get_movement() -> float:
 
 func take_damage(amount: int) -> void:
 	if has_die_oneshot():
-		died.emit()
+		super(max_health)
 	else:
 		super(amount)
 
@@ -143,15 +149,26 @@ func has_die_oneshot() -> bool:
 
 
 func _ready() -> void:
+	damaged.connect(_animate_damage)
+	died.connect(_animate_death)
+	
+	jump_started.connect(_animate_jump_up)
+	jump_landed.connect(_animate_jump_land)
+	
+	_setup_timers()
+	shots_remaining = num_shots_before_reload
+	
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
 	curses = [curse_1, curse_2, curse_3]
-	_setup_timers()
-	shots_remaining = num_shots_before_reload
+	
 	call_deferred("generate_curses")
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if is_dead_locked:
+		return
+	
 	if event is InputEventMouseButton:
 		var mouse = event as InputEventMouseButton
 		if mouse.pressed and mouse.button_index == MOUSE_BUTTON_LEFT:
@@ -165,9 +182,13 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)
-	if not is_movement_locked:
+	if not is_dead_locked:
 		_handle_move()
 		_handle_jump()
+	else:
+		velocity.x = lerp(velocity.x, 0.0, 0.03)
+		if snappedf(velocity.x, 0.1) == 0.0:
+			death_finished.emit()
 	
 	_was_on_floor = is_on_floor()
 	
@@ -218,6 +239,8 @@ func _handle_jump() -> void:
 				velocity.y = -jump_strength_full
 				if not is_on_floor():
 					_has_double_jumped = true
+				
+				jump_started.emit()
 			# Begin jump buffer
 			else:
 				_jump_buffer_timer.start()
@@ -229,11 +252,14 @@ func _handle_jump() -> void:
 	# Coyote time
 	if _was_on_floor and not is_on_floor():
 		_coyote_timer.start()
-	# Jump buffer check
+	# Jump buffer check / just landed
 	elif not _was_on_floor and is_on_floor():
 		_has_double_jumped = false
 		if not _jump_buffer_timer.is_stopped():
 			velocity.y = -jump_strength_full if Input.is_action_pressed("jump") else -jump_strength_half
+			jump_started.emit()
+		else:
+			jump_landed.emit()
 
 
 func _handle_attack() -> void:
@@ -247,6 +273,10 @@ func _handle_attack() -> void:
 	velocity = -mouse_dir * knockback_amount
 	_reload_timer.start()
 	shotgun.shoot(number_of_shots_per_fire, can_deal_damage())
+	
+	# Counts as a jump if going vertically
+	if velocity.y <= 0 and velocity.dot(Vector2.UP) > 0.65:
+		jump_started.emit()
 
 
 
@@ -276,9 +306,13 @@ func _setup_timers() -> void:
 
 
 func _reload() -> void:
-	# TODO: Play reload sound effect
 	shots_remaining = num_shots_before_reload
-
+	
+	if not is_dead_locked:
+		SoundManager.play_sound_nonpositional(shotgun.reload_sound)
+		var tween:= create_tween()
+		tween.tween_property(shotgun.sprite, "rotation_degrees", 360, 0.25)
+		tween.chain().tween_property(shotgun.sprite, "rotation_degrees", 0, 0)
 
 
 #region Curses
@@ -454,5 +488,69 @@ func lock_curse(index: int) -> void:
 
 func unlock_curse(index: int) -> void:
 	curse_locks[index] = false
+
+#endregion
+
+
+
+#region Animation
+
+func _animate_damage() -> void:
+	# Sound effect
+	SoundManager.play_sound_nonpositional(sound_hurt)
+	
+	EventBus.hitfreeze_requested.emit(0.1, 0.25)
+	EventBus.screenshake_requested.emit(3, 0.50)
+	
+	var tween:= create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_property(sprite, "scale", Vector2(1.2, 0.8), 0.15)
+	tween.parallel().tween_property(sprite, "self_modulate", Color(5, 5, 5), 0.15)
+	tween.chain().tween_property(sprite, "scale", Vector2(0.8, 1.2), 0.15)
+	tween.chain().tween_property(sprite, "scale", Vector2.ONE, 0.1)
+	tween.parallel().tween_property(sprite, "self_modulate", Color.WHITE, 0.1)
+	
+	tween.play()
+
+func _animate_death() -> void:
+	## Don't repeatedly die
+	if is_dead_locked:
+		return
+	
+	EventBus.hitfreeze_requested.emit(0.1, 1)
+	is_dead_locked = true
+	shotgun.sprite.stop()
+	sprite.play("death")
+	# TODO: UI prompt to respawn?
+	await death_finished
+	await get_tree().create_timer(1.0).timeout
+	EventBus.player_respawn_requested.emit()
+
+
+
+func _animate_jump_up() -> void:
+	# Sound effect
+	SoundManager.play_sound_nonpositional(sound_jump)
+	
+	var tween:= create_tween()
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+	# squeeze
+	tween.tween_property(sprite, "scale", Vector2(0.8, 1.3), 0.15)
+	# normal
+	tween.chain().tween_property(sprite, "scale", Vector2.ONE, 0.1)
+	tween.play()
+
+func _animate_jump_land() -> void:
+	# Sound effect
+	SoundManager.play_sound_nonpositional(sound_jump_land)
+	
+	var tween:= create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_ELASTIC)
+	# squash
+	tween.tween_property(sprite, "scale", Vector2(1.3, 0.8), 0.1)
+	# normal
+	tween.chain().tween_property(sprite, "scale", Vector2.ONE, 0.1)
+	tween.play()
+
 
 #endregion
