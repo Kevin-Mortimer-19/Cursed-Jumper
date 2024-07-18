@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b48h6oocorp34"
+path="res://.godot/imported/spaced - rough.mp3-f8bf204fa73ece5e59d5823025339528.mp3str"
+
+[deps]
+
+source_file="res://assets/music/spaced - rough.mp3"
+dest_files=["res://.godot/imported/spaced - rough.mp3-f8bf204fa73ece5e59d5823025339528.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
