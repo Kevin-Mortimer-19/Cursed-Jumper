@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://c2s2o762gjx5x"]
+[gd_scene load_steps=79 format=3 uid="uid://c2s2o762gjx5x"]
 
 [ext_resource type="PackedScene" uid="uid://bylkv7aa7wq8x" path="res://src/levels/level_tile_map.tscn" id="1_85lic"]
 [ext_resource type="Script" path="res://src/levels/world.gd" id="1_smyah"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://ycpls2kswsg4" path="res://src/objects/chridplatform.tscn" id="9_r4em3"]
 [ext_resource type="Texture2D" uid="uid://bok556q8ptxwr" path="res://assets/sprites/overseer.png" id="9_vn4dn"]
 [ext_resource type="PackedScene" uid="uid://dao0vats5m2q5" path="res://src/levels/components/Door.tscn" id="11_kjf7c"]
-[ext_resource type="PackedScene" uid="uid://bx76txfgfewgb" path="res://src/objects/music.tscn" id="13_jy7gj"]
 [ext_resource type="Texture2D" uid="uid://vwe34itxqa37" path="res://addons/BurstParticles2D/BurstParticles2D-demo/orb_soft.png" id="14_j52el"]
 [ext_resource type="PackedScene" uid="uid://tbyy4e87n2nl" path="res://src/entities/enemies/air_enemy/air_enemy.tscn" id="17_gftlw"]
 [ext_resource type="PackedScene" uid="uid://cbilehsq2klrq" path="res://src/levels/prop_tile_map.tscn" id="17_r7vuw"]
@@ -1363,9 +1362,6 @@ visible = false
 texture = ExtResource("14_j52el")
 texture_scale = 0.75
 metadata/_edit_lock_ = true
-
-[node name="Music" parent="." instance=ExtResource("13_jy7gj")]
-process_mode = 3
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
