@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" path="res://src/entities/player/player.gd" id="1_mw0sy"]
 [ext_resource type="AudioStream" uid="uid://b2rjri83avf4o" path="res://assets/sounds/jump/jump_up.tres" id="2_3lrvj"]
-[ext_resource type="Texture2D" uid="uid://cijabwlguel73" path="res://assets/sprites/player/player_dead_sheet.png" id="2_cqkwo"]
 [ext_resource type="AudioStream" uid="uid://dpdvm3q3qdbsj" path="res://assets/sounds/hurt/hurt.tres" id="2_k143a"]
 [ext_resource type="Texture2D" uid="uid://lvs2jr6dxvne" path="res://assets/sprites/player/player1.png" id="2_rcic8"]
 [ext_resource type="AudioStream" uid="uid://cxihpa4chncce" path="res://assets/sounds/jump/jump_land.tres" id="3_n6y8t"]
 [ext_resource type="PackedScene" uid="uid://c7sf81jnb21uh" path="res://src/entities/player/shotgun.tscn" id="3_sn701"]
 [ext_resource type="Texture2D" uid="uid://dsnv8hpl6skrw" path="res://assets/sprites/player/player3.png" id="4_mc7uu"]
+[ext_resource type="Texture2D" uid="uid://cijabwlguel73" path="res://assets/sprites/player/player-dead.png" id="5_1bsax"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0scvd"]
-atlas = ExtResource("2_cqkwo")
+atlas = ExtResource("5_1bsax")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fb772"]
