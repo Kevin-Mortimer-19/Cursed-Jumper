@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://c2s2o762gjx5x"]
+[gd_scene load_steps=84 format=3 uid="uid://c2s2o762gjx5x"]
 
 [ext_resource type="PackedScene" uid="uid://bylkv7aa7wq8x" path="res://src/levels/level_tile_map.tscn" id="1_85lic"]
 [ext_resource type="Script" path="res://src/levels/world.gd" id="1_smyah"]
@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://dfyanfk43ca46" path="res://src/dialogue/game_start.dialogue" id="2_6wk2y"]
 [ext_resource type="PackedScene" uid="uid://d3pxwguordrj2" path="res://src/objects/NPC_with_dialogue.tscn" id="2_kwig1"]
 [ext_resource type="Shader" path="res://assets/shaders/Background.gdshader" id="2_l5jcn"]
-[ext_resource type="PackedScene" uid="uid://f66nck05wp2u" path="res://src/levels/components/dialogue_zone.tscn" id="3_w2j36"]
 [ext_resource type="Resource" uid="uid://bm0ags0a05l7q" path="res://src/dialogue/Prisoner_1.dialogue" id="4_uptth"]
 [ext_resource type="PackedScene" uid="uid://cppm5nvc1lnr6" path="res://src/levels/components/moving_platform.tscn" id="4_uthyh"]
 [ext_resource type="Texture2D" uid="uid://lhw1mifyubu" path="res://assets/sprites/mechworker.png" id="5_qjwtj"]
@@ -38,9 +37,6 @@ shader_parameter/scroll_texture = SubResource("NoiseTexture2D_m5qg7")
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gnmw8"]
 noise = SubResource("FastNoiseLite_1d8x0")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q82gd"]
-size = Vector2(161, 91)
 
 [sub_resource type="Animation" id="Animation_ng2q4"]
 resource_name = "Moving"
@@ -746,13 +742,6 @@ position = Vector2(-936, 448)
 scale = Vector2(2.24609, 0.88672)
 texture = SubResource("NoiseTexture2D_gnmw8")
 
-[node name="DialogueZone" parent="." instance=ExtResource("3_w2j36")]
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueZone"]
-position = Vector2(112.5, -157.5)
-shape = SubResource("RectangleShape2D_q82gd")
-
 [node name="Prisoner 1" parent="." instance=ExtResource("2_kwig1")]
 position = Vector2(144, -8)
 dialogue = ExtResource("4_uptth")
@@ -760,7 +749,7 @@ first_line = "NPC_1_dialogue_start"
 sprite_image = ExtResource("5_qjwtj")
 
 [node name="Overseer Test" parent="." instance=ExtResource("2_kwig1")]
-position = Vector2(212, -7)
+position = Vector2(-24, -2059)
 dialogue = ExtResource("8_7vr1x")
 first_line = "overseer_end_game"
 sprite_image = ExtResource("9_vn4dn")

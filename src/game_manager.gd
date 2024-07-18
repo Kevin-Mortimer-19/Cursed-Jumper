@@ -83,10 +83,19 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func transition_to_end_screen() -> void:
 	DialogueManager.dialogue_ended.disconnect(end_dialogue)
+	var end_scene
 	if GameState.ending_flags & 1:
-		get_tree().change_scene_to_packed(SHOTGUN_END)
+		end_scene = SHOTGUN_END
+		#get_tree().change_scene_to_packed(SHOTGUN_END)
 	elif GameState.ending_flags & 2:
-		get_tree().change_scene_to_packed(OVERSEER_END)
+		end_scene = OVERSEER_END
+		#get_tree().change_scene_to_packed(OVERSEER_END)
+	#var c: StringName = get_tree().change_scene_to_packed.get_method()
+	call_deferred("_end_game", end_scene)
+
+
+func _end_game(ending: PackedScene) -> void:
+	get_tree().change_scene_to_packed(ending)
 
 
 func spend_coin(_msg = {}) -> void:

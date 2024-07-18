@@ -6,6 +6,7 @@
 [node name="Overseer Ending" type="Control" node_paths=PackedStringArray("exit_button")]
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 2
 script = ExtResource("1_5swy8")
 exit_button = NodePath("MarginContainer/VBoxContainer/MarginContainer/Button")
 
