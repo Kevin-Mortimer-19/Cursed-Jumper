@@ -58,7 +58,7 @@ func _on_option_deselected(button: Button, container: HBoxContainer) -> void:
 	for control in container.get_children():
 		control.set("theme_override_colors/font_color", _button_deselect_color)
 
-func _on_fullscreen_selected(button: Button, label: Label) -> void:
+func _on_fullscreen_selected(_button: Button, label: Label) -> void:
 	SoundManager.play_ui_sound(SoundManager.SOUND_BUTTON_HOVER)
 	label.set("theme_override_colors/font_color", Color.WHITE)
 

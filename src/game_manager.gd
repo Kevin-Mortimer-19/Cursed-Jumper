@@ -154,7 +154,7 @@ func update_coin_UI():
 	HUD.update_coin_tracker(game_world.coin_amount)
 
 
-func end_dialogue(d: DialogueResource) -> void:
+func end_dialogue(_d: DialogueResource) -> void:
 	unpause_game()
 
 
