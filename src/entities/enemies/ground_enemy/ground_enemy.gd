@@ -40,6 +40,7 @@ func _ready() -> void:
 func _on_body_detected(body: Node2D) -> void:
 	if body is Player:
 		target = body
+		(target as Player).connect("died", (func(): target = null), CONNECT_ONE_SHOT)
 
 
 func _physics_process(delta: float) -> void:
