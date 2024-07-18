@@ -1,8 +1,9 @@
-[gd_scene load_steps=80 format=3 uid="uid://c2s2o762gjx5x"]
+[gd_scene load_steps=85 format=3 uid="uid://c2s2o762gjx5x"]
 
 [ext_resource type="PackedScene" uid="uid://bylkv7aa7wq8x" path="res://src/levels/level_tile_map.tscn" id="1_85lic"]
 [ext_resource type="Script" path="res://src/levels/world.gd" id="1_smyah"]
 [ext_resource type="PackedScene" uid="uid://d1h5r22o1065g" path="res://src/entities/player/player.tscn" id="2_5oqym"]
+[ext_resource type="Resource" uid="uid://dfyanfk43ca46" path="res://src/dialogue/game_start.dialogue" id="2_6wk2y"]
 [ext_resource type="PackedScene" uid="uid://d3pxwguordrj2" path="res://src/objects/NPC_with_dialogue.tscn" id="2_kwig1"]
 [ext_resource type="Shader" path="res://assets/shaders/Background.gdshader" id="2_l5jcn"]
 [ext_resource type="PackedScene" uid="uid://f66nck05wp2u" path="res://src/levels/components/dialogue_zone.tscn" id="3_w2j36"]
@@ -10,10 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://cppm5nvc1lnr6" path="res://src/levels/components/moving_platform.tscn" id="4_uthyh"]
 [ext_resource type="Texture2D" uid="uid://lhw1mifyubu" path="res://assets/sprites/mechworker.png" id="5_qjwtj"]
 [ext_resource type="PackedScene" uid="uid://bdhbba7kc2w6a" path="res://src/objects/checkpoint.tscn" id="6_exrug"]
+[ext_resource type="Resource" uid="uid://cnhh8lhqv6dyo" path="res://src/dialogue/overseer_end_dialogue.dialogue" id="8_7vr1x"]
 [ext_resource type="PackedScene" uid="uid://fvo1j5bganqj" path="res://src/levels/components/lever.tscn" id="8_8c4ln"]
 [ext_resource type="PackedScene" uid="uid://bkja53ti37d50" path="res://src/objects/coin.tscn" id="8_tsrye"]
 [ext_resource type="PackedScene" uid="uid://bjsfryacaa8d1" path="res://src/levels/components/destructible_2x2.tscn" id="9_6q4ax"]
 [ext_resource type="PackedScene" uid="uid://ycpls2kswsg4" path="res://src/objects/chridplatform.tscn" id="9_r4em3"]
+[ext_resource type="Texture2D" uid="uid://bok556q8ptxwr" path="res://assets/sprites/overseer.png" id="9_vn4dn"]
 [ext_resource type="PackedScene" uid="uid://dao0vats5m2q5" path="res://src/levels/components/Door.tscn" id="11_kjf7c"]
 [ext_resource type="PackedScene" uid="uid://bx76txfgfewgb" path="res://src/objects/music.tscn" id="13_jy7gj"]
 [ext_resource type="Texture2D" uid="uid://vwe34itxqa37" path="res://addons/BurstParticles2D/BurstParticles2D-demo/orb_soft.png" id="14_j52el"]
@@ -727,10 +730,12 @@ _data = {
 point_count = 2
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("checkpoint", "player", "camera")]
+position = Vector2(0, 3)
 script = ExtResource("1_smyah")
 checkpoint = NodePath("Checkpoint")
 player = NodePath("Player")
 camera = NodePath("Player/Camera2D")
+game_start_text = ExtResource("2_6wk2y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
@@ -751,6 +756,12 @@ position = Vector2(144, -8)
 dialogue = ExtResource("4_uptth")
 first_line = "NPC_1_dialogue_start"
 sprite_image = ExtResource("5_qjwtj")
+
+[node name="Overseer Test" parent="." instance=ExtResource("2_kwig1")]
+position = Vector2(212, -7)
+dialogue = ExtResource("8_7vr1x")
+first_line = "overseer_end_game"
+sprite_image = ExtResource("9_vn4dn")
 
 [node name="Checkpoint" parent="." instance=ExtResource("6_exrug")]
 position = Vector2(0, -24)
@@ -1368,7 +1379,7 @@ layer_3/tile_data = PackedInt32Array(262095, 3, 5, 262097, 3, 5, -196601, 3, 5, 
 
 [node name="Player" parent="." instance=ExtResource("2_5oqym")]
 z_index = 1
-position = Vector2(-32, -16)
+position = Vector2(-32, -7)
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
