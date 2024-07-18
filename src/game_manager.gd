@@ -106,12 +106,12 @@ func spend_coin(_msg = {}) -> void:
 
 func toggle_curse_menu() -> void:
 	if curse_menu_open:
-		curse_menu.visible = false
 		curse_menu_open = false
+		await curse_menu.animate_exit()
 		get_tree().paused = false
 	else:
 		curse_menu.price_check(game_world.coin_amount)
-		curse_menu.visible = true
+		await curse_menu.animate_enter()
 		curse_menu_open = true
 		get_tree().paused = true
 

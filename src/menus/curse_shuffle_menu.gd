@@ -38,6 +38,29 @@ func _ready() -> void:
 	lock_button_3.unlock_curse.connect(on_unlock_select)
 
 
+func animate_enter() -> void:
+	position.y = size.y
+	
+	var tween:= create_tween()
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(self, "visible", true, 0)
+	tween.chain().tween_property(self, "position:y", 0, 0.4)
+	
+	tween.play()
+	await tween.finished
+
+
+func animate_exit() -> void:
+	var tween:= create_tween()
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(self, "position:y", size.y, 0.2)
+	tween.chain().tween_property(self, "visible", false, 0)
+	
+	tween.play()
+	await tween.finished
+
+
+
 func refresh_curse_UI(icon_1: Array, icon_2: Array, icon_3: Array) -> void:
 	curse_icon_1.texture = icon_1[0]
 	curse_icon_1.tooltip_text = icon_1[1]
