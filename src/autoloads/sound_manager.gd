@@ -26,6 +26,8 @@ var current_music_volume: float = 0.5 :
 var music_player: AudioStreamPlayer
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	SFX_BUS_INDEX = AudioServer.get_bus_index(BUS_SFX)
 	MUSIC_BUS_INDEX = AudioServer.get_bus_index(BUS_MUSIC)
 
@@ -71,6 +73,7 @@ func play_music(stream: AudioStream) -> void:
 		music_player.bus = BUS_MUSIC
 		add_child(music_player)
 	
+	music_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	music_player.stream = stream
 	music_player.play()
 
