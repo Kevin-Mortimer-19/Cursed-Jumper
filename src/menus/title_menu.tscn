@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://xtb0j28xyj64"]
+[gd_scene load_steps=5 format=3 uid="uid://xtb0j28xyj64"]
 
 [ext_resource type="Script" path="res://src/menus/title_menu.gd" id="1_qm807"]
 [ext_resource type="FontFile" uid="uid://qyfgxb15b1ug" path="res://assets/fonts/Outfit-ExtraBold.ttf" id="2_3rdmu"]
+[ext_resource type="PackedScene" uid="uid://bb1uri4l8ocle" path="res://src/menus/title_background.tscn" id="2_xlvmu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yjt4o"]
 font = ExtResource("2_3rdmu")
 font_size = 64
 
-[node name="TitleMenu" type="Control" node_paths=PackedStringArray("button_play", "button_options", "button_quit")]
+[node name="TitleMenu" type="Control" node_paths=PackedStringArray("background_sprite", "button_play", "button_options", "button_quit")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,24 +16,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qm807")
+background_sprite = NodePath("CanvasLayer/Background/SubViewport/Background")
 button_play = NodePath("PlayButton")
 button_options = NodePath("OptionsButton")
 button_quit = NodePath("QuitButton")
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="SubViewportContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+stretch = true
+stretch_shrink = 4
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/Background"]
+handle_input_locally = false
+size = Vector2i(320, 180)
+render_target_update_mode = 4
+
+[node name="Background" parent="CanvasLayer/Background/SubViewport" instance=ExtResource("2_xlvmu")]
 
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 2
 offset_left = 16.0
-offset_top = 424.0
+offset_top = 464.0
 offset_right = 316.0
-offset_bottom = 512.0
+offset_bottom = 552.0
 size_flags_vertical = 4
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath(".")

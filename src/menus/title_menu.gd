@@ -3,6 +3,7 @@ extends Control
 
 
 @export_group("Node References")
+@export var background_sprite: AnimatedSprite2D
 @export var button_play: Button
 @export var button_options: Button
 @export var button_quit: Button
@@ -25,8 +26,8 @@ func _ready() -> void:
 	
 	OptionsMenu.request_back.connect(_animate_options_exit)
 	
+	# Play music, finally
 	SoundManager.play_music(load("res://assets/music/jumper - rough.mp3"))
-	button_play.grab_focus()
 
 func _connect_button_signals(button: Button) -> void:
 	button.mouse_entered.connect(_on_button_entered.bind(button, button.size))
@@ -51,7 +52,16 @@ func _on_button_exited(button: Button, initial_size: Vector2) -> void:
 
 func _on_play_button_pressed() -> void:
 	SoundManager.play_ui_sound(SoundManager.SOUND_BUTTON_CONFIRM)
+	# hide stuff
+	button_play.hide()
+	button_options.hide()
+	button_quit.hide()
+	await get_tree().create_timer(1.0).timeout
 	# TODO: Do opening cutscene and transitions
+	$CanvasLayer/Background/SubViewport/Background/AnimationPlayer.play("blastoff")
+	await background_sprite.animation_finished
+	
+	await ScreenTransition.animate_transition(true)
 	get_tree().change_scene_to_packed(SCENE_GAME)
 
 func _on_option_button_pressed() -> void:

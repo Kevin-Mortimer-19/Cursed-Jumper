@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://73jm5qjy52vq"]
+[gd_scene load_steps=10 format=3 uid="uid://73jm5qjy52vq"]
 
 [ext_resource type="Script" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
@@ -63,6 +63,8 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2hnr7"]
+
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_36de5")
@@ -103,10 +105,12 @@ grow_vertical = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="Balloon/Panel/Dialogue"]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Balloon/Panel/Dialogue/HBoxContainer"]
+[node name="Profile" type="TextureRect" parent="Balloon/Panel/Dialogue/HBoxContainer"]
 custom_minimum_size = Vector2(134, 0)
 layout_mode = 2
-color = Color(0, 1, 1, 1)
+texture = SubResource("PlaceholderTexture2D_2hnr7")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon/Panel/Dialogue/HBoxContainer"]
 layout_mode = 2
