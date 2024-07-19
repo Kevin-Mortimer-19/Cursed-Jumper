@@ -1,9 +1,8 @@
-[gd_scene load_steps=93 format=3 uid="uid://c2s2o762gjx5x"]
+[gd_scene load_steps=94 format=3 uid="uid://c2s2o762gjx5x"]
 
 [ext_resource type="PackedScene" uid="uid://bylkv7aa7wq8x" path="res://src/levels/level_tile_map.tscn" id="1_85lic"]
 [ext_resource type="Script" path="res://src/levels/world.gd" id="1_smyah"]
 [ext_resource type="PackedScene" uid="uid://d1h5r22o1065g" path="res://src/entities/player/player.tscn" id="2_5oqym"]
-[ext_resource type="Resource" uid="uid://dfyanfk43ca46" path="res://src/dialogue/game_start.dialogue" id="2_6wk2y"]
 [ext_resource type="PackedScene" uid="uid://d3pxwguordrj2" path="res://src/objects/NPC_with_dialogue.tscn" id="2_kwig1"]
 [ext_resource type="Resource" uid="uid://bm0ags0a05l7q" path="res://src/dialogue/Prisoner_1.dialogue" id="4_uptth"]
 [ext_resource type="PackedScene" uid="uid://cppm5nvc1lnr6" path="res://src/levels/components/moving_platform.tscn" id="4_uthyh"]
@@ -21,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://vwe34itxqa37" path="res://addons/BurstParticles2D/BurstParticles2D-demo/orb_soft.png" id="14_j52el"]
 [ext_resource type="Resource" uid="uid://dh3ihovaqiuwr" path="res://src/dialogue/overseer_mech_assembly.dialogue" id="15_8aouw"]
 [ext_resource type="PackedScene" uid="uid://f66nck05wp2u" path="res://src/levels/components/dialogue_zone.tscn" id="16_48d03"]
+[ext_resource type="Script" path="res://src/levels/components/shotgun_zone.gd" id="16_j0s4g"]
 [ext_resource type="Resource" uid="uid://brk8xptrbuuud" path="res://src/dialogue/shotgun_bridge.dialogue" id="16_k4jsd"]
 [ext_resource type="PackedScene" uid="uid://tbyy4e87n2nl" path="res://src/entities/enemies/air_enemy/air_enemy.tscn" id="17_gftlw"]
 [ext_resource type="Resource" uid="uid://b4bgfwr6nqwe" path="res://src/dialogue/shotgun_game_start.dialogue" id="17_jyjgp"]
@@ -733,12 +733,14 @@ size = Vector2(264, 66)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0cuj"]
 size = Vector2(184, 90)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntqtx"]
+size = Vector2(16, 16)
+
 [node name="World" type="Node2D" node_paths=PackedStringArray("checkpoint", "player", "camera")]
 script = ExtResource("1_smyah")
 checkpoint = NodePath("Checkpoint")
 player = NodePath("Player")
 camera = NodePath("Player/Camera2D")
-game_start_text = ExtResource("2_6wk2y")
 metadata/_edit_lock_ = true
 
 [node name="Checkpoint" parent="." instance=ExtResource("6_exrug")]
@@ -1387,13 +1389,21 @@ first_line = "overseer_mech_assembly"
 position = Vector2(124, -24)
 shape = SubResource("RectangleShape2D_ps836")
 
-[node name="DialogueZone" parent="DialogueZones" instance=ExtResource("16_48d03")]
+[node name="BridgeZone" parent="DialogueZones" instance=ExtResource("16_48d03")]
+position = Vector2(44, -1115)
 dialogue = ExtResource("16_k4jsd")
 first_line = "shotgun_bridge"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueZones/DialogueZone"]
-position = Vector2(44, -1115)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueZones/BridgeZone"]
 shape = SubResource("RectangleShape2D_m0cuj")
+
+[node name="Shotgun Zone" type="Area2D" parent="DialogueZones"]
+position = Vector2(-88, 424)
+collision_mask = 2
+script = ExtResource("16_j0s4g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueZones/Shotgun Zone"]
+shape = SubResource("RectangleShape2D_ntqtx")
 
 [node name="NPCs" type="Node" parent="."]
 

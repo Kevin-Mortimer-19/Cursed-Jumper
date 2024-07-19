@@ -8,6 +8,7 @@ signal player_respawn_requested
 signal coin_created(global_position: Vector2)
 signal coin_picked_up(amount: int)
 signal coin_spent(amount: int)
+signal acquire_shotgun
 
 signal transition_in
 signal transition_out

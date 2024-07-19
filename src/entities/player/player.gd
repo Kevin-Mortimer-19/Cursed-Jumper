@@ -6,7 +6,7 @@ signal death_finished
 
 @export_category("Node References")
 @export var sprite: AnimatedSprite2D
-@export var shotgun: Shotgun
+var shotgun: Shotgun
 
 @export_category("Character Properties")
 @export_group("Movement Stats")
@@ -73,6 +73,8 @@ var _reload_timer: Timer
 var _minimum_cd_timer: Timer
 
 var _was_on_floor: bool = false
+
+const SHOTGUN_SCENE = preload("res://src/entities/player/shotgun.tscn")
 
 
 ## Bit flag used to keep track of which curses are active.
@@ -162,7 +164,7 @@ func _ready() -> void:
 	rng.randomize()
 	curses = [curse_1, curse_2, curse_3]
 	
-	call_deferred("generate_curses")
+	EventBus.acquire_shotgun.connect(_acquire_shotgun)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -177,7 +179,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var mouse_pos:= get_global_mouse_position()
 		sprite.flip_h = sign(mouse_pos.x - global_position.x) < 0
-		shotgun.look_at(mouse_pos)
+		if shotgun != null:
+			shotgun.look_at(mouse_pos)
 
 
 func _physics_process(delta: float) -> void:
@@ -263,8 +266,8 @@ func _handle_jump() -> void:
 
 
 func _handle_attack() -> void:
-	# Not reloading and not in the brief window in between
-	if shots_remaining <= 0 or not _minimum_cd_timer.is_stopped():
+	# Not reloading, not in the brief window in between, and has shotgun
+	if shots_remaining <= 0 or not _minimum_cd_timer.is_stopped() or shotgun == null:
 		return
 	
 	shots_remaining -= 1
@@ -278,6 +281,12 @@ func _handle_attack() -> void:
 	if velocity.y <= 0 and velocity.dot(Vector2.UP) > 0.65:
 		jump_started.emit()
 
+
+func _acquire_shotgun() -> void:
+	shotgun = SHOTGUN_SCENE.instantiate()
+	add_child(shotgun)
+	shotgun.position = Vector2(0,-8)
+	call_deferred("generate_curses")
 
 
 ## Helpers
@@ -309,7 +318,8 @@ func _reload() -> void:
 	shots_remaining = num_shots_before_reload
 	
 	if not is_dead_locked:
-		SoundManager.play_sound_nonpositional(shotgun.reload_sound)
+		if shotgun != null:
+			SoundManager.play_sound_nonpositional(shotgun.reload_sound)
 		var tween:= create_tween()
 		tween.tween_property(shotgun.sprite, "rotation_degrees", 360, 0.25)
 		tween.chain().tween_property(shotgun.sprite, "rotation_degrees", 0, 0)

@@ -5,6 +5,8 @@ extends MarginContainer
 @export var HUD: MarginContainer
 @export var pause_modulate: ColorRect
 @export var death_modulate: ColorRect
+@export var game_start_text: DialogueResource
+@export var acquire_shotgun_text: DialogueResource
 
 @export_group("Ending Scenes")
 @export var OVERSEER_END: PackedScene
@@ -56,6 +58,7 @@ func _ready():
 	
 	GameState.end_game.connect(transition_to_end_screen)
 	
+	EventBus.acquire_shotgun.connect(acquire_shotgun)
 	
 	DialogueManager.dialogue_ended.connect(end_dialogue)
 	PauseMenu.visibility_changed.connect(
@@ -70,6 +73,7 @@ func _ready():
 	
 	HUD.set_up_healthbar(game_world.player)
 	update_coin_UI()
+	call_deferred("_display_dialogue_at_game_start")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -149,6 +153,15 @@ func find_curse_icon(data: int) -> Array:
 		_:
 			return [no_walk_icon, CurseDescriptions.NoWalk]
 
+
+func _display_dialogue_at_game_start() -> void:
+	DialogueManager.show_example_dialogue_balloon(game_start_text, "game_start")
+	get_tree().paused = true
+
+
+func acquire_shotgun() -> void:
+	DialogueManager.show_example_dialogue_balloon(acquire_shotgun_text, "shotgun_3")
+	get_tree().paused = true
 
 func update_coin_UI():
 	HUD.update_coin_tracker(game_world.coin_amount)
