@@ -42,9 +42,9 @@ func animate_enter() -> void:
 	position.y = size.y
 	
 	var tween:= create_tween()
-	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 	tween.tween_property(self, "visible", true, 0)
-	tween.chain().tween_property(self, "position:y", 0, 0.4)
+	tween.chain().tween_property(self, "position:y", 0, 0.5)
 	
 	tween.play()
 	await tween.finished
