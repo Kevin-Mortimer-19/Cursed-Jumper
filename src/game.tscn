@@ -1,13 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://dsrb7ajkfi6d8"]
+[gd_scene load_steps=18 format=3 uid="uid://dsrb7ajkfi6d8"]
 
 [ext_resource type="Script" path="res://src/game_manager.gd" id="1_nknhp"]
 [ext_resource type="PackedScene" uid="uid://c2s2o762gjx5x" path="res://src/levels/world.tscn" id="1_xghpg"]
 [ext_resource type="PackedScene" uid="uid://dpp7paxcxxp47" path="res://src/endings/overseer_ending.tscn" id="2_ip8u1"]
 [ext_resource type="Resource" uid="uid://dfyanfk43ca46" path="res://src/dialogue/game_start.dialogue" id="2_ndrb4"]
 [ext_resource type="Texture2D" uid="uid://uphhnkx0axet" path="res://assets/sprites/curse icons/no walk curse.png" id="2_t7lup"]
+[ext_resource type="Resource" uid="uid://dfyanfk43ca46" path="res://src/dialogue/game_start.dialogue" id="2_tuslk"]
 [ext_resource type="PackedScene" uid="uid://5m2a3ijt2unl" path="res://src/endings/shotgun_ending.tscn" id="3_0hhly"]
 [ext_resource type="PackedScene" uid="uid://dsc64e5xfn8w7" path="res://src/menus/curse_shuffle_menu.tscn" id="3_0qbir"]
 [ext_resource type="Texture2D" uid="uid://dl3cu6urdjkly" path="res://assets/sprites/curse icons/no jump curse.png" id="3_dh0rw"]
+[ext_resource type="Resource" uid="uid://ddnwl8gvdgtfd" path="res://src/dialogue/shotgun_game_start_3.dialogue" id="3_m8wyk"]
 [ext_resource type="Texture2D" uid="uid://uhpaa08iekmd" path="res://assets/sprites/curse icons/no midair curse.png" id="4_srrkm"]
 [ext_resource type="Texture2D" uid="uid://dw5ikfn35stmf" path="res://assets/sprites/curse icons/no damage curse.png" id="5_qroy2"]
 [ext_resource type="Texture2D" uid="uid://b6638ps50dbld" path="res://assets/sprites/curse icons/more enemies curse.png" id="6_hdjvi"]
@@ -31,7 +33,8 @@ curse_menu = NodePath("CanvasLayer/Curse Shuffle Menu")
 HUD = NodePath("HUD")
 pause_modulate = NodePath("PauseModulate")
 death_modulate = NodePath("DeathModulate")
-game_start_text = ExtResource("2_ndrb4")
+game_start_text = ExtResource("2_tuslk")
+acquire_shotgun_text = ExtResource("3_m8wyk")
 OVERSEER_END = ExtResource("2_ip8u1")
 SHOTGUN_END = ExtResource("3_0hhly")
 no_walk_icon = ExtResource("2_t7lup")

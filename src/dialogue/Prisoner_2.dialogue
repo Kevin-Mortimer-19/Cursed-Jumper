@@ -1,0 +1,10 @@
+~ NPC_2_dialogue_start
+
+if GameState.area_flags == 0:
+	Rowdy Prisoner: You plan on going for the Overseer? That's great, but we're not budging. If you can get us food, though, we'll clear out. Then you can show that bastard what's what!
+elif GameState.area_flags == 3:
+	Rowdy Prisoner: Well I'll be... You pulled it off, huh? Now that we finally have something to eat, we'll clear the way. Good luck against the Overseer, you're gonna need it!
+elif GameState.area_flags == 7
+	Rowdy Prisoner: Go on, give 'em hell! Let's break out of here and go home! Remember, the Overseer's the one who locked us all away in the first place! He's the only thing standing between us and our freedom!
+
+=> END

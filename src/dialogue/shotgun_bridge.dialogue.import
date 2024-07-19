@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://brk8xptrbuuud"
+path="res://.godot/imported/shotgun_bridge.dialogue-b5828f12e5dbe34a7aaccb1985f6bd67.tres"
+
+[deps]
+
+source_file="res://src/dialogue/shotgun_bridge.dialogue"
+dest_files=["res://.godot/imported/shotgun_bridge.dialogue-b5828f12e5dbe34a7aaccb1985f6bd67.tres"]
+
+[params]
+
+defaults=true

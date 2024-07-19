@@ -78,7 +78,7 @@ dialogue_advance={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://src/dialogue/overseer_end_dialogue.dialogue", "res://src/dialogue/Prisoner_1.dialogue", "res://src/dialogue/game_start.dialogue")
+locale/translations_pot_files=PackedStringArray("res://src/dialogue/overseer_end_dialogue.dialogue", "res://src/dialogue/Prisoner_1.dialogue", "res://src/dialogue/game_start.dialogue", "res://src/dialogue/shotgun_game_start.dialogue", "res://src/dialogue/shotgun_game_start_2.dialogue", "res://src/dialogue/shotgun_game_start_3.dialogue", "res://src/dialogue/Prisoner_2.dialogue", "res://src/dialogue/shotgun_bridge.dialogue", "res://src/dialogue/overseer_mech_assembly.dialogue", "res://src/dialogue/mech_assembly.dialogue", "res://src/dialogue/shotgun_acquired.dialogue", "res://src/dialogue/return_to_nexus.dialogue", "res://src/dialogue/diary.dialogue")
 
 [layer_names]
 
