@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://ycpls2kswsg4" path="res://src/objects/chridplatform.tscn" id="9_r4em3"]
 [ext_resource type="Texture2D" uid="uid://bok556q8ptxwr" path="res://assets/sprites/overseer.png" id="9_vn4dn"]
 [ext_resource type="PackedScene" uid="uid://dao0vats5m2q5" path="res://src/levels/components/Door.tscn" id="11_kjf7c"]
-[ext_resource type="PackedScene" uid="uid://bx76txfgfewgb" path="res://src/objects/music.tscn" id="13_jy7gj"]
 [ext_resource type="Resource" uid="uid://bhknakqp4dqan" path="res://src/dialogue/mech_assembly.dialogue" id="14_e1cyr"]
 [ext_resource type="Texture2D" uid="uid://vwe34itxqa37" path="res://addons/BurstParticles2D/BurstParticles2D-demo/orb_soft.png" id="14_j52el"]
 [ext_resource type="Resource" uid="uid://dh3ihovaqiuwr" path="res://src/dialogue/overseer_mech_assembly.dialogue" id="15_8aouw"]
@@ -24,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://brk8xptrbuuud" path="res://src/dialogue/shotgun_bridge.dialogue" id="16_k4jsd"]
 [ext_resource type="PackedScene" uid="uid://tbyy4e87n2nl" path="res://src/entities/enemies/air_enemy/air_enemy.tscn" id="17_gftlw"]
 [ext_resource type="Resource" uid="uid://b4bgfwr6nqwe" path="res://src/dialogue/shotgun_game_start.dialogue" id="17_jyjgp"]
+[ext_resource type="Texture2D" uid="uid://bttu20yk87niq" path="res://assets/sprites/shotgun.png" id="17_qhg0k"]
 [ext_resource type="PackedScene" uid="uid://cbilehsq2klrq" path="res://src/levels/prop_tile_map.tscn" id="17_r7vuw"]
 [ext_resource type="Resource" uid="uid://bpbbxhcvpfv08" path="res://src/dialogue/Prisoner_2.dialogue" id="17_sp0ck"]
 [ext_resource type="Script" path="res://src/utils/camera_juice_2d.gd" id="17_yvwu0"]
@@ -734,7 +734,7 @@ size = Vector2(264, 66)
 size = Vector2(184, 90)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ntqtx"]
-size = Vector2(16, 16)
+size = Vector2(16, 8)
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("checkpoint", "player", "camera")]
 script = ExtResource("1_smyah")
@@ -1403,7 +1403,12 @@ collision_mask = 2
 script = ExtResource("16_j0s4g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueZones/Shotgun Zone"]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_ntqtx")
+
+[node name="Sprite2D" type="Sprite2D" parent="DialogueZones/Shotgun Zone"]
+position = Vector2(0, 5)
+texture = ExtResource("17_qhg0k")
 
 [node name="NPCs" type="Node" parent="."]
 
