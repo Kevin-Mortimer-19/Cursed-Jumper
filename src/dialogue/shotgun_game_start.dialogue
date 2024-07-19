@@ -1,5 +1,6 @@
 ~ shotgun_1
 
+do EventBus.switch_portrait.emit("shotgun")
 Shotgun: Hey, you with the metal eye, I'm down here!
 
 => END

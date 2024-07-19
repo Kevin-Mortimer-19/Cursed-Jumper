@@ -10,6 +10,9 @@ signal coin_picked_up(amount: int)
 signal coin_spent(amount: int)
 signal acquire_shotgun
 
+signal change_dialogue_portrait(new_portrait: Texture2D)
+signal switch_portrait(name: String)
+
 signal transition_finished
 
 var faster_enemy_curse_active: bool = false

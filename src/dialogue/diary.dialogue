@@ -1,5 +1,6 @@
 ~ diary_start
 
+do EventBus.switch_portrait.emit("overseer")
 Overseer's Diary: Day 31... The first prisoners have arrived at the station. Their rehabilitation will begin with hard labor in the assembly line, but hopefully in time they'll prove worthy of joining me in the bridge.
 Overseer's Diary: Day 187... The rehabilitation is not going as smoothly as I hoped. The prisoners here would rather loaf about and complain then earn their keep. And my nanites have been... unpredictable at times. I fear my vision of the future my go unrealized for some time...
 Overseer's Diary: Day 942... They sent a Jumper after me! The nerve! Don't they know what I've done for them? What boundless potentiial my nanites hold? They'll learn soon enough, that much is certain.

@@ -1,6 +1,8 @@
 ~ mech_assembly
 
+do EventBus.switch_portrait.emit("overseer")
 Overseer: The anomaly has been located in the Assembly Line. All combat units on high alert! Track it down and get this crisis under control!
+do EventBus.switch_portrait.emit("shotgun")
 Shotgun: Those facilities got all busted up as I was escaping... but we put them back together, and got closer to the Overseer to boot! Come on, let's keep moving! 
 
 => END

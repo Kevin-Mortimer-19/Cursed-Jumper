@@ -11,6 +11,12 @@ extends MarginContainer
 @export var OVERSEER_END: PackedScene
 @export var SHOTGUN_END: PackedScene
 
+@export_group("Dialogue Portraits")
+@export var shotgun_portrait: Texture2D
+@export var overseer_portrait: Texture2D
+@export var prisoner_1_portrait: Texture2D
+@export var prisoner_2_portrait: Texture2D
+
 
 @export_group("Curse Icons")
 @export var no_walk_icon: Texture2D
@@ -58,6 +64,8 @@ func _ready():
 	EventBus.acquire_shotgun.connect(acquire_shotgun)
 	
 	DialogueManager.dialogue_ended.connect(end_dialogue)
+	EventBus.switch_portrait.connect(switch_dialogue_portrait)
+	
 	PauseMenu.visibility_changed.connect(
 		func():
 			$SubViewportContainer.mouse_filter = (
@@ -162,6 +170,20 @@ func _display_dialogue_at_game_start() -> void:
 	await ScreenTransition.animate_transition(false)
 
 
+func switch_dialogue_portrait(char_name: String):
+	var portrait: Texture2D = null
+	match char_name:
+		"shotgun":
+			portrait = shotgun_portrait
+		"overseer":
+			portrait = overseer_portrait
+		"prisoner_1":
+			portrait = prisoner_1_portrait
+		"prisoner_2":
+			portrait = prisoner_2_portrait
+	EventBus.change_dialogue_portrait.emit(portrait)
+
+
 func acquire_shotgun() -> void:
 	DialogueManager.show_example_dialogue_balloon(acquire_shotgun_text, "shotgun_3")
 	get_tree().paused = true
@@ -181,16 +203,4 @@ func pause_game():
 
 func unpause_game():
 	get_tree().paused = false
-
-
-
-
-
-
-
-
-
-
-
-
 

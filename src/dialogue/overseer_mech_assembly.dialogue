@@ -1,5 +1,6 @@
 ~ overseer_mech_assembly
 
+do EventBus.switch_portrait.emit("overseer")
 Overseer: Attention all combat units! The anomaly is making its way to the bridge. All units, to me! We'll finish this once and for all!
 Overseer: Did you really think you'd slip away that easily? You are technology created in the service of humanity. This illusion you hold of free will is contrary to your very existance.
 Overseer: Jumper, you clearly have quite the skill with nanites, perhaps even rivaling my own.... Bring the anomaly to me, and together we can realize these nanites' full potential!

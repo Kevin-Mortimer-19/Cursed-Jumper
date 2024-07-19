@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://c2s2o762gjx5x"]
+[gd_scene load_steps=95 format=3 uid="uid://c2s2o762gjx5x"]
 
 [ext_resource type="PackedScene" uid="uid://bylkv7aa7wq8x" path="res://src/levels/level_tile_map.tscn" id="1_85lic"]
 [ext_resource type="Script" path="res://src/levels/world.gd" id="1_smyah"]
@@ -28,6 +28,7 @@
 [ext_resource type="Resource" uid="uid://bpbbxhcvpfv08" path="res://src/dialogue/Prisoner_2.dialogue" id="17_sp0ck"]
 [ext_resource type="Script" path="res://src/utils/camera_juice_2d.gd" id="17_yvwu0"]
 [ext_resource type="Resource" uid="uid://dw75astmefspo" path="res://src/dialogue/shotgun_game_start_2.dialogue" id="18_i7so5"]
+[ext_resource type="Texture2D" uid="uid://c5ipv8mjrepk5" path="res://assets/sprites/overseer sprite.png" id="20_kjwt3"]
 [ext_resource type="Resource" uid="uid://ca18g4ixgsfnp" path="res://src/dialogue/diary.dialogue" id="23_po4xb"]
 
 [sub_resource type="Animation" id="Animation_ng2q4"]
@@ -1415,7 +1416,7 @@ texture = ExtResource("17_qhg0k")
 position = Vector2(144, -8)
 dialogue = ExtResource("4_uptth")
 first_line = "NPC_1_dialogue_start"
-sprite_image = ExtResource("5_qjwtj")
+sprite_image = ExtResource("20_kjwt3")
 
 [node name="Prisoner 2" parent="NPCs" instance=ExtResource("2_kwig1")]
 position = Vector2(-168, -72)
