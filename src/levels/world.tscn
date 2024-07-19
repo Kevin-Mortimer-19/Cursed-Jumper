@@ -744,7 +744,6 @@ camera = NodePath("Player/Camera2D")
 metadata/_edit_lock_ = true
 
 [node name="Checkpoint" parent="." instance=ExtResource("6_exrug")]
-position = Vector2(0, -24)
 gravity = 392.4
 
 [node name="Progress Levers" type="Node" parent="."]

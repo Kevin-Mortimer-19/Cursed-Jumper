@@ -4,7 +4,6 @@ extends MarginContainer
 @export var curse_menu: MarginContainer
 @export var HUD: MarginContainer
 @export var pause_modulate: ColorRect
-@export var death_modulate: ColorRect
 @export var game_start_text: DialogueResource
 @export var acquire_shotgun_text: DialogueResource
 
@@ -44,8 +43,6 @@ var curse_menu_open: bool = false
 func _ready():
 	game_world.open_curse_shuffle_menu.connect(toggle_curse_menu)
 	game_world.refresh_curse_UI.connect(change_curse_UI)
-	EventBus.transition_in.connect(_animate_transition.bind(true))
-	EventBus.transition_out.connect(_animate_transition.bind(false))
 	
 	curse_menu.shuffle.connect(game_world.shuffle_curse)
 	curse_menu.shuffle.connect(spend_coin)
@@ -73,7 +70,8 @@ func _ready():
 	
 	HUD.set_up_healthbar(game_world.player)
 	update_coin_UI()
-	call_deferred("_display_dialogue_at_game_start")
+	
+	_display_dialogue_at_game_start()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -155,8 +153,13 @@ func find_curse_icon(data: int) -> Array:
 
 
 func _display_dialogue_at_game_start() -> void:
+	await get_tree().process_frame
+	
 	DialogueManager.show_example_dialogue_balloon(game_start_text, "game_start")
 	get_tree().paused = true
+	
+	await DialogueManager.dialogue_ended
+	await ScreenTransition.animate_transition(false)
 
 
 func acquire_shotgun() -> void:
@@ -180,18 +183,7 @@ func unpause_game():
 	get_tree().paused = false
 
 
-func _animate_transition(animate_in: bool) -> void:
-	death_modulate.visible = animate_in
-	var tween:= create_tween()
-	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
-	if death_modulate.visible:
-		tween.tween_property(death_modulate, "color:a", 1.0, 1.0)
-	else:
-		tween.tween_property(death_modulate, "color:a", 0.0, 1.0)
-	
-	tween.play()
-	await tween.finished
-	EventBus.transition_finished.emit()
+
 
 
 

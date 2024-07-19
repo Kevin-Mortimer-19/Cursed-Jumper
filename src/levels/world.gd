@@ -76,8 +76,8 @@ func _spend_coin(amount: int) -> void:
 	change_coin_amount.emit()
 
 func _on_player_respawn_requested() -> void:
-	EventBus.transition_in.emit()
-	await EventBus.transition_finished
+	#EventBus.transition_in.emit()
+	await ScreenTransition.animate_transition(true)
 	
 	player.heal()
 	player.shotgun.sprite.play()
@@ -86,8 +86,8 @@ func _on_player_respawn_requested() -> void:
 	player.velocity = Vector2.ZERO
 	camera.global_position = player.global_position
 	
-	EventBus.transition_out.emit()
-	await EventBus.transition_finished
+	#EventBus.transition_out.emit()
+	await ScreenTransition.animate_transition(false)
 	
 	player.is_dead_locked = false
 

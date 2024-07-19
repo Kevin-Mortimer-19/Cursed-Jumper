@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dbj5fc48yxg76" path="res://assets/sprites/curse icons/ice physics curse.png" id="10_gihnc"]
 [ext_resource type="PackedScene" uid="uid://bjqk3rxrilc5g" path="res://src/menus/hud.tscn" id="13_donf2"]
 
-[node name="Game" type="MarginContainer" node_paths=PackedStringArray("game_world", "curse_menu", "HUD", "pause_modulate", "death_modulate")]
+[node name="Game" type="MarginContainer" node_paths=PackedStringArray("game_world", "curse_menu", "HUD", "pause_modulate")]
 process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,7 +31,6 @@ game_world = NodePath("SubViewportContainer/SubViewport/World")
 curse_menu = NodePath("CanvasLayer/Curse Shuffle Menu")
 HUD = NodePath("HUD")
 pause_modulate = NodePath("PauseModulate")
-death_modulate = NodePath("DeathModulate")
 game_start_text = ExtResource("2_tuslk")
 acquire_shotgun_text = ExtResource("3_m8wyk")
 OVERSEER_END = ExtResource("2_ip8u1")
@@ -78,8 +77,3 @@ visible = false
 layout_mode = 2
 mouse_filter = 2
 color = Color(0.180722, 0.180722, 0.180722, 0.760784)
-
-[node name="DeathModulate" type="ColorRect" parent="."]
-layout_mode = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0)

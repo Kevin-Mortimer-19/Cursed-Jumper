@@ -23,6 +23,7 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 OptionsMenu="*res://src/menus/options_menu.tscn"
 PauseMenu="*res://src/menus/pause_menu.tscn"
 GameState="*res://src/autoloads/game_state.gd"
+ScreenTransition="*res://src/menus/screen_transition.tscn"
 
 [display]
 
