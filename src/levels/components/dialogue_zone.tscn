@@ -1,10 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://f66nck05wp2u"]
+[gd_scene load_steps=2 format=3 uid="uid://f66nck05wp2u"]
 
 [ext_resource type="Script" path="res://src/levels/components/dialogue_zone.gd" id="1_x266d"]
-[ext_resource type="Resource" uid="uid://dfyanfk43ca46" path="res://src/dialogue/game_start.dialogue" id="2_120i4"]
 
 [node name="DialogueZone" type="Area2D"]
 process_mode = 3
+collision_mask = 2
 script = ExtResource("1_x266d")
-dialogue = ExtResource("2_120i4")
-first_line = "game_start"

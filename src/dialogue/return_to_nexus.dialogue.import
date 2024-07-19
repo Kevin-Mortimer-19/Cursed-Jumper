@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://cpqj002uaxvfk"
+path="res://.godot/imported/return_to_nexus.dialogue-6d8b5ed5bf81a3b73e820bbb761e9418.tres"
+
+[deps]
+
+source_file="res://src/dialogue/return_to_nexus.dialogue"
+dest_files=["res://.godot/imported/return_to_nexus.dialogue-6d8b5ed5bf81a3b73e820bbb761e9418.tres"]
+
+[params]
+
+defaults=true

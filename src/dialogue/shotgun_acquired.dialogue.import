@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://es2mpl13fw4y"
+path="res://.godot/imported/shotgun_acquired.dialogue-81696b15642552b232e174a5575f12c3.tres"
+
+[deps]
+
+source_file="res://src/dialogue/shotgun_acquired.dialogue"
+dest_files=["res://.godot/imported/shotgun_acquired.dialogue-81696b15642552b232e174a5575f12c3.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://bhknakqp4dqan"
+path="res://.godot/imported/mech_assembly.dialogue-0416398103d7ece7b09be2633f8f0e05.tres"
+
+[deps]
+
+source_file="res://src/dialogue/mech_assembly.dialogue"
+dest_files=["res://.godot/imported/mech_assembly.dialogue-0416398103d7ece7b09be2633f8f0e05.tres"]
+
+[params]
+
+defaults=true

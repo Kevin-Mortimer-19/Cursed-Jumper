@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://b4bgfwr6nqwe"
+path="res://.godot/imported/shotgun_game_start.dialogue-33c545435259122a806b7a081371a7b3.tres"
+
+[deps]
+
+source_file="res://src/dialogue/shotgun_game_start.dialogue"
+dest_files=["res://.godot/imported/shotgun_game_start.dialogue-33c545435259122a806b7a081371a7b3.tres"]
+
+[params]
+
+defaults=true

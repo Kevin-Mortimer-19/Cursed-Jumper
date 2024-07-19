@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://dh3ihovaqiuwr"
+path="res://.godot/imported/overseer_mech_assembly.dialogue-3685b278f6ce41c1cc4a90994592971a.tres"
+
+[deps]
+
+source_file="res://src/dialogue/overseer_mech_assembly.dialogue"
+dest_files=["res://.godot/imported/overseer_mech_assembly.dialogue-3685b278f6ce41c1cc4a90994592971a.tres"]
+
+[params]
+
+defaults=true
