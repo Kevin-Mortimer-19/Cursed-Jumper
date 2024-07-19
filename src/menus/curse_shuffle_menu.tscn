@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsc64e5xfn8w7"]
+[gd_scene load_steps=10 format=3 uid="uid://dsc64e5xfn8w7"]
 
 [ext_resource type="Script" path="res://src/menus/curse_shuffle_menu.gd" id="1_sublg"]
 [ext_resource type="Texture2D" uid="uid://bdj0khswrbdvg" path="res://assets/ui/Curse Management Logo.png" id="2_o47ay"]
 [ext_resource type="Script" path="res://src/menus/curse_lock_button.gd" id="2_rggep"]
+[ext_resource type="AudioStream" uid="uid://dq6mww0wl3mnp" path="res://assets/sounds/curses/curse_shuffle.tres" id="2_xy4wg"]
+[ext_resource type="AudioStream" uid="uid://dqm3usfwhtcgu" path="res://assets/sounds/ui_blips/handleSmallLeather2.ogg" id="3_6771j"]
 [ext_resource type="FontFile" uid="uid://vxqcuhwk6myo" path="res://assets/fonts/Outfit-Medium.ttf" id="3_hh3gj"]
+[ext_resource type="AudioStream" uid="uid://qb1mqfs535d4" path="res://assets/sounds/ui_blips/handleSmallLeather.ogg" id="4_30x4k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hb6ex"]
 bg_color = Color(0.258824, 0.113725, 0.258824, 1)
@@ -19,6 +22,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sublg")
+sound_shuffle = ExtResource("2_xy4wg")
+sound_open = ExtResource("3_6771j")
+sound_close = ExtResource("4_30x4k")
 curse_icon_1 = NodePath("Body/MarginContainer/Body/Curse 1/MarginContainer/TextureRect")
 curse_icon_2 = NodePath("Body/MarginContainer/Body/Curse 2/MarginContainer/TextureRect")
 curse_icon_3 = NodePath("Body/MarginContainer/Body/Curse 3/MarginContainer/TextureRect")

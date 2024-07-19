@@ -25,6 +25,7 @@ func _ready() -> void:
 	
 	OptionsMenu.request_back.connect(_animate_options_exit)
 	
+	SoundManager.play_music(load("res://assets/music/jumper - rough.mp3"))
 	button_play.grab_focus()
 
 func _connect_button_signals(button: Button) -> void:

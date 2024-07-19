@@ -19,6 +19,8 @@ var coin_amount: int = 2
 
 
 func _ready() -> void:
+	SoundManager.play_music(load("res://assets/music/spaced - rough.mp3"))
+	
 	_connect_signals()
 
 

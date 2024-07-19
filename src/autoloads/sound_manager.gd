@@ -23,9 +23,11 @@ var current_music_volume: float = 0.5 :
 		current_music_volume = clampf(val, 0.0, 1.0)
 		set_music_volume(current_music_volume)
 
-
+var music_player: AudioStreamPlayer
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	SFX_BUS_INDEX = AudioServer.get_bus_index(BUS_SFX)
 	MUSIC_BUS_INDEX = AudioServer.get_bus_index(BUS_MUSIC)
 
@@ -64,6 +66,16 @@ func create_generic_player(stream: AudioStream) -> AudioStreamPlayer:
 	return player
 
 
+
+func play_music(stream: AudioStream) -> void:
+	if not music_player:
+		music_player = AudioStreamPlayer.new()
+		music_player.bus = BUS_MUSIC
+		add_child(music_player)
+	
+	music_player.process_mode = Node.PROCESS_MODE_ALWAYS
+	music_player.stream = stream
+	music_player.play()
 
 
 

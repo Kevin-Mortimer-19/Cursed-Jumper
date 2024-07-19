@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://src/game_manager.gd" id="1_nknhp"]
 [ext_resource type="PackedScene" uid="uid://c2s2o762gjx5x" path="res://src/levels/world.tscn" id="1_xghpg"]
 [ext_resource type="PackedScene" uid="uid://dpp7paxcxxp47" path="res://src/endings/overseer_ending.tscn" id="2_ip8u1"]
+[ext_resource type="Resource" uid="uid://dfyanfk43ca46" path="res://src/dialogue/game_start.dialogue" id="2_ndrb4"]
 [ext_resource type="Texture2D" uid="uid://uphhnkx0axet" path="res://assets/sprites/curse icons/no walk curse.png" id="2_t7lup"]
 [ext_resource type="Resource" uid="uid://dfyanfk43ca46" path="res://src/dialogue/game_start.dialogue" id="2_tuslk"]
 [ext_resource type="PackedScene" uid="uid://5m2a3ijt2unl" path="res://src/endings/shotgun_ending.tscn" id="3_0hhly"]

@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://dq6mww0wl3mnp"]
+
+[ext_resource type="AudioStream" uid="uid://8ksmotg10pft" path="res://assets/sounds/curses/curse_shuffle_1.wav" id="1_nw28o"]
+[ext_resource type="AudioStream" uid="uid://dty6bcqm3jjl4" path="res://assets/sounds/curses/curse_shuffle_2.wav" id="2_puv4u"]
+[ext_resource type="AudioStream" uid="uid://bx1aix3p5yn2g" path="res://assets/sounds/curses/curse_shuffle_3.wav" id="3_cit4t"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_nw28o")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_puv4u")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_cit4t")
+stream_2/weight = 1.0

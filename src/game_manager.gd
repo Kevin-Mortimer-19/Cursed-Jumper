@@ -110,12 +110,12 @@ func spend_coin(_msg = {}) -> void:
 
 func toggle_curse_menu() -> void:
 	if curse_menu_open:
-		curse_menu.visible = false
 		curse_menu_open = false
+		await curse_menu.animate_exit()
 		get_tree().paused = false
 	else:
 		curse_menu.price_check(game_world.coin_amount)
-		curse_menu.visible = true
+		await curse_menu.animate_enter()
 		curse_menu_open = true
 		get_tree().paused = true
 
@@ -163,11 +163,12 @@ func acquire_shotgun() -> void:
 	DialogueManager.show_example_dialogue_balloon(acquire_shotgun_text, "shotgun_3")
 	get_tree().paused = true
 
+
 func update_coin_UI():
 	HUD.update_coin_tracker(game_world.coin_amount)
 
 
-func end_dialogue(d: DialogueResource) -> void:
+func end_dialogue(_d: DialogueResource) -> void:
 	unpause_game()
 
 

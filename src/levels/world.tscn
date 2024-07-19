@@ -1457,9 +1457,6 @@ texture = ExtResource("14_j52el")
 texture_scale = 0.75
 metadata/_edit_lock_ = true
 
-[node name="Music" parent="." instance=ExtResource("13_jy7gj")]
-process_mode = 3
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0.176524, 0.196863, 0.2613, 1)
