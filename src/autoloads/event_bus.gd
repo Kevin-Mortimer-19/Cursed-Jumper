@@ -9,6 +9,9 @@ signal coin_created(global_position: Vector2)
 signal coin_picked_up(amount: int)
 signal coin_spent(amount: int)
 signal acquire_shotgun
+signal enter_interactable
+signal exit_interactable
+
 
 signal change_dialogue_portrait(new_portrait: Texture2D)
 signal switch_portrait(name: String)

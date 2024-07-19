@@ -19,9 +19,11 @@ func _unhandled_input(_event: InputEvent) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_ref = body
+		EventBus.enter_interactable.emit()
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_ref = null
+		EventBus.exit_interactable.emit()
 
 
