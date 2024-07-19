@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3pxwguordrj2"]
+[gd_scene load_steps=4 format=3 uid="uid://d3pxwguordrj2"]
 
 [ext_resource type="Script" path="res://src/objects/NPC_with_dialogue.gd" id="1_ewnnc"]
+[ext_resource type="Texture2D" uid="uid://c5ipv8mjrepk5" path="res://assets/sprites/overseer sprite.png" id="2_m6lp5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o11n4"]
 size = Vector2(16, 16)
@@ -15,3 +16,6 @@ sprite = NodePath("Sprite2D")
 shape = SubResource("RectangleShape2D_o11n4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_m6lp5")
+region_enabled = true
+region_rect = Rect2(112, 160, 16, 17)

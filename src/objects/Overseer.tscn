@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7dqsq65thhsv"]
+
+[ext_resource type="Texture2D" uid="uid://bwiyrjcgd1uba" path="res://assets/tilemaps/mastersheet-2.png" id="1_ukrxg"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_ukrxg")
+region_enabled = true
+region_rect = Rect2(95, 192, 18, 32)
