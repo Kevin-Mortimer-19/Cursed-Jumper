@@ -5,6 +5,7 @@ extends MarginContainer
 @export var HUD: MarginContainer
 @export var pause_modulate: ColorRect
 @export var death_modulate: ColorRect
+@export var game_start_text: DialogueResource
 
 @export_group("Ending Scenes")
 @export var OVERSEER_END: PackedScene
@@ -70,6 +71,7 @@ func _ready():
 	
 	HUD.set_up_healthbar(game_world.player)
 	update_coin_UI()
+	call_deferred("_display_dialogue_at_game_start")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -148,6 +150,11 @@ func find_curse_icon(data: int) -> Array:
 			return [more_enemies_icon, CurseDescriptions.MoreEnemy]
 		_:
 			return [no_walk_icon, CurseDescriptions.NoWalk]
+
+
+func _display_dialogue_at_game_start() -> void:
+	DialogueManager.show_example_dialogue_balloon(game_start_text, "game_start")
+	get_tree().paused = true
 
 
 func update_coin_UI():
