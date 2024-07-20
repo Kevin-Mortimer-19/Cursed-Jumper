@@ -15,3 +15,4 @@ sprite = NodePath("Sprite2D")
 shape = SubResource("RectangleShape2D_o11n4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+region_rect = Rect2(112, 160, 16, 17)
