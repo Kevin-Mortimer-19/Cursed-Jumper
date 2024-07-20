@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://d0rju3oshgjr3"]
+
+[ext_resource type="AudioStream" uid="uid://c1if5xmg8nc1p" path="res://assets/sounds/shotgun_sfx/shotgun_boom_1.wav" id="1_xp2ku"]
+[ext_resource type="AudioStream" uid="uid://cfmbtu0wo1630" path="res://assets/sounds/shotgun_sfx/shotgun_boom_2.wav" id="2_fk3qk"]
+[ext_resource type="AudioStream" uid="uid://cg4ccfjkg1ou" path="res://assets/sounds/shotgun_sfx/shotgun_boom_3.wav" id="3_e1qk7"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_xp2ku")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_fk3qk")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_e1qk7")
+stream_2/weight = 1.0
