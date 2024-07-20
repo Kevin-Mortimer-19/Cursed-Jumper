@@ -4,6 +4,8 @@ class_name Projectile extends CharacterBody2D
 @export var move_speed: float
 @export var lifetime: float
 
+@export var collision_effect_scene: PackedScene
+
 @export_group("Sound")
 @export var enemy_impact: AudioStream
 @export var environment_impact: AudioStream
@@ -13,6 +15,7 @@ class_name Projectile extends CharacterBody2D
 
 var can_damage_enemy: bool = true
 var _lifetime_remaining: float = 0.0
+
 
 
 func _ready() -> void:
@@ -38,6 +41,11 @@ func _on_body_entered(body: Node2D) -> void:
 			SoundManager.play_sound_from_position(environment_impact, global_position)
 	
 	# TODO: Play particle here
+	var flash:= collision_effect_scene.instantiate()
+	owner.add_child(flash)
+	flash.set_as_top_level(true)
+	flash.global_transform = global_transform
+	
 	queue_free()
 
 

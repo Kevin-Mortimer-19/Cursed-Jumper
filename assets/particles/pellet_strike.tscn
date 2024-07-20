@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://krq8e7ylb6hg"]
+
+[ext_resource type="Script" path="res://addons/BurstParticles2D/BurstParticleGroup2D.gd" id="1_woilj"]
+[ext_resource type="Script" path="res://addons/BurstParticles2D/BurstParticles2D.gd" id="2_erx8f"]
+[ext_resource type="Texture2D" uid="uid://dkyw2j1v8cs76" path="res://assets/particles/masks/circle.png" id="3_2dcli"]
+
+[sub_resource type="Gradient" id="Gradient_umvy8"]
+offsets = PackedFloat32Array(0, 0.665072)
+colors = PackedColorArray(1, 1, 1, 1, 0.254196, 0.209816, 0.149481, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dru6v"]
+gradient = SubResource("Gradient_umvy8")
+
+[sub_resource type="Curve" id="Curve_bpnkq"]
+_data = [Vector2(0.530612, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_1h6ky"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.714286, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.736264), -1.34615, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_qs0b4"]
+_data = [Vector2(0, 0.32967), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_1b4r5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.587755, 0.626374), -1.56327, -1.56327, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="PelletStrike" type="Node2D"]
+script = ExtResource("1_woilj")
+repeat = false
+
+[node name="BurstParticles2D" type="Node2D" parent="."]
+script = ExtResource("2_erx8f")
+num_particles = 4
+lifetime = 0.4
+lifetime_randomness = 0.5
+texture = ExtResource("3_2dcli")
+image_scale = 0.01
+image_scale_randomness = 0.2
+gradient = SubResource("GradientTexture1D_dru6v")
+direction = Vector2(-1, 0)
+distance = 30.0
+distance_randomness = 0.5
+spread_degrees = 45.0
+percent_force_uniform = 47.967
+distance_falloff_curve = SubResource("Curve_bpnkq")
+distance_curve = SubResource("Curve_1h6ky")
+y_scale_curve = SubResource("Curve_qs0b4")
+alpha_curve = SubResource("Curve_1b4r5")

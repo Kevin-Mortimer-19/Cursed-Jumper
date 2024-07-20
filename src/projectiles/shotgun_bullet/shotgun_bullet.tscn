@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b38lx3p0fw2jb"]
+[gd_scene load_steps=7 format=3 uid="uid://b38lx3p0fw2jb"]
 
 [ext_resource type="Script" path="res://src/projectiles/projectile.gd" id="1_1bc6r"]
+[ext_resource type="PackedScene" uid="uid://krq8e7ylb6hg" path="res://assets/particles/pellet_strike.tscn" id="2_8il2r"]
 [ext_resource type="AudioStream" uid="uid://dnvx0en6ohpbw" path="res://assets/sounds/shotgun_sfx/bullet_wall_impact.wav" id="2_aixal"]
 [ext_resource type="Texture2D" uid="uid://drjvksqwafuf0" path="res://assets/sprites/bullets.png" id="3_1ehxm"]
 
@@ -18,6 +19,7 @@ script = ExtResource("1_1bc6r")
 damage = 1
 move_speed = 350.0
 lifetime = 0.5
+collision_effect_scene = ExtResource("2_8il2r")
 environment_impact = ExtResource("2_aixal")
 hitbox = NodePath("Area2D")
 

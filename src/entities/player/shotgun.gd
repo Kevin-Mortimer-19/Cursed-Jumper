@@ -28,6 +28,7 @@ func shoot(amount: int, does_damage: bool = true) -> void:
 		bullet.can_damage_enemy = does_damage
 		
 		add_child(bullet)
+		bullet.owner = get_parent()
 		bullet.set_as_top_level(true)
 		(bullet as Node2D).global_transform = global_transform
 		bullet.velocity = (global_transform.x * ((1.0 + 0.3 * rng.randf()) * bullet.move_speed)) \
