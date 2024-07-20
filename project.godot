@@ -40,6 +40,10 @@ mouse_cursor/custom_image="res://assets/sprites/reticle4x.png"
 
 enabled=PackedStringArray("res://addons/BurstParticles2D/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
 
+[gui]
+
+timers/tooltip_delay_sec=0.1
+
 [input]
 
 move_left={

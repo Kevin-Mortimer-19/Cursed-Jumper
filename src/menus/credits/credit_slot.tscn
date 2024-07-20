@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvl34rbn6hsj6"]
+
+[ext_resource type="FontFile" uid="uid://biiglpqms67tn" path="res://assets/fonts/Outfit-SemiBold.ttf" id="1_b0or0"]
+[ext_resource type="Script" path="res://src/menus/credits/credit_slot.gd" id="1_pubhq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4btrs"]
+font = ExtResource("1_b0or0")
+font_size = 24
+shadow_size = 2
+shadow_color = Color(0.415686, 0.301961, 0.384314, 1)
+shadow_offset = Vector2(0, 1)
+
+[node name="CreditSlot" type="HBoxContainer" node_paths=PackedStringArray("label_name", "label_roles")]
+size_flags_horizontal = 3
+script = ExtResource("1_pubhq")
+label_name = NodePath("Name")
+label_roles = NodePath("Role")
+number = 0
+
+[node name="Name" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+bbcode_enabled = true
+text = "[center][b][i]NAME[/i][/b][/center]"
+fit_content = true
+
+[node name="Role" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Music, Art, Portraits"
+label_settings = SubResource("LabelSettings_4btrs")
+vertical_alignment = 1

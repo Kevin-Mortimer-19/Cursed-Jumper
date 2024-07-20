@@ -1,0 +1,339 @@
+[gd_scene load_steps=11 format=3 uid="uid://dvnoq3o8rh3r1"]
+
+[ext_resource type="Script" path="res://src/menus/credits/credits_menu.gd" id="1_l7diu"]
+[ext_resource type="FontFile" uid="uid://biiglpqms67tn" path="res://assets/fonts/Outfit-SemiBold.ttf" id="1_nanmb"]
+[ext_resource type="PackedScene" uid="uid://dvl34rbn6hsj6" path="res://src/menus/credits/credit_slot.tscn" id="2_2m34m"]
+[ext_resource type="Texture2D" uid="uid://dxjknp1e7xo0n" path="res://assets/ui/Button Frame.png" id="3_2txuo"]
+[ext_resource type="FontFile" uid="uid://qyfgxb15b1ug" path="res://assets/fonts/Outfit-ExtraBold.ttf" id="3_hes3g"]
+[ext_resource type="FontFile" uid="uid://vxqcuhwk6myo" path="res://assets/fonts/Outfit-Medium.ttf" id="6_v4qvw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2rqc"]
+bg_color = Color(0.258824, 0.113725, 0.258824, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6opfq"]
+font = ExtResource("1_nanmb")
+font_size = 18
+shadow_size = 2
+shadow_color = Color(0.415686, 0.301961, 0.384314, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_prtp3"]
+texture = ExtResource("3_2txuo")
+texture_margin_left = 100.0
+texture_margin_right = 100.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_rqfrh"]
+font = ExtResource("6_v4qvw")
+font_color = Color(0.548963, 0.548963, 0.548963, 1)
+
+[node name="CreditsMenu" type="MarginContainer" node_paths=PackedStringArray("button_quit")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l7diu")
+button_quit = NodePath("MarginContainer/VBoxContainer/ScrollContainer/Body/QuitButton")
+
+[node name="PanelBG" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v2rqc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MainLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 72
+theme_override_font_sizes/bold_font_size = 72
+theme_override_font_sizes/italics_font_size = 72
+theme_override_font_sizes/bold_italics_font_size = 72
+theme_override_font_sizes/mono_font_size = 72
+bbcode_enabled = true
+text = "[center][b]CREDITS[/b][/center]"
+fit_content = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+vertical_scroll_mode = 2
+
+[node name="Body" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Main" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/Body"]
+visible = false
+layout_mode = 2
+
+[node name="aoiazure" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Main" instance=ExtResource("2_2m34m")]
+layout_mode = 2
+persons_name = "aoiazure"
+role_details = "Programming, game design, SFX, UI"
+embed_url = true
+url_to_embed = "https://aoiazure.itch.io"
+
+[node name="Chrid420" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Main" instance=ExtResource("2_2m34m")]
+layout_mode = 2
+persons_name = "Chrid420"
+role_details = "Game design, writing, sprites, level design"
+
+[node name="FrankHenry" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Main" instance=ExtResource("2_2m34m")]
+layout_mode = 2
+persons_name = "FrankHenry"
+role_details = "Programming, game design, writing"
+embed_url = true
+url_to_embed = "https://frankhenry19.itch.io"
+
+[node name="Ginghis" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Main" instance=ExtResource("2_2m34m")]
+layout_mode = 2
+persons_name = "ginghisken"
+role_details = "Music, SFX, sprites, writing"
+
+[node name="uhohannie" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Main" instance=ExtResource("2_2m34m")]
+layout_mode = 2
+persons_name = "uhohannie"
+role_details = "Character design, portrait art"
+
+[node name="Zach" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Main" instance=ExtResource("2_2m34m")]
+layout_mode = 2
+persons_name = "Zachary Bakalos"
+role_details = "Graphic design, UI"
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/Body"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Subsection" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/Body"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+bbcode_enabled = true
+text = "[center][b]Made with the Help Of[/b][/center]"
+fit_content = true
+
+[node name="GoldeneyeGamer" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection" instance=ExtResource("2_2m34m")]
+layout_mode = 2
+persons_name = "GoldeneyeGamer"
+role_details = "Game design, playtesting"
+
+[node name="Name" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/GoldeneyeGamer" index="0"]
+theme_override_font_sizes/bold_font_size = 36
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+text = "[center][b][i]GoldeneyeGamer[/i][/b][/center]"
+
+[node name="Role" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/GoldeneyeGamer" index="1"]
+text = "Game design, playtesting"
+label_settings = SubResource("LabelSettings_6opfq")
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Godot Engine" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection" instance=ExtResource("2_2m34m")]
+layout_mode = 2
+persons_name = "Godot Engine"
+role_details = "For being a great game engine"
+
+[node name="Name" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Godot Engine" index="0"]
+theme_override_font_sizes/bold_font_size = 36
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+text = "[center][b][i]Godot Engine[/i][/b][/center]"
+
+[node name="Role" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Godot Engine" index="1"]
+text = "For being a great game engine"
+label_settings = SubResource("LabelSettings_6opfq")
+
+[node name="Aseprite" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection" instance=ExtResource("2_2m34m")]
+layout_mode = 2
+persons_name = "Aseprite"
+role_details = "Pixel art tool"
+
+[node name="Name" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Aseprite" index="0"]
+theme_override_font_sizes/bold_font_size = 36
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+text = "[center][b][i]Aseprite[/i][/b][/center]"
+
+[node name="Role" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Aseprite" index="1"]
+text = "Pixel art tool"
+label_settings = SubResource("LabelSettings_6opfq")
+
+[node name="Chiptone" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection" instance=ExtResource("2_2m34m")]
+layout_mode = 2
+persons_name = "Chiptone"
+role_details = "Making sound effects"
+
+[node name="Name" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Chiptone" index="0"]
+theme_override_font_sizes/bold_font_size = 36
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+text = "[center][b][i]Chiptone[/i][/b][/center]"
+
+[node name="Role" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Chiptone" index="1"]
+text = "Making sound effects"
+label_settings = SubResource("LabelSettings_6opfq")
+
+[node name="Jummbus" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection" instance=ExtResource("2_2m34m")]
+layout_mode = 2
+persons_name = "Jummbus"
+role_details = "Making music"
+embed_url = true
+url_to_embed = "https://jummb.us/"
+
+[node name="Name" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Jummbus" index="0"]
+theme_override_font_sizes/bold_font_size = 36
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+text = "[url=https://jummb.us/][center][b][i]Jummbus[/i][/b][/center][/url]"
+
+[node name="Role" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Jummbus" index="1"]
+text = "Making music"
+label_settings = SubResource("LabelSettings_6opfq")
+
+[node name="Kenney" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection" instance=ExtResource("2_2m34m")]
+layout_mode = 2
+persons_name = "Kenney"
+role_details = "For providing sound effects and endless assets"
+embed_url = true
+url_to_embed = "https://kenney.nl"
+
+[node name="Name" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Kenney" index="0"]
+theme_override_font_sizes/bold_font_size = 36
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+text = "[url=https://kenney.nl][center][b][i]Kenney[/i][/b][/center][/url]"
+
+[node name="Role" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Kenney" index="1"]
+text = "For providing sound effects and endless assets"
+label_settings = SubResource("LabelSettings_6opfq")
+
+[node name="Dialogue Manager" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection" instance=ExtResource("2_2m34m")]
+layout_mode = 2
+persons_name = "Dialogue Manager"
+role_details = "By Nathan Hoad for dialogue, under the MIT License"
+embed_url = true
+url_to_embed = "https://github.com/nathanhoad/godot_dialogue_manager"
+
+[node name="Name" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Dialogue Manager" index="0"]
+theme_override_font_sizes/bold_font_size = 36
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+text = "[url=https://github.com/nathanhoad/godot_dialogue_manager][center][b][i]Dialogue Manager[/i][/b][/center][/url]"
+
+[node name="Role" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Dialogue Manager" index="1"]
+text = "By Nathan Hoad for dialogue, under the MIT License"
+label_settings = SubResource("LabelSettings_6opfq")
+
+[node name="BurstParticles" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection" instance=ExtResource("2_2m34m")]
+layout_mode = 2
+persons_name = "BurstParticles2D"
+role_details = "By IvySly for particles, under the MIT License"
+embed_url = true
+url_to_embed = "https://github.com/uzkbwza/BurstParticles2D"
+
+[node name="Name" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/BurstParticles" index="0"]
+theme_override_font_sizes/bold_font_size = 36
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+text = "[url=https://github.com/uzkbwza/BurstParticles2D][center][b][i]BurstParticles2D[/i][/b][/center][/url]"
+
+[node name="Role" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/BurstParticles" index="1"]
+text = "By IvySly for particles, under the MIT License"
+label_settings = SubResource("LabelSettings_6opfq")
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="You" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection" instance=ExtResource("2_2m34m")]
+layout_mode = 2
+size_flags_vertical = 8
+persons_name = "... and You"
+role_details = "For being a great player!"
+
+[node name="Name" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/You" index="0"]
+theme_override_font_sizes/bold_font_size = 36
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+text = "[center][b][i]... and You[/i][/b][/center]"
+
+[node name="Role" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/You" index="1"]
+text = "For being a great player!"
+label_settings = SubResource("LabelSettings_6opfq")
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/Body"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/Body"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_hes3g")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_prtp3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_prtp3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_prtp3")
+theme_override_styles/focus = SubResource("StyleBoxTexture_prtp3")
+text = "QUIT"
+icon_alignment = 1
+
+[node name="Spacer3" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/Body"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MIT Licenses" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/Body"]
+custom_minimum_size = Vector2(750, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Dialogue Manager provided under the MIT License.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Burst Particles provided under the MIT License.
+Copyright (c) 2023 Ian Sly ivysly@protonmail.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+label_settings = SubResource("LabelSettings_rqfrh")
+autowrap_mode = 3
+
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/GoldeneyeGamer"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Godot Engine"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Aseprite"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Chiptone"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Jummbus"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Kenney"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/Dialogue Manager"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/BurstParticles"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/You"]
