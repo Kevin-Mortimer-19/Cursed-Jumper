@@ -7,11 +7,9 @@ extends MarginContainer
 @export_group("Node References")
 @export var curse_icon_1: TextureRect
 @export var curse_icon_2: TextureRect
-@export var curse_icon_3: TextureRect
 
 @export var lock_button_1: LockButton
 @export var lock_button_2: LockButton
-@export var lock_button_3: LockButton
 
 @export var shuffle_button: Button
 
@@ -29,11 +27,9 @@ func _ready() -> void:
 	
 	lock_button_1.lock_curse.connect(on_lock_select)
 	lock_button_2.lock_curse.connect(on_lock_select)
-	lock_button_3.lock_curse.connect(on_lock_select)
 	
 	lock_button_1.unlock_curse.connect(on_unlock_select)
 	lock_button_2.unlock_curse.connect(on_unlock_select)
-	lock_button_3.unlock_curse.connect(on_unlock_select)
 
 
 func animate_enter() -> void:
@@ -58,13 +54,11 @@ func animate_exit() -> void:
 	await tween.finished
 
 
-func refresh_curse_UI(icon_1: Array, icon_2: Array, icon_3: Array) -> void:
+func refresh_curse_UI(icon_1: Array, icon_2: Array) -> void:
 	curse_icon_1.texture = icon_1[0]
 	curse_icon_1.tooltip_text = icon_1[1]
 	curse_icon_2.texture = icon_2[0]
 	curse_icon_2.tooltip_text = icon_2[1]
-	curse_icon_3.texture = icon_3[0]
-	curse_icon_3.tooltip_text = icon_3[1]
 
 
 func on_lock_select(index: int) -> void:
@@ -85,12 +79,10 @@ func price_check(amount: int) -> void:
 		shuffle_button.disabled = true
 		lock_button_1.disabled = true
 		lock_button_2.disabled = true
-		lock_button_3.disabled = true
 	else:
 		shuffle_button.disabled = false
 		lock_button_1.disabled = false
 		lock_button_2.disabled = false
-		lock_button_3.disabled = false
 
 
 func _set_up_sfx(button: Button) -> void:
@@ -102,11 +94,4 @@ func _set_up_sfx(button: Button) -> void:
 
 func _on_visibility_changed() -> void:
 	SoundManager.play_sound_nonpositional(sound_open if visible else sound_close)
-
-
-
-
-
-
-
 

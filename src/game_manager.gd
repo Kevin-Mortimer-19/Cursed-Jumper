@@ -136,12 +136,10 @@ func toggle_curse_menu() -> void:
 
 func change_curse_UI(curse_data: Array[int]):
 	curse_menu.refresh_curse_UI(find_curse_icon(curse_data[0]),
-			find_curse_icon(curse_data[1]),
-			find_curse_icon(curse_data[2]))
+			find_curse_icon(curse_data[1]))
 	
 	HUD.refresh_curse_UI(find_curse_icon(curse_data[0]),
-			find_curse_icon(curse_data[1]),
-			find_curse_icon(curse_data[2]))
+			find_curse_icon(curse_data[1]))
 
 
 func find_curse_icon(data: int) -> Array:

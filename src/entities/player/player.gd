@@ -89,10 +89,9 @@ const SHOTGUN_SCENE = preload("res://src/entities/player/shotgun.tscn")
 ## 256: More enemies
 var curse_1: int = 0
 var curse_2: int = 0
-var curse_3: int = 0
 
 var curses: Array[int] = []
-var curse_locks: Array[bool] = [false, false, false]
+var curse_locks: Array[bool] = [false, false]
 
 var rng: RandomNumberGenerator
 
@@ -162,7 +161,7 @@ func _ready() -> void:
 	
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
-	curses = [curse_1, curse_2, curse_3]
+	curses = [curse_1, curse_2]
 	
 	EventBus.acquire_shotgun.connect(_acquire_shotgun)
 
@@ -331,8 +330,8 @@ func _reload() -> void:
 
 func generate_curses():
 	var curse_list: Array[int] = []
-	for i in 3:
-		curse_list.append(generate_random_from_set(1,9,curse_list))
+	for i in 2:
+		curse_list.append(generate_random_from_set(1,8,curse_list))
 		curses[i] |= apply_curse(curse_list[i])
 	curses_applied.emit(curses)
 
@@ -342,7 +341,7 @@ func generate_curses():
 ## the function will try again until it finds a unique value.
 func generate_random_from_set(start: int, end: int, exclusions: Array[int]) -> int:
 	var candidate = rng.randi_range(start, end)
-	if exclusions.has(candidate):
+	if exclusions.has(candidate) or candidate == 9:
 		return generate_random_from_set(start, end, exclusions)
 	else:
 		return candidate
@@ -467,14 +466,14 @@ func translate_curse_data_into_index(data: int) -> int:
 
 
 func shuffle_curse():
-	if curse_locks == [true, true, true]:
+	if curse_locks == [true, true]:
 		pass
 	else:
 		var curse_to_shuffle = find_unlocked_curse_index()
 		var current_curses: Array[int] = []
 		for i in curses:
 			current_curses.append(translate_curse_data_into_index(i))
-		var new_curse = generate_random_from_set(1,9,current_curses)
+		var new_curse = generate_random_from_set(1,8,current_curses)
 		remove_curse(translate_curse_data_into_index(curses[curse_to_shuffle]))
 		curses[curse_to_shuffle] = apply_curse(new_curse)
 		curses_applied.emit(curses)
@@ -486,7 +485,7 @@ func find_unlocked_curse_index() -> int:
 	if curse_locks == [true, true, true]:
 		return -1
 	else:
-		var candidate = rng.randi_range(0,2)
+		var candidate = rng.randi_range(0,1)
 		if curse_locks[candidate]:
 			return find_unlocked_curse_index()
 		else:
