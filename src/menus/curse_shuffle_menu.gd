@@ -15,9 +15,7 @@ extends MarginContainer
 
 @export var shuffle_button: Button
 
-
-
-var price = 1
+var price = 5
 
 signal shuffle
 signal lock_curse(index: int)
@@ -60,7 +58,6 @@ func animate_exit() -> void:
 	await tween.finished
 
 
-
 func refresh_curse_UI(icon_1: Array, icon_2: Array, icon_3: Array) -> void:
 	curse_icon_1.texture = icon_1[0]
 	curse_icon_1.tooltip_text = icon_1[1]
@@ -95,11 +92,13 @@ func price_check(amount: int) -> void:
 		lock_button_2.disabled = false
 		lock_button_3.disabled = false
 
+
 func _set_up_sfx(button: Button) -> void:
 	button.mouse_entered.connect(SoundManager.play_ui_sound.bind(SoundManager.SOUND_BUTTON_HOVER))
 	button.focus_entered.connect(SoundManager.play_ui_sound.bind(SoundManager.SOUND_BUTTON_HOVER))
 	
 	button.pressed.connect(SoundManager.play_ui_sound.bind(SoundManager.SOUND_BUTTON_CONFIRM))
+
 
 func _on_visibility_changed() -> void:
 	SoundManager.play_sound_nonpositional(sound_open if visible else sound_close)
