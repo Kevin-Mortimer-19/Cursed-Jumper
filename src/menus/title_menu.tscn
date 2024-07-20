@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://xtb0j28xyj64"]
+[gd_scene load_steps=7 format=3 uid="uid://xtb0j28xyj64"]
 
 [ext_resource type="Script" path="res://src/menus/title_menu.gd" id="1_qm807"]
 [ext_resource type="FontFile" uid="uid://qyfgxb15b1ug" path="res://assets/fonts/Outfit-ExtraBold.ttf" id="2_3rdmu"]
 [ext_resource type="PackedScene" uid="uid://bb1uri4l8ocle" path="res://src/menus/title_background.tscn" id="2_xlvmu"]
+[ext_resource type="Texture2D" uid="uid://dxjknp1e7xo0n" path="res://assets/ui/Button Frame.png" id="4_gw1b1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b0p5n"]
+texture = ExtResource("4_gw1b1")
+texture_margin_left = 100.0
+texture_margin_right = 100.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_yjt4o"]
 font = ExtResource("2_3rdmu")
@@ -44,7 +50,7 @@ render_target_update_mode = 4
 layout_mode = 2
 offset_left = 16.0
 offset_top = 464.0
-offset_right = 316.0
+offset_right = 384.0
 offset_bottom = 552.0
 size_flags_vertical = 4
 focus_neighbor_left = NodePath(".")
@@ -53,14 +59,22 @@ focus_neighbor_right = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../OptionsButton")
 focus_next = NodePath("../OptionsButton")
 focus_previous = NodePath(".")
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_3rdmu")
 theme_override_font_sizes/font_size = 48
-text = "Play"
+theme_override_styles/normal = SubResource("StyleBoxTexture_b0p5n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_b0p5n")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_b0p5n")
+theme_override_styles/focus = SubResource("StyleBoxTexture_b0p5n")
+text = "PLAY"
 
 [node name="OptionsButton" type="Button" parent="."]
 layout_mode = 2
 offset_left = 16.0
 offset_top = 576.0
-offset_right = 192.0
+offset_right = 289.0
 offset_bottom = 640.0
 size_flags_vertical = 4
 focus_neighbor_left = NodePath("../PlayButton")
@@ -69,14 +83,22 @@ focus_neighbor_right = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
 focus_next = NodePath("../QuitButton")
 focus_previous = NodePath("../PlayButton")
-text = "Options"
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_3rdmu")
+theme_override_styles/normal = SubResource("StyleBoxTexture_b0p5n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_b0p5n")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_b0p5n")
+theme_override_styles/focus = SubResource("StyleBoxTexture_b0p5n")
+text = "OPTIONS"
 
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 2
 offset_left = 16.0
 offset_top = 656.0
-offset_right = 192.0
-offset_bottom = 688.0
+offset_right = 256.0
+offset_bottom = 704.0
 size_flags_vertical = 4
 focus_neighbor_left = NodePath("../OptionsButton")
 focus_neighbor_top = NodePath("../OptionsButton")
@@ -84,7 +106,15 @@ focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath(".")
 focus_previous = NodePath("../OptionsButton")
-text = "Quit"
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_3rdmu")
+theme_override_styles/normal = SubResource("StyleBoxTexture_b0p5n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_b0p5n")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_b0p5n")
+theme_override_styles/focus = SubResource("StyleBoxTexture_b0p5n")
+text = "QUIT"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
