@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://d23plgcj8ac5l"]
+
+[ext_resource type="Script" path="res://src/menus/tutorials/tutorial.gd" id="1_bryj1"]
+[ext_resource type="Resource" uid="uid://cpqj002uaxvfk" path="res://src/dialogue/return_to_nexus.dialogue" id="2_a3qlm"]
+[ext_resource type="Texture2D" uid="uid://bxb1ms6g82vmv" path="res://assets/ui/Tutorial.png" id="2_gexei"]
+[ext_resource type="FontFile" uid="uid://qyfgxb15b1ug" path="res://assets/fonts/Outfit-ExtraBold.ttf" id="3_mrmjp"]
+[ext_resource type="FontFile" uid="uid://vxqcuhwk6myo" path="res://assets/fonts/Outfit-Medium.ttf" id="4_d7ilr"]
+
+[node name="Tutorial" type="Control" node_paths=PackedStringArray("subject_label", "main_text_label", "close_button")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bryj1")
+subject = "The Nexus"
+main_text = "At the Nexus, you can use nanites to reroll your curses. Press the shuffle button, and one of your curses will vanish, replaced with another curse. If you wish to keep a curse and prevent it from being replaced, you can also spend nanites to lock a curse. Then, if you change your mind, you can spend nanites again to unlock it. If you found any nanites down in the trash heap, try it out!"
+next_dialogue = ExtResource("2_a3qlm")
+next_dialogue_start = "return_to_nexus"
+subject_label = NodePath("Foreground/VBoxContainer/Subject")
+main_text_label = NodePath("Foreground/VBoxContainer/MarginContainer/MainText")
+close_button = NodePath("Foreground/VBoxContainer/CloseButton")
+
+[node name="Background" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+layout_mode = 2
+texture = ExtResource("2_gexei")
+stretch_mode = 3
+
+[node name="Foreground" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_constants/margin_left = 384
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 384
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground"]
+layout_mode = 2
+
+[node name="Subject" type="Label" parent="Foreground/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_mrmjp")
+theme_override_font_sizes/font_size = 50
+text = "Sample Title"
+
+[node name="MarginContainer" type="MarginContainer" parent="Foreground/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 75
+
+[node name="MainText" type="Label" parent="Foreground/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(512, 225)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_d7ilr")
+theme_override_font_sizes/font_size = 20
+text = "Sample Tutorial Text. This is a String type being displayed on a Label node. It lies within a MarginContainer placing it on the proper vertical alignment, which itself lies within a VBoxContainer for all the text in the foreground."
+autowrap_mode = 2
+
+[node name="CloseButton" type="Button" parent="Foreground/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Close"

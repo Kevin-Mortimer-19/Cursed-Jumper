@@ -12,6 +12,11 @@ signal acquire_shotgun
 signal enter_interactable
 signal exit_interactable
 
+signal start_tutorial(tutorial: PackedScene)
+signal movement_tutorial
+signal gun_tutorial
+signal activate_zone
+
 
 signal change_dialogue_portrait(new_portrait: Texture2D)
 signal switch_portrait(name: String)

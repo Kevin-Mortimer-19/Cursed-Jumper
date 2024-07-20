@@ -286,6 +286,7 @@ func _acquire_shotgun() -> void:
 	shotgun = SHOTGUN_SCENE.instantiate()
 	add_child(shotgun)
 	shotgun.position = Vector2(0,-8)
+	EventBus.activate_zone.emit()
 	call_deferred("generate_curses")
 
 

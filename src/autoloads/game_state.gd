@@ -12,6 +12,8 @@ var area_flags: int = 0
 ## 2 = The player sided with the Overseer
 var ending_flags: int = 0
 
+var dialogue_unpause_override = false
+
 signal end_game
 
 
