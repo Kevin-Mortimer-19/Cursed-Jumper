@@ -11,6 +11,8 @@ extends CanvasLayer
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
+@onready var portrait: TextureRect = $Balloon/Panel/Dialogue/HBoxContainer/Profile
+
 ## The dialogue resource
 var resource: DialogueResource
 
@@ -82,6 +84,8 @@ func _ready() -> void:
 	# If the responses menu doesn't have a next action set, use this one
 	if responses_menu.next_action.is_empty():
 		responses_menu.next_action = next_action
+	
+	EventBus.change_dialogue_portrait.connect(_change_dialogue_portrait)
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -151,3 +155,7 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 #endregion
+
+
+func _change_dialogue_portrait(new_portrait: Texture2D):
+	portrait.texture = new_portrait if new_portrait != null else PlaceholderTexture2D

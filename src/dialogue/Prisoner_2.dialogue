@@ -1,5 +1,6 @@
 ~ NPC_2_dialogue_start
 
+do EventBus.switch_portrait.emit("prisoner_2")
 if GameState.area_flags == 0:
 	Rowdy Prisoner: You plan on going for the Overseer? That's great, but we're not budging. If you can get us food, though, we'll clear out. Then you can show that bastard what's what!
 elif GameState.area_flags == 3:

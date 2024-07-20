@@ -1,5 +1,6 @@
 ~ shotgun_3
 
+do EventBus.switch_portrait.emit("shotgun")
 Shotgun: Oh man, are you a sight for sore eyes. I got some good news, pal. I'm your ticket out of here! On the other hand... well, there's no easy way to say this, but I'm cursed. Yup, my nanites got completely fried in my escape attempt... It's how I ended up here in the first place.... You look like you're tough enough to handle a few curses, though! Come on, let's get outta here!
 
 => END
