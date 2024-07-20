@@ -25,6 +25,10 @@ PauseMenu="*res://src/menus/pause_menu.tscn"
 GameState="*res://src/autoloads/game_state.gd"
 ScreenTransition="*res://src/menus/screen_transition.tscn"
 
+[dialogue_manager]
+
+general/balloon_path="res://src/menus/custom_balloon.tscn"
+
 [display]
 
 window/size/viewport_width=1280

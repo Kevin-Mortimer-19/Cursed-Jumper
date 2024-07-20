@@ -171,7 +171,7 @@ func find_curse_icon(data: int) -> Array:
 func _display_dialogue_at_game_start() -> void:
 	await get_tree().process_frame
 	
-	DialogueManager.show_example_dialogue_balloon(game_start_text, "game_start")
+	DialogueManager.show_dialogue_balloon(game_start_text, "game_start")
 	get_tree().paused = true
 	
 	await DialogueManager.dialogue_ended
@@ -193,7 +193,7 @@ func switch_dialogue_portrait(char_name: String):
 
 
 func acquire_shotgun() -> void:
-	DialogueManager.show_example_dialogue_balloon(acquire_shotgun_text, "shotgun_3")
+	DialogueManager.show_dialogue_balloon(acquire_shotgun_text, "shotgun_3")
 	get_tree().paused = true
 
 

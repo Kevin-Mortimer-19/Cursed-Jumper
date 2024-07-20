@@ -24,7 +24,7 @@ func _ready():
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("interact") and player_in_area:
-		DialogueManager.show_example_dialogue_balloon(dialogue, first_line)
+		DialogueManager.show_dialogue_balloon(dialogue, first_line)
 		get_tree().paused = true
 
 
