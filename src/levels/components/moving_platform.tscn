@@ -19,4 +19,5 @@ region_enabled = true
 region_rect = Rect2(64, 0, 48, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform"]
+visible = false
 shape = SubResource("RectangleShape2D_wmdns")

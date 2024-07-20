@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://c2s2o762gjx5x"]
+[gd_scene load_steps=100 format=3 uid="uid://c2s2o762gjx5x"]
 
 [ext_resource type="PackedScene" uid="uid://bylkv7aa7wq8x" path="res://src/levels/level_tile_map.tscn" id="1_85lic"]
 [ext_resource type="Script" path="res://src/levels/world.gd" id="1_smyah"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bjsfryacaa8d1" path="res://src/levels/components/destructible_2x2.tscn" id="9_6q4ax"]
 [ext_resource type="PackedScene" uid="uid://ycpls2kswsg4" path="res://src/objects/chridplatform.tscn" id="9_r4em3"]
 [ext_resource type="PackedScene" uid="uid://dao0vats5m2q5" path="res://src/levels/components/Door.tscn" id="11_kjf7c"]
+[ext_resource type="Texture2D" uid="uid://bwiyrjcgd1uba" path="res://assets/tilemaps/mastersheet-2.png" id="12_mlu30"]
 [ext_resource type="Resource" uid="uid://bhknakqp4dqan" path="res://src/dialogue/mech_assembly.dialogue" id="14_e1cyr"]
 [ext_resource type="Texture2D" uid="uid://vwe34itxqa37" path="res://addons/BurstParticles2D/BurstParticles2D-demo/orb_soft.png" id="14_j52el"]
 [ext_resource type="Resource" uid="uid://dh3ihovaqiuwr" path="res://src/dialogue/overseer_mech_assembly.dialogue" id="15_8aouw"]
@@ -740,6 +741,18 @@ font_size = 8
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dx5q"]
+atlas = ExtResource("12_mlu30")
+region = Rect2(176, 176, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vt828"]
+atlas = ExtResource("12_mlu30")
+region = Rect2(144, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpq7c"]
+atlas = ExtResource("12_mlu30")
+region = Rect2(112, 160, 16, 16)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wm3n"]
 size = Vector2(66, 114)
 
@@ -1311,6 +1324,7 @@ position = Vector2(0, -249)
 curve = SubResource("Curve2D_g6uhd")
 
 [node name="MovingPlatform" parent="Doors/Control Deck" instance=ExtResource("4_uthyh")]
+z_index = -1
 position = Vector2(-8, 1)
 loop = false
 is_one_shot = true
@@ -1320,6 +1334,7 @@ move_speed = 0.1
 curve = SubResource("Curve2D_2mmn0")
 
 [node name="WaterPurif Door" parent="Doors/WaterPurif" instance=ExtResource("11_kjf7c")]
+z_index = -1
 position = Vector2(-208, -80)
 loop = false
 is_one_shot = true
@@ -1329,6 +1344,7 @@ move_speed = 0.1
 curve = SubResource("Curve2D_3pkpr")
 
 [node name="HydroponicDoor" parent="Doors/Hydroponic" instance=ExtResource("11_kjf7c")]
+z_index = -1
 position = Vector2(-256, -80)
 loop = false
 is_one_shot = true
@@ -1338,6 +1354,7 @@ move_speed = 0.1
 curve = SubResource("Curve2D_4wvng")
 
 [node name="MovingPlatform" parent="Doors/Door1" instance=ExtResource("4_uthyh")]
+z_index = -1
 position = Vector2(-40, -1840)
 loop = false
 is_one_shot = true
@@ -1347,6 +1364,7 @@ move_speed = 0.1
 curve = SubResource("Curve2D_okany")
 
 [node name="MovingPlatform2" parent="Doors/Door 2" instance=ExtResource("4_uthyh")]
+z_index = -1
 position = Vector2(136, -1904)
 rotation = 3.14159
 loop = false
@@ -1357,6 +1375,7 @@ move_speed = 0.1
 curve = SubResource("Curve2D_o7aqg")
 
 [node name="MovingPlatform3" parent="Doors/Door 3" instance=ExtResource("4_uthyh")]
+z_index = -1
 position = Vector2(-40, -1968)
 loop = false
 is_one_shot = true
@@ -1366,6 +1385,7 @@ move_speed = 0.1
 curve = SubResource("Curve2D_qwilx")
 
 [node name="MovingPlatform4" parent="Doors/Door 4" instance=ExtResource("4_uthyh")]
+z_index = -1
 position = Vector2(136, -2032)
 rotation = 3.14159
 loop = false
@@ -1407,6 +1427,7 @@ label_settings = SubResource("LabelSettings_4kirq")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+uppercase = true
 
 [node name="Label4" type="Label" parent="Labels"]
 offset_left = -96.0
@@ -1418,6 +1439,7 @@ label_settings = SubResource("LabelSettings_7fbvv")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+uppercase = true
 
 [node name="NPCs" type="Node" parent="."]
 
@@ -1425,14 +1447,16 @@ autowrap_mode = 2
 position = Vector2(136, -8)
 dialogue = ExtResource("4_uptth")
 first_line = "NPC_1_dialogue_start"
+sprite_image = SubResource("AtlasTexture_6dx5q")
 
 [node name="Prisoner 2" parent="NPCs" instance=ExtResource("2_kwig1")]
 position = Vector2(-168, -72)
 dialogue = ExtResource("17_sp0ck")
 first_line = "NPC_2_dialogue_start"
+sprite_image = SubResource("AtlasTexture_vt828")
 
 [node name="Overseer" parent="NPCs" instance=ExtResource("2_kwig1")]
-position = Vector2(-24, -2059)
+position = Vector2(-24, -2056)
 dialogue = ExtResource("8_7vr1x")
 first_line = "overseer_end_game"
 
@@ -1440,7 +1464,7 @@ first_line = "overseer_end_game"
 position = Vector2(-232, -472)
 dialogue = ExtResource("23_po4xb")
 first_line = "diary_start"
-sprite = NodePath("../../DialogueZones/Shotgun Zone/Sprite2D")
+sprite_image = SubResource("AtlasTexture_wpq7c")
 
 [node name="DialogueZones" type="Node" parent="."]
 
@@ -1529,4 +1553,4 @@ metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
-color = Color(0.176524, 0.196863, 0.2613, 1)
+color = Color(0.63997, 0.63997, 0.63997, 1)

@@ -8,7 +8,8 @@ signal checkpoint_activated
 ## Tracks when the player is in the checkpoint area
 var player_in_checkpoint: bool
 
-## UI element that displays control tooltip to open checkpoint menu; can be changed from Label in the future
+## UI element that displays control tooltip to open checkpoint menu; 
+## can be changed from Label in the future
 @export var checkpoint_activate_UI: Label
 
 

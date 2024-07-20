@@ -1,9 +1,14 @@
+@tool
 extends Area2D
 
 @export var dialogue: DialogueResource
 @export var first_line: String
 @export var sprite: Sprite2D
-@export var sprite_image: Texture2D
+@export var sprite_image: Texture2D :
+	set(val):
+		sprite_image = val
+		if val:
+			sprite.texture = sprite_image
 
 var player_in_area: bool = false
 

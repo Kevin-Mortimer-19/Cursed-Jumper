@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjqk3rxrilc5g"]
+[gd_scene load_steps=15 format=3 uid="uid://bjqk3rxrilc5g"]
 
 [ext_resource type="Script" path="res://src/menus/HUD.gd" id="1_8dtst"]
 [ext_resource type="Texture2D" uid="uid://72wtm151fdtd" path="res://assets/ui/HeartEmptyHud.png" id="2_7n4yf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cxbw416vjxkcf" path="res://assets/ui/Coin Hud.png" id="2_d7xcg"]
 [ext_resource type="FontFile" uid="uid://omfxbfatu8j2" path="res://assets/fonts/Outfit-Bold.ttf" id="2_fl1lf"]
 [ext_resource type="FontFile" uid="uid://qyfgxb15b1ug" path="res://assets/fonts/Outfit-ExtraBold.ttf" id="3_5o7rs"]
+[ext_resource type="Texture2D" uid="uid://5smvse84ow5s" path="res://assets/ui/Coin Hud 2.png" id="5_w4fps"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a716m"]
 
@@ -67,6 +68,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("3_5o7rs")
 theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a716m")
@@ -75,7 +78,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_6jjlf")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6og5g")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hqwxb")
 text = "0"
-icon = ExtResource("2_d7xcg")
+icon = ExtResource("5_w4fps")
 icon_alignment = 1
 
 [node name="CoinCountLabel" type="HBoxContainer" parent="HBoxContainer"]
