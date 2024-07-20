@@ -1,7 +1,5 @@
 extends Node
 
-
-
 signal open_curse_shuffle_menu
 signal change_coin_amount
 signal refresh_curse_UI(curses: Array[int])
@@ -12,10 +10,7 @@ static var _coin_scene: PackedScene = preload("res://src/objects/coin.tscn")
 @export var player: Player
 @export var camera: Camera2D
 
-var coin_amount: int = 2
-
-
-
+var coin_amount: int = 0
 
 
 func _ready() -> void:
@@ -88,9 +83,3 @@ func _on_player_respawn_requested() -> void:
 	await ScreenTransition.animate_transition(false)
 	
 	player.is_dead_locked = false
-
-
-
-
-
-

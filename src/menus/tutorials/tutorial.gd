@@ -27,6 +27,6 @@ func close_tutorial() -> void:
 	if next_tutorial != null:
 		EventBus.start_tutorial.emit(next_tutorial)
 	elif next_dialogue != null:
-		DialogueManager.show_example_dialogue_balloon(next_dialogue, next_dialogue_start)
+		DialogueManager.show_dialogue_balloon(next_dialogue, next_dialogue_start)
 		get_tree().paused = true
 	queue_free()

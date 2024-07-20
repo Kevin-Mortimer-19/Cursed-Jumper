@@ -9,6 +9,6 @@ func _ready():
 
 
 func _on_activate(_body: CharacterBody2D):
-	DialogueManager.show_example_dialogue_balloon(dialogue, first_line)
+	DialogueManager.show_dialogue_balloon(dialogue, first_line)
 	get_tree().paused = true
 	queue_free()

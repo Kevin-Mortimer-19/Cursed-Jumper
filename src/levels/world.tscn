@@ -1010,6 +1010,36 @@ position = Vector2(-96, -1412)
 [node name="Coin48" parent="Coin" instance=ExtResource("8_tsrye")]
 position = Vector2(-96, -1440)
 
+[node name="Coin49" parent="Coin" instance=ExtResource("8_tsrye")]
+position = Vector2(104, 312)
+
+[node name="Coin50" parent="Coin" instance=ExtResource("8_tsrye")]
+position = Vector2(120, 312)
+
+[node name="Coin51" parent="Coin" instance=ExtResource("8_tsrye")]
+position = Vector2(136, 312)
+
+[node name="Coin52" parent="Coin" instance=ExtResource("8_tsrye")]
+position = Vector2(152, 312)
+
+[node name="Coin53" parent="Coin" instance=ExtResource("8_tsrye")]
+position = Vector2(152, 456)
+
+[node name="Coin54" parent="Coin" instance=ExtResource("8_tsrye")]
+position = Vector2(168, 456)
+
+[node name="Coin55" parent="Coin" instance=ExtResource("8_tsrye")]
+position = Vector2(184, 200)
+
+[node name="Coin56" parent="Coin" instance=ExtResource("8_tsrye")]
+position = Vector2(200, 200)
+
+[node name="Coin57" parent="Coin" instance=ExtResource("8_tsrye")]
+position = Vector2(136, 456)
+
+[node name="Coin58" parent="Coin" instance=ExtResource("8_tsrye")]
+position = Vector2(184, 456)
+
 [node name="Platforms" type="Node" parent="."]
 
 [node name="Platform12" parent="Platforms" instance=ExtResource("9_r4em3")]

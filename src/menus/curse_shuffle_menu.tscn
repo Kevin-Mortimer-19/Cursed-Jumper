@@ -27,7 +27,8 @@ font_size = 24
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b5sip"]
 
-[node name="Curse Shuffle Menu" type="MarginContainer" node_paths=PackedStringArray("coin_coint", "curse_icon_1", "curse_icon_2", "curse_icon_3", "lock_button_1", "lock_button_2", "lock_button_3", "shuffle_button")]
+[node name="Curse Shuffle Menu" type="MarginContainer" node_paths=PackedStringArray("coin_coint", "curse_icon_1", "curse_icon_2", "lock_button_1", "lock_button_2", "shuffle_button")]
+
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -40,10 +41,8 @@ sound_close = ExtResource("4_30x4k")
 coin_coint = NodePath("Coin/CoinCount")
 curse_icon_1 = NodePath("Body/MarginContainer/Body/Curse 1/MarginContainer/TextureRect")
 curse_icon_2 = NodePath("Body/MarginContainer/Body/Curse 2/MarginContainer/TextureRect")
-curse_icon_3 = NodePath("Body/MarginContainer/Body/Curse 3/MarginContainer/TextureRect")
 lock_button_1 = NodePath("Body/MarginContainer/Body/Curse 1/LockButton1")
 lock_button_2 = NodePath("Body/MarginContainer/Body/Curse 2/LockButton2")
-lock_button_3 = NodePath("Body/MarginContainer/Body/Curse 3/LockButton3")
 shuffle_button = NodePath("Body/ShuffleButton")
 
 [node name="PanelBG" type="Panel" parent="."]
@@ -151,31 +150,6 @@ theme_override_font_sizes/font_size = 24
 text = "LOCK"
 script = ExtResource("2_rggep")
 index = 1
-
-[node name="Curse 3" type="HBoxContainer" parent="Body/MarginContainer/Body"]
-custom_minimum_size = Vector2(0, 118)
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="Body/MarginContainer/Body/Curse 3"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="Body/MarginContainer/Body/Curse 3/MarginContainer"]
-layout_mode = 2
-mouse_filter = 0
-stretch_mode = 5
-
-[node name="LockButton3" type="Button" parent="Body/MarginContainer/Body/Curse 3"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("3_hh3gj")
-theme_override_font_sizes/font_size = 24
-text = "LOCK"
-script = ExtResource("2_rggep")
-index = 2
 
 [node name="ShuffleButton" type="Button" parent="Body"]
 custom_minimum_size = Vector2(200, 0)
