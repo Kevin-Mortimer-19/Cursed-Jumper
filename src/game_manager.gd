@@ -7,6 +7,10 @@ extends MarginContainer
 @export var game_start_text: DialogueResource
 @export var acquire_shotgun_text: DialogueResource
 
+@export_group("Tutorials")
+@export var movement_tutorial: PackedScene
+@export var gun_tutorial: PackedScene
+
 @export_group("Ending Scenes")
 @export var OVERSEER_END: PackedScene
 @export var SHOTGUN_END: PackedScene
@@ -62,6 +66,10 @@ func _ready():
 	GameState.end_game.connect(transition_to_end_screen)
 	
 	EventBus.acquire_shotgun.connect(acquire_shotgun)
+	
+	EventBus.start_tutorial.connect(display_tutorial)
+	EventBus.movement_tutorial.connect(open_move_tutorial)
+	EventBus.gun_tutorial.connect(open_gun_tutorial)
 	
 	DialogueManager.dialogue_ended.connect(end_dialogue)
 	EventBus.switch_portrait.connect(switch_dialogue_portrait)
@@ -194,7 +202,24 @@ func update_coin_UI():
 
 
 func end_dialogue(_d: DialogueResource) -> void:
-	unpause_game()
+	if GameState.dialogue_unpause_override:
+		GameState.dialogue_unpause_override = false
+	else:
+		unpause_game()
+
+
+func display_tutorial(tutorial: PackedScene):
+	var t_reference = tutorial.instantiate()
+	add_child(t_reference)
+	call_deferred("pause_game")
+
+
+func open_move_tutorial():
+	display_tutorial(movement_tutorial)
+
+
+func open_gun_tutorial():
+	display_tutorial(gun_tutorial)
 
 
 func pause_game():

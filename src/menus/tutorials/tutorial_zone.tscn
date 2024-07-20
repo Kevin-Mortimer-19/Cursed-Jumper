@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6fgc3q0q6ewr"]
+
+[ext_resource type="Script" path="res://src/menus/tutorials/tutorial_zone.gd" id="1_j6f73"]
+
+[node name="TutorialZone" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_j6f73")

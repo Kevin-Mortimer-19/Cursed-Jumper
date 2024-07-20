@@ -6,5 +6,7 @@ do EventBus.switch_portrait.emit("prisoner_1")
 Prisoner 1: I'm hungry... let's go look for the anomaly. The Overseer promised to feed us if we help...
 do EventBus.switch_portrait.emit("prisoner_2")
 Prisoner 2: Listen pal, I ain't no goddamn cog. Us followin' his orders is what got us here in the first place. If he wants our help, he can find us some food!
+set GameState.dialogue_unpause_override = true
+do EventBus.movement_tutorial.emit()
 
 => END

@@ -1,20 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8gsao0ynl7f2"]
+[gd_scene load_steps=5 format=3 uid="uid://h821br4kdcor"]
 
-[ext_resource type="Script" path="res://src/menus/tutorial.gd" id="1_2x6qm"]
-[ext_resource type="Texture2D" uid="uid://bxb1ms6g82vmv" path="res://assets/ui/Tutorial.png" id="2_h1jqn"]
-[ext_resource type="FontFile" uid="uid://qyfgxb15b1ug" path="res://assets/fonts/Outfit-ExtraBold.ttf" id="3_nwdy8"]
-[ext_resource type="FontFile" uid="uid://vxqcuhwk6myo" path="res://assets/fonts/Outfit-Medium.ttf" id="4_j8pqg"]
+[ext_resource type="Script" path="res://src/menus/tutorials/tutorial.gd" id="1_lwc8c"]
+[ext_resource type="Texture2D" uid="uid://bxb1ms6g82vmv" path="res://assets/ui/Tutorial.png" id="2_ebfvi"]
+[ext_resource type="FontFile" uid="uid://qyfgxb15b1ug" path="res://assets/fonts/Outfit-ExtraBold.ttf" id="3_flufg"]
+[ext_resource type="FontFile" uid="uid://vxqcuhwk6myo" path="res://assets/fonts/Outfit-Medium.ttf" id="4_kodv6"]
 
-[node name="Tutorial" type="Control" node_paths=PackedStringArray("subject_label", "main_text_label")]
+[node name="Tutorial" type="Control" node_paths=PackedStringArray("subject_label", "main_text_label", "close_button")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2x6qm")
+script = ExtResource("1_lwc8c")
+subject = "Movement"
+main_text = "Use A and D to move around, W or Space to jump, and E to interact with objects in the world."
 subject_label = NodePath("Foreground/VBoxContainer/Subject")
 main_text_label = NodePath("Foreground/VBoxContainer/MarginContainer/MainText")
+close_button = NodePath("Foreground/VBoxContainer/CloseButton")
 
 [node name="Background" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -23,7 +27,7 @@ offset_bottom = 720.0
 
 [node name="TextureRect" type="TextureRect" parent="Background"]
 layout_mode = 2
-texture = ExtResource("2_h1jqn")
+texture = ExtResource("2_ebfvi")
 stretch_mode = 3
 
 [node name="Foreground" type="MarginContainer" parent="."]
@@ -40,7 +44,7 @@ layout_mode = 2
 [node name="Subject" type="Label" parent="Foreground/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("3_nwdy8")
+theme_override_fonts/font = ExtResource("3_flufg")
 theme_override_font_sizes/font_size = 50
 text = "Sample Title"
 
@@ -49,9 +53,15 @@ layout_mode = 2
 theme_override_constants/margin_top = 75
 
 [node name="MainText" type="Label" parent="Foreground/VBoxContainer/MarginContainer"]
-custom_minimum_size = Vector2(512, 250)
+custom_minimum_size = Vector2(512, 225)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_j8pqg")
+theme_override_fonts/font = ExtResource("4_kodv6")
 theme_override_font_sizes/font_size = 20
 text = "Sample Tutorial Text. This is a String type being displayed on a Label node. It lies within a MarginContainer placing it on the proper vertical alignment, which itself lies within a VBoxContainer for all the text in the foreground."
 autowrap_mode = 2
+
+[node name="CloseButton" type="Button" parent="Foreground/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Close"
