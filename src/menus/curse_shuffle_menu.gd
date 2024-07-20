@@ -5,6 +5,8 @@ extends MarginContainer
 @export var sound_close: AudioStream
 
 @export_group("Node References")
+@export var coin_coint: Button
+
 @export var curse_icon_1: TextureRect
 @export var curse_icon_2: TextureRect
 
@@ -75,6 +77,8 @@ func shuffle_curses() -> void:
 
 
 func price_check(amount: int) -> void:
+	coin_coint.text = str(amount)
+	
 	if amount < price:
 		shuffle_button.disabled = true
 		lock_button_1.disabled = true

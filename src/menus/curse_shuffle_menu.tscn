@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsc64e5xfn8w7"]
+[gd_scene load_steps=17 format=3 uid="uid://dsc64e5xfn8w7"]
 
 [ext_resource type="Script" path="res://src/menus/curse_shuffle_menu.gd" id="1_sublg"]
 [ext_resource type="Texture2D" uid="uid://bdj0khswrbdvg" path="res://assets/ui/Curse Management Logo.png" id="2_o47ay"]
@@ -7,6 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://dqm3usfwhtcgu" path="res://assets/sounds/ui_blips/handleSmallLeather2.ogg" id="3_6771j"]
 [ext_resource type="FontFile" uid="uid://vxqcuhwk6myo" path="res://assets/fonts/Outfit-Medium.ttf" id="3_hh3gj"]
 [ext_resource type="AudioStream" uid="uid://qb1mqfs535d4" path="res://assets/sounds/ui_blips/handleSmallLeather.ogg" id="4_30x4k"]
+[ext_resource type="FontFile" uid="uid://qyfgxb15b1ug" path="res://assets/fonts/Outfit-ExtraBold.ttf" id="8_7h2mo"]
+[ext_resource type="Texture2D" uid="uid://5smvse84ow5s" path="res://assets/ui/Coin Hud 2.png" id="9_bwvq5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hb6ex"]
 bg_color = Color(0.258824, 0.113725, 0.258824, 1)
@@ -15,7 +17,18 @@ bg_color = Color(0.258824, 0.113725, 0.258824, 1)
 font = ExtResource("3_hh3gj")
 font_size = 24
 
-[node name="Curse Shuffle Menu" type="MarginContainer" node_paths=PackedStringArray("curse_icon_1", "curse_icon_2", "lock_button_1", "lock_button_2", "shuffle_button")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ncpnj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_avi1g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l72lw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4dsk8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b5sip"]
+
+[node name="Curse Shuffle Menu" type="MarginContainer" node_paths=PackedStringArray("coin_coint", "curse_icon_1", "curse_icon_2", "lock_button_1", "lock_button_2", "shuffle_button")]
+
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,6 +38,7 @@ script = ExtResource("1_sublg")
 sound_shuffle = ExtResource("2_xy4wg")
 sound_open = ExtResource("3_6771j")
 sound_close = ExtResource("4_30x4k")
+coin_coint = NodePath("Coin/CoinCount")
 curse_icon_1 = NodePath("Body/MarginContainer/Body/Curse 1/MarginContainer/TextureRect")
 curse_icon_2 = NodePath("Body/MarginContainer/Body/Curse 2/MarginContainer/TextureRect")
 lock_button_1 = NodePath("Body/MarginContainer/Body/Curse 1/LockButton1")
@@ -143,3 +157,27 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 text = "Re-roll a Curse"
+
+[node name="Coin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="CoinCount" type="Button" parent="Coin"]
+texture_filter = 4
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("8_7h2mo")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ncpnj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_avi1g")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_l72lw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4dsk8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b5sip")
+text = "0"
+icon = ExtResource("9_bwvq5")
+icon_alignment = 1
