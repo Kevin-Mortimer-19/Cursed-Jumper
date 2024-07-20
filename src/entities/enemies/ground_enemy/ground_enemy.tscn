@@ -1,8 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://bedmi1dr6o0bg"]
+[gd_scene load_steps=9 format=3 uid="uid://bedmi1dr6o0bg"]
 
 [ext_resource type="Script" path="res://src/entities/enemies/ground_enemy/ground_enemy.gd" id="1_v1ydc"]
 [ext_resource type="AudioStream" uid="uid://dpdvm3q3qdbsj" path="res://assets/sounds/hurt/hurt.tres" id="2_4iwi0"]
-[ext_resource type="Texture2D" uid="uid://lhw1mifyubu" path="res://assets/sprites/mechworker.png" id="2_qyb2o"]
+[ext_resource type="Texture2D" uid="uid://dk4gauteob5nq" path="res://assets/sprites/mechworker/mechworker1.png" id="3_sj4p0"]
+[ext_resource type="Texture2D" uid="uid://5hun85monpmh" path="res://assets/sprites/mechworker/mechworker2.png" id="4_un4vg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i0bdk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sj4p0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_un4vg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dbg4y"]
 radius = 8.0
@@ -29,8 +44,9 @@ move_speed = 50.0
 gravity = 392.4
 jump_force = 140.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_qyb2o")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i0bdk")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dbg4y")

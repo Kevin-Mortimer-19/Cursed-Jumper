@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lhw1mifyubu"
-path="res://.godot/imported/mechworker.png-a2b2dfa317d28269bbce44727700fb00.ctex"
+uid="uid://dk4gauteob5nq"
+path="res://.godot/imported/mechworker1.png-e9a919a85c27ea390ea8423ee97201c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/mechworker.png"
-dest_files=["res://.godot/imported/mechworker.png-a2b2dfa317d28269bbce44727700fb00.ctex"]
+source_file="res://assets/sprites/mechworker/mechworker1.png"
+dest_files=["res://.godot/imported/mechworker1.png-e9a919a85c27ea390ea8423ee97201c1.ctex"]
 
 [params]
 

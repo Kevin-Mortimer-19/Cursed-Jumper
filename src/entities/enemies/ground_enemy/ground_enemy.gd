@@ -3,7 +3,7 @@ class_name GroundEnemy extends Enemy
 
 
 @export_group("Node References")
-@export var sprite: Sprite2D
+@export var sprite: AnimatedSprite2D
 @export var player_detection_radius: Area2D
 @export var hitbox: Area2D
 @export_subgroup("Raycasts", "raycast_")
@@ -24,6 +24,8 @@ var _had_los: bool = false
 
 
 func _ready() -> void:
+	sprite.frame = 1 if randf() > 0.5 else 0
+	
 	player_detection_radius.body_entered.connect(_on_body_detected)
 	hitbox.body_entered.connect(_on_hitbox_body_detected)
 	died.connect(_on_died)
