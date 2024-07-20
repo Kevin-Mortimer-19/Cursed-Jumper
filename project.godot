@@ -27,7 +27,7 @@ ScreenTransition="*res://src/menus/screen_transition.tscn"
 
 [dialogue_manager]
 
-general/balloon_path="res://src/menus/custom_balloon.tscn"
+general/balloon_path="res://src/menus/custom_balloon_2.tscn"
 
 [display]
 
