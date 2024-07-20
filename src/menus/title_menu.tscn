@@ -116,7 +116,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_b0p5n")
 theme_override_styles/focus = SubResource("StyleBoxTexture_b0p5n")
 text = "QUIT"
 
-[node name="Label" type="Label" parent="."]
+[node name="Logo" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
