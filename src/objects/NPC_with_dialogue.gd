@@ -14,6 +14,9 @@ var player_in_area: bool = false
 
 
 func _ready():
+	if Engine.is_editor_hint():
+		set_physics_process(false)
+	
 	sprite.texture = sprite_image
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
