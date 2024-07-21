@@ -1615,3 +1615,9 @@ metadata/_edit_lock_ = true
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0.63997, 0.63997, 0.63997, 1)
+
+[node name="Platform" parent="." instance=ExtResource("9_r4em3")]
+position = Vector2(288, -1192)
+
+[node name="Platform2" parent="." instance=ExtResource("9_r4em3")]
+position = Vector2(288, -1128)
