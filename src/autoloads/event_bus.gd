@@ -11,6 +11,7 @@ signal coin_spent(amount: int)
 signal acquire_shotgun
 signal enter_interactable
 signal exit_interactable
+signal display_interact_tip(make_visible: bool)
 
 signal start_tutorial(tutorial: PackedScene)
 signal movement_tutorial

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cxbw416vjxkcf" path="res://assets/ui/Coin Hud.png" id="2_d7xcg"]
 [ext_resource type="FontFile" uid="uid://omfxbfatu8j2" path="res://assets/fonts/Outfit-Bold.ttf" id="2_fl1lf"]
 [ext_resource type="FontFile" uid="uid://qyfgxb15b1ug" path="res://assets/fonts/Outfit-ExtraBold.ttf" id="3_5o7rs"]
-[ext_resource type="Texture2D" uid="uid://5smvse84ow5s" path="res://assets/ui/Coin Hud 2.png" id="5_w4fps"]
+[ext_resource type="Texture2D" uid="uid://bykywn23332dy" path="res://assets/ui/nanocoin.png" id="5_82p0m"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a716m"]
 
@@ -26,7 +26,7 @@ font_size = 36
 font = ExtResource("2_fl1lf")
 font_size = 24
 
-[node name="HUD" type="MarginContainer" node_paths=PackedStringArray("health_bar", "coin_label", "coin_count_button", "curse_icon_1", "curse_icon_2", "curse_icon_3")]
+[node name="HUD" type="MarginContainer" node_paths=PackedStringArray("health_bar", "coin_label", "coin_count_button", "interact_tip", "curse_icon_1", "curse_icon_2")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -41,9 +41,9 @@ script = ExtResource("1_8dtst")
 health_bar = NodePath("HBoxContainer/Health")
 coin_label = NodePath("HBoxContainer/CoinCountLabel/Coins")
 coin_count_button = NodePath("HBoxContainer/CoinCount")
+interact_tip = NodePath("InteractTip")
 curse_icon_1 = NodePath("HBoxContainer/VBoxContainer/Curse List/Curse 1")
 curse_icon_2 = NodePath("HBoxContainer/VBoxContainer/Curse List/Curse 2")
-curse_icon_3 = NodePath("HBoxContainer/VBoxContainer/Curse List/Curse 3")
 metadata/_edit_lock_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -78,7 +78,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_6jjlf")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6og5g")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hqwxb")
 text = "0"
-icon = ExtResource("5_w4fps")
+icon = ExtResource("5_82p0m")
 icon_alignment = 1
 
 [node name="CoinCountLabel" type="HBoxContainer" parent="HBoxContainer"]
@@ -130,3 +130,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 expand_mode = 5
 stretch_mode = 2
+
+[node name="InteractTip" type="Label" parent="."]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.980392, 1, 0.878431, 1)
+theme_override_fonts/font = ExtResource("2_fl1lf")
+theme_override_font_sizes/font_size = 40
+text = "Press E to interact..."

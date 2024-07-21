@@ -32,7 +32,9 @@ func _physics_process(_delta):
 
 func _on_body_entered(_b = PhysicsBody2D):
 	player_in_area = true
+	EventBus.display_interact_tip.emit(true)
 
 
 func _on_body_exited(_b = PhysicsBody2D):
 	player_in_area = false
+	EventBus.display_interact_tip.emit(false)

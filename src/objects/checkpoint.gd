@@ -11,10 +11,6 @@ var activated: bool = false
 ## Tracks when the player is in the checkpoint area
 var player_in_checkpoint: bool
 
-## UI element that displays control tooltip to open checkpoint menu; 
-## can be changed from Label in the future
-@export var checkpoint_activate_UI: Label
-
 
 func _ready():
 	body_entered.connect(checkpoint_edge.bind(true))
@@ -41,12 +37,14 @@ func activate_checkpoint() -> void:
 
 
 func enter_checkpoint():
-	player_in_checkpoint = true
-	checkpoint_activate_UI.visible = true
-	EventBus.enter_interactable.emit()
+	if activated:
+		player_in_checkpoint = true
+		EventBus.enter_interactable.emit()
+		EventBus.display_interact_tip.emit(true)
 
 
 func exit_checkpoint():
-	player_in_checkpoint = false
-	checkpoint_activate_UI.visible = false
-	EventBus.exit_interactable.emit()
+	if activated:
+		player_in_checkpoint = false
+		EventBus.exit_interactable.emit()
+		EventBus.display_interact_tip.emit(false)

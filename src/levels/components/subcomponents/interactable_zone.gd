@@ -18,10 +18,12 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_ref = body
 		EventBus.enter_interactable.emit()
+		EventBus.display_interact_tip.emit(true)
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_ref = null
 		EventBus.exit_interactable.emit()
+		EventBus.display_interact_tip.emit(false)
 
 
