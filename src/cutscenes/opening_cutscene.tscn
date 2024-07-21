@@ -1,0 +1,128 @@
+[gd_scene load_steps=11 format=3 uid="uid://ck7rsctlghqb7"]
+
+[ext_resource type="Script" path="res://src/cutscenes/opening_cutscene.gd" id="1_usx7v"]
+[ext_resource type="FontFile" uid="uid://7i5to2ctyks7" path="res://assets/fonts/Outfit-Black.ttf" id="2_vdvvt"]
+[ext_resource type="Script" path="res://src/cutscenes/cutscene_text.gd" id="3_8mfsg"]
+[ext_resource type="Texture2D" uid="uid://cd343p6idla06" path="res://assets/background/SSJ2407 Blastoff.png" id="4_la0ha"]
+[ext_resource type="Texture2D" uid="uid://dxjknp1e7xo0n" path="res://assets/ui/Button Frame.png" id="5_8yfqv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fchti"]
+atlas = ExtResource("4_la0ha")
+region = Rect2(640, 720, 320, 180)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6i14j"]
+texture = ExtResource("5_8yfqv")
+texture_margin_left = 100.0
+texture_margin_right = 100.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_okqr5"]
+texture = ExtResource("5_8yfqv")
+texture_margin_left = 100.0
+texture_margin_right = 100.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ttb3a"]
+texture = ExtResource("5_8yfqv")
+texture_margin_left = 100.0
+texture_margin_right = 100.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r82u8"]
+texture = ExtResource("5_8yfqv")
+texture_margin_left = 100.0
+texture_margin_right = 100.0
+
+[node name="Opening Cutscene" type="Control" node_paths=PackedStringArray("exit_button")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_usx7v")
+exit_button = NodePath("MarginContainer/VBoxContainer/MarginContainer/Button")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_fchti")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 75
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 75
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("next_text_block", "close_button")]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(1130, 0)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.980392, 1, 0.878431, 1)
+theme_override_fonts/font = ExtResource("2_vdvvt")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+autowrap_mode = 2
+script = ExtResource("3_8mfsg")
+text_block = "You are a 'Jumper', a bounty hunter sent to a prison station orbiting a distant planet. The station's Overseer has found new and dangerous technology, nanites whose true power is still unknown."
+first_in_scene = true
+next_text_block = NodePath("../Label2")
+close_button = NodePath("../MarginContainer/Button")
+fade_time = 1.0
+delay_time = 1.0
+time_before_next = 1.0
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("next_text_block", "close_button")]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(1130, 0)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.980392, 1, 0.878431, 1)
+theme_override_fonts/font = ExtResource("2_vdvvt")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+autowrap_mode = 2
+script = ExtResource("3_8mfsg")
+text_block = "When you landed, the Overseer was waiting for you. He confiscated your weapons and threw you in a cell with the others. Soon after, though, chaos ensued."
+next_text_block = NodePath("../Label3")
+close_button = NodePath("../MarginContainer/Button")
+fade_time = 1.0
+time_before_next = 1.0
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("close_button")]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(1130, 0)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.980392, 1, 0.878431, 1)
+theme_override_fonts/font = ExtResource("2_vdvvt")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+autowrap_mode = 2
+script = ExtResource("3_8mfsg")
+text_block = "Lights flickered, alarms blared, and most importantly, doors opened. Now you're free to return to your mission: eliminate the threat to humanity at all costs."
+last_in_scene = true
+close_button = NodePath("../MarginContainer/Button")
+fade_time = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(300, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_vdvvt")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_6i14j")
+theme_override_styles/hover = SubResource("StyleBoxTexture_okqr5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ttb3a")
+theme_override_styles/focus = SubResource("StyleBoxTexture_r82u8")
+text = "Next"

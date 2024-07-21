@@ -26,7 +26,7 @@ font_size = 36
 font = ExtResource("2_fl1lf")
 font_size = 24
 
-[node name="HUD" type="MarginContainer" node_paths=PackedStringArray("health_bar", "coin_label", "coin_count_button", "interact_tip", "curse_icon_1", "curse_icon_2")]
+[node name="HUD" type="MarginContainer" node_paths=PackedStringArray("health_bar", "coin_label", "coin_count_button", "interact_tip", "curse_icon_1", "curse_icon_2", "curse_label")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -44,6 +44,7 @@ coin_count_button = NodePath("HBoxContainer/CoinCount")
 interact_tip = NodePath("InteractTip")
 curse_icon_1 = NodePath("HBoxContainer/VBoxContainer/Curse List/Curse 1")
 curse_icon_2 = NodePath("HBoxContainer/VBoxContainer/Curse List/Curse 2")
+curse_label = NodePath("HBoxContainer/VBoxContainer/Label")
 metadata/_edit_lock_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -103,6 +104,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "CURSES"
 label_settings = SubResource("LabelSettings_5ss7s")

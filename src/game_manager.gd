@@ -104,15 +104,13 @@ func transition_to_end_screen() -> void:
 	var end_scene
 	if GameState.ending_flags & 1:
 		end_scene = SHOTGUN_END
-		#get_tree().change_scene_to_packed(SHOTGUN_END)
 	elif GameState.ending_flags & 2:
 		end_scene = OVERSEER_END
-		#get_tree().change_scene_to_packed(OVERSEER_END)
-	#var c: StringName = get_tree().change_scene_to_packed.get_method()
 	call_deferred("_end_game", end_scene)
 
 
 func _end_game(ending: PackedScene) -> void:
+	await ScreenTransition.animate_transition(true)
 	get_tree().change_scene_to_packed(ending)
 
 

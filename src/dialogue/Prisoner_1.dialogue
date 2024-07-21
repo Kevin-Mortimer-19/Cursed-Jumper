@@ -1,7 +1,7 @@
 ~ NPC_1_dialogue_start
 
 do EventBus.switch_portrait.emit("prisoner_1")
-if GameState.area_flags == 0:
+if GameState.area_flags < 3:
 	Meek Prisoner: The Hydroponic Gardens are drying up because the water supply's been cut off. If you go into the Purification Station, you should be able to turn the water back on. 
 	Meek Prisoner: Once the pumps are back online, you should be able to head into the Gardens and start up the machines. Once the others have food, they'll get out of the way for sure.
 elif GameState.area_flags == 3:

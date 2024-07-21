@@ -72,7 +72,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Main" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/Body"]
-visible = false
 layout_mode = 2
 
 [node name="aoiazure" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Main" instance=ExtResource("2_2m34m")]
@@ -108,6 +107,8 @@ role_details = "Character design, portrait art"
 layout_mode = 2
 persons_name = "Zachary Bakalos"
 role_details = "Graphic design, UI"
+embed_url = true
+url_to_embed = "https://zbakalos.wixsite.com/portfolio"
 
 [node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/Body"]
 custom_minimum_size = Vector2(0, 50)

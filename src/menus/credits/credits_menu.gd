@@ -13,6 +13,7 @@ func _ready() -> void:
 	for child in get_tree().get_nodes_in_group("credit_slots"):
 		if child is CreditSlot:
 			(child as CreditSlot).meta_clicked.connect(_on_label_meta_clicked)
+	await ScreenTransition.animate_transition(false)
 
 func _on_button_entered(_button: Button, _initial_size: Vector2) -> void:
 	SoundManager.play_ui_sound(SoundManager.SOUND_BUTTON_HOVER)

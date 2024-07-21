@@ -10,12 +10,13 @@ var coin_text = "x"
 
 @export var curse_icon_1: TextureRect
 @export var curse_icon_2: TextureRect
+@export var curse_label: Label
 
 
 func _ready():
 	EventBus.display_interact_tip.connect(toggle_interact_visibility)
 	interact_tip.modulate.a = 0
-
+	EventBus.acquire_shotgun.connect(reveal_curse_UI)
 
 func set_up_healthbar(player: Player) -> void:
 	player.healed.connect(_on_player_health_changed.bind(player))
@@ -31,6 +32,10 @@ func refresh_curse_UI(icon_1: Array, icon_2: Array) -> void:
 	curse_icon_1.tooltip_text = icon_1[1]
 	curse_icon_2.texture = icon_2[0]
 	curse_icon_2.tooltip_text = icon_2[1]
+
+
+func reveal_curse_UI() -> void:
+	curse_label.visible = true
 
 
 func update_coin_tracker(amount: int):

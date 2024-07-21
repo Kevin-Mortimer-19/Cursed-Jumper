@@ -1,15 +1,14 @@
 extends Control
 
-
-
 @export_group("Node References")
 @export var background_sprite: AnimatedSprite2D
 @export var button_play: Button
 @export var button_options: Button
 @export var button_quit: Button
+@export var logo: Label
 
-
-const SCENE_GAME: PackedScene = preload("res://src/game.tscn")
+#const SCENE_GAME: PackedScene = preload("res://src/game.tscn")
+const SCENE_GAME: PackedScene = preload("res://src/cutscenes/opening_cutscene.tscn")
 
 
 func _ready() -> void:
@@ -29,11 +28,13 @@ func _ready() -> void:
 	# Play music, finally
 	SoundManager.play_music(load("res://assets/music/jumper - rough.mp3"))
 
+
 func _connect_button_signals(button: Button) -> void:
 	button.mouse_entered.connect(_on_button_entered.bind(button, button.size))
 	button.focus_entered.connect(_on_button_entered.bind(button, button.size))
 	button.mouse_exited.connect(_on_button_exited.bind(button, button.size))
 	button.focus_exited.connect(_on_button_exited.bind(button, button.size))
+
 
 func _on_button_entered(button: Button, initial_size: Vector2) -> void:
 	SoundManager.play_ui_sound(SoundManager.SOUND_BUTTON_HOVER)
@@ -42,12 +43,12 @@ func _on_button_entered(button: Button, initial_size: Vector2) -> void:
 	tween.set_ease(Tween.EASE_OUT)
 	tween.play()
 
+
 func _on_button_exited(button: Button, initial_size: Vector2) -> void:
 	var tween:= create_tween()
 	tween.tween_property(button, "size:x", initial_size.x, 0.25)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.play()
-
 
 
 func _on_play_button_pressed() -> void:
@@ -60,9 +61,9 @@ func _on_play_button_pressed() -> void:
 	# TODO: Do opening cutscene and transitions
 	$CanvasLayer/Background/SubViewport/Background/AnimationPlayer.play("blastoff")
 	await background_sprite.animation_finished
-	
 	await ScreenTransition.animate_transition(true)
 	get_tree().change_scene_to_packed(SCENE_GAME)
+
 
 func _on_option_button_pressed() -> void:
 	SoundManager.play_ui_sound(SoundManager.SOUND_BUTTON_CONFIRM)
@@ -71,7 +72,6 @@ func _on_option_button_pressed() -> void:
 func _on_quit_button_pressed() -> void:
 	SoundManager.play_ui_sound(SoundManager.SOUND_BUTTON_CONFIRM)
 	get_tree().quit()
-
 
 
 func _animate_options_enter() -> void:
@@ -93,13 +93,4 @@ func _animate_options_exit() -> void:
 	tween.chain().tween_property(OptionsMenu, "visible", false, 0)
 	
 	tween.chain().tween_callback(button_options.grab_focus)
-
-
-
-
-
-
-
-
-
 

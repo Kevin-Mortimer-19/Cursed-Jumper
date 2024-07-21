@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" path="res://src/game_manager.gd" id="1_nknhp"]
 [ext_resource type="PackedScene" uid="uid://c2s2o762gjx5x" path="res://src/levels/world.tscn" id="1_xghpg"]
-[ext_resource type="PackedScene" uid="uid://dpp7paxcxxp47" path="res://src/endings/overseer_ending.tscn" id="2_ip8u1"]
 [ext_resource type="Texture2D" uid="uid://uphhnkx0axet" path="res://assets/sprites/curse icons/no walk curse.png" id="2_t7lup"]
 [ext_resource type="Resource" uid="uid://dfyanfk43ca46" path="res://src/dialogue/game_start.dialogue" id="2_tuslk"]
-[ext_resource type="PackedScene" uid="uid://5m2a3ijt2unl" path="res://src/endings/shotgun_ending.tscn" id="3_0hhly"]
 [ext_resource type="PackedScene" uid="uid://dsc64e5xfn8w7" path="res://src/menus/curse_shuffle_menu.tscn" id="3_0qbir"]
 [ext_resource type="Texture2D" uid="uid://dl3cu6urdjkly" path="res://assets/sprites/curse icons/no jump curse.png" id="3_dh0rw"]
 [ext_resource type="Resource" uid="uid://ddnwl8gvdgtfd" path="res://src/dialogue/shotgun_game_start_3.dialogue" id="3_m8wyk"]
@@ -13,9 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://h821br4kdcor" path="res://src/menus/tutorials/MovementTutorial.tscn" id="4_yh8bb"]
 [ext_resource type="PackedScene" uid="uid://y0u65486c3u3" path="res://src/menus/tutorials/GunTutorial.tscn" id="5_hxwsa"]
 [ext_resource type="Texture2D" uid="uid://dw5ikfn35stmf" path="res://assets/sprites/curse icons/no damage curse.png" id="5_qroy2"]
+[ext_resource type="PackedScene" uid="uid://dpp7paxcxxp47" path="res://src/cutscenes/overseer_ending.tscn" id="6_brelq"]
 [ext_resource type="Texture2D" uid="uid://b6638ps50dbld" path="res://assets/sprites/curse icons/more enemies curse.png" id="6_hdjvi"]
 [ext_resource type="Texture2D" uid="uid://cssq365ctgybt" path="res://assets/art/shotgun_portrait.png" id="6_m8ga4"]
 [ext_resource type="Texture2D" uid="uid://j5wrq2u16vwu" path="res://assets/art/overseer_portrait.png" id="7_fx0xm"]
+[ext_resource type="PackedScene" uid="uid://5m2a3ijt2unl" path="res://src/cutscenes/shotgun_ending.tscn" id="7_geq6e"]
 [ext_resource type="Texture2D" uid="uid://kscguwrxouw8" path="res://assets/sprites/curse icons/fast enemies curse.png" id="7_kuwtk"]
 [ext_resource type="Texture2D" uid="uid://vq6dlpib11b4" path="res://assets/sprites/curse icons/instant death curse.png" id="8_g56d8"]
 [ext_resource type="Texture2D" uid="uid://cqlb2b2gi4kwg" path="res://assets/sprites/curse icons/double gravity curse.png" id="9_gyyby"]
@@ -41,8 +41,8 @@ game_start_text = ExtResource("2_tuslk")
 acquire_shotgun_text = ExtResource("3_m8wyk")
 movement_tutorial = ExtResource("4_yh8bb")
 gun_tutorial = ExtResource("5_hxwsa")
-OVERSEER_END = ExtResource("2_ip8u1")
-SHOTGUN_END = ExtResource("3_0hhly")
+OVERSEER_END = ExtResource("6_brelq")
+SHOTGUN_END = ExtResource("7_geq6e")
 shotgun_portrait = ExtResource("6_m8ga4")
 overseer_portrait = ExtResource("7_fx0xm")
 prisoner_1_portrait = ExtResource("10_w6kab")
@@ -66,7 +66,7 @@ stretch = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 audio_listener_enable_2d = true
-size = Vector2i(2, 2)
+size = Vector2i(1280, 720)
 size_2d_override = Vector2i(640, 360)
 size_2d_override_stretch = true
 render_target_update_mode = 4

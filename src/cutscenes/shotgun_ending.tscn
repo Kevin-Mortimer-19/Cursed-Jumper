@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://5m2a3ijt2unl"]
+
+[ext_resource type="Script" path="res://src/cutscenes/ending_screen.gd" id="1_cjsbk"]
+[ext_resource type="FontFile" uid="uid://7i5to2ctyks7" path="res://assets/fonts/Outfit-Black.ttf" id="2_mbhm0"]
+[ext_resource type="Script" path="res://src/cutscenes/cutscene_text.gd" id="3_x7t48"]
+[ext_resource type="Texture2D" uid="uid://dxjknp1e7xo0n" path="res://assets/ui/Button Frame.png" id="4_ecina"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d1dwp"]
+texture = ExtResource("4_ecina")
+texture_margin_left = 100.0
+texture_margin_right = 100.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jxoce"]
+texture = ExtResource("4_ecina")
+texture_margin_left = 100.0
+texture_margin_right = 100.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d82mv"]
+texture = ExtResource("4_ecina")
+texture_margin_left = 100.0
+texture_margin_right = 100.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gnrq1"]
+texture = ExtResource("4_ecina")
+texture_margin_left = 100.0
+texture_margin_right = 100.0
+
+[node name="Shotgun Ending" type="Control" node_paths=PackedStringArray("exit_button")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_cjsbk")
+exit_button = NodePath("MarginContainer/VBoxContainer/MarginContainer/Button")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 75
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("close_button")]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(1130, 0)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.980392, 1, 0.878431, 1)
+theme_override_fonts/font = ExtResource("2_mbhm0")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+autowrap_mode = 2
+script = ExtResource("3_x7t48")
+text_block = "Your mission complete, you and your trusty shotgun board your ship and leave the station. The overseer is dead, the secret of the nanites lost to the grave. The threat has been eliminated, and the galaxy is safe again."
+first_in_scene = true
+last_in_scene = true
+close_button = NodePath("../MarginContainer/Button")
+fade_time = 1.0
+delay_time = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 100
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(300, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_mbhm0")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_d1dwp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jxoce")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_d82mv")
+theme_override_styles/focus = SubResource("StyleBoxTexture_gnrq1")
+text = "Next"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2

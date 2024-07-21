@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpp7paxcxxp47"]
+
+[ext_resource type="Script" path="res://src/cutscenes/ending_screen.gd" id="1_cclhr"]
+[ext_resource type="FontFile" uid="uid://7i5to2ctyks7" path="res://assets/fonts/Outfit-Black.ttf" id="2_u8p5a"]
+[ext_resource type="Script" path="res://src/cutscenes/cutscene_text.gd" id="3_nejk1"]
+[ext_resource type="Texture2D" uid="uid://dxjknp1e7xo0n" path="res://assets/ui/Button Frame.png" id="4_xlyqj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3wn7b"]
+texture = ExtResource("4_xlyqj")
+texture_margin_left = 100.0
+texture_margin_right = 100.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hp1xe"]
+texture = ExtResource("4_xlyqj")
+texture_margin_left = 100.0
+texture_margin_right = 100.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2etyk"]
+texture = ExtResource("4_xlyqj")
+texture_margin_left = 100.0
+texture_margin_right = 100.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lo1hu"]
+texture = ExtResource("4_xlyqj")
+texture_margin_left = 100.0
+texture_margin_right = 100.0
+
+[node name="Overseer Ending" type="Control" node_paths=PackedStringArray("exit_button")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_cclhr")
+exit_button = NodePath("MarginContainer/VBoxContainer/MarginContainer/Button")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 75
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("close_button")]
+custom_minimum_size = Vector2(1130, 0)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.980392, 1, 0.878431, 1)
+theme_override_fonts/font = ExtResource("2_u8p5a")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+autowrap_mode = 2
+script = ExtResource("3_nejk1")
+text_block = "Your mission abandoned and the anomaly secured, the Jumper and the Overseer quickly mastered the nanites' secrets. Their futures now intertwined with the nanites' power, together they would bring the galaxy into a golden age under their rule."
+first_in_scene = true
+last_in_scene = true
+close_button = NodePath("../MarginContainer/Button")
+fade_time = 1.0
+delay_time = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 100
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(300, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_u8p5a")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_3wn7b")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hp1xe")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2etyk")
+theme_override_styles/focus = SubResource("StyleBoxTexture_lo1hu")
+text = "Next"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2

@@ -210,3 +210,16 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_b5sip")
 text = "0"
 icon = ExtResource("11_judsb")
 icon_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.980392, 1, 0.878431, 1)
+theme_override_font_sizes/font_size = 30
+text = "Press Esc to close"

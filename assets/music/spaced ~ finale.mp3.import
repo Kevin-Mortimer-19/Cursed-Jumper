@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0bwqgbas5rtl"
+path="res://.godot/imported/spaced ~ finale.mp3-ec387adf23ff861d70eb078fa80ac24d.mp3str"
+
+[deps]
+
+source_file="res://assets/music/spaced ~ finale.mp3"
+dest_files=["res://.godot/imported/spaced ~ finale.mp3-ec387adf23ff861d70eb078fa80ac24d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
