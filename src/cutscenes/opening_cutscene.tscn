@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://ck7rsctlghqb7"]
+[gd_scene load_steps=13 format=3 uid="uid://ck7rsctlghqb7"]
 
 [ext_resource type="Script" path="res://src/cutscenes/opening_cutscene.gd" id="1_usx7v"]
 [ext_resource type="FontFile" uid="uid://7i5to2ctyks7" path="res://assets/fonts/Outfit-Black.ttf" id="2_vdvvt"]
-[ext_resource type="Script" path="res://src/cutscenes/cutscene_text.gd" id="3_8mfsg"]
 [ext_resource type="Texture2D" uid="uid://cd343p6idla06" path="res://assets/background/SSJ2407 Blastoff.png" id="4_la0ha"]
 [ext_resource type="Texture2D" uid="uid://dxjknp1e7xo0n" path="res://assets/ui/Button Frame.png" id="5_8yfqv"]
 
@@ -29,6 +28,140 @@ texture_margin_right = 100.0
 texture = ExtResource("5_8yfqv")
 texture_margin_left = 100.0
 texture_margin_right = 100.0
+
+[sub_resource type="Animation" id="Animation_buya1"]
+resource_name = "play_cutscene"
+length = 10.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/Label2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/VBoxContainer/Label3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/Button:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/Button:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bf0dx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/Label2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/VBoxContainer/Label3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/Button:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/Button:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ndpf"]
+_data = {
+"RESET": SubResource("Animation_bf0dx"),
+"play_cutscene": SubResource("Animation_buya1")
+}
 
 [node name="Opening Cutscene" type="Control" node_paths=PackedStringArray("exit_button")]
 process_mode = 3
@@ -59,7 +192,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 75
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("next_text_block", "close_button")]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(1130, 0)
 layout_mode = 2
@@ -67,18 +200,11 @@ size_flags_vertical = 6
 theme_override_colors/font_color = Color(0.980392, 1, 0.878431, 1)
 theme_override_fonts/font = ExtResource("2_vdvvt")
 theme_override_font_sizes/font_size = 25
+text = "You are a 'Jumper', a bounty hunter sent to a prison station orbiting a distant planet. The station's Overseer has found new and dangerous technology, nanites whose true power is still unknown."
 horizontal_alignment = 1
 autowrap_mode = 2
-script = ExtResource("3_8mfsg")
-text_block = "You are a 'Jumper', a bounty hunter sent to a prison station orbiting a distant planet. The station's Overseer has found new and dangerous technology, nanites whose true power is still unknown."
-first_in_scene = true
-next_text_block = NodePath("../Label2")
-close_button = NodePath("../MarginContainer/Button")
-fade_time = 1.0
-delay_time = 1.0
-time_before_next = 1.0
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("next_text_block", "close_button")]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(1130, 0)
 layout_mode = 2
@@ -86,16 +212,11 @@ size_flags_vertical = 6
 theme_override_colors/font_color = Color(0.980392, 1, 0.878431, 1)
 theme_override_fonts/font = ExtResource("2_vdvvt")
 theme_override_font_sizes/font_size = 25
+text = "When you landed, the Overseer was waiting for you. He confiscated your weapons and threw you in a cell with the others. Soon after, though, chaos ensued."
 horizontal_alignment = 1
 autowrap_mode = 2
-script = ExtResource("3_8mfsg")
-text_block = "When you landed, the Overseer was waiting for you. He confiscated your weapons and threw you in a cell with the others. Soon after, though, chaos ensued."
-next_text_block = NodePath("../Label3")
-close_button = NodePath("../MarginContainer/Button")
-fade_time = 1.0
-time_before_next = 1.0
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("close_button")]
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(1130, 0)
 layout_mode = 2
@@ -103,13 +224,9 @@ size_flags_vertical = 6
 theme_override_colors/font_color = Color(0.980392, 1, 0.878431, 1)
 theme_override_fonts/font = ExtResource("2_vdvvt")
 theme_override_font_sizes/font_size = 25
+text = "Lights flickered, alarms blared, and most importantly, doors opened. Now you're free to return to your mission: eliminate the threat to humanity at all costs."
 horizontal_alignment = 1
 autowrap_mode = 2
-script = ExtResource("3_8mfsg")
-text_block = "Lights flickered, alarms blared, and most importantly, doors opened. Now you're free to return to your mission: eliminate the threat to humanity at all costs."
-last_in_scene = true
-close_button = NodePath("../MarginContainer/Button")
-fade_time = 1.0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -126,3 +243,8 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_okqr5")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ttb3a")
 theme_override_styles/focus = SubResource("StyleBoxTexture_r82u8")
 text = "Next"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3ndpf")
+}

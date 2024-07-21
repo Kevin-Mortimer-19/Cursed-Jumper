@@ -15,6 +15,9 @@ func _ready() -> void:
 	exit_button.focus_entered.connect(_on_button_entered.bind(exit_button, exit_button.size))
 	exit_button.mouse_exited.connect(_on_button_exited.bind(exit_button, exit_button.size))
 	exit_button.focus_exited.connect(_on_button_exited.bind(exit_button, exit_button.size))
+	$AnimationPlayer.play("play_cutscene")
+	
+	await $AnimationPlayer.animation_finished
 
 
 func move_to_game() -> void:
