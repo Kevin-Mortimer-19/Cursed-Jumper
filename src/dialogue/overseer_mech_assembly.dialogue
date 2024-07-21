@@ -1,6 +1,5 @@
 ~ overseer_mech_assembly
 
-do SoundManager.play_music(load("res://assets/music/jumper - rough.mp3"))
 do EventBus.switch_portrait.emit("overseer")
 Overseer: Attention all combat units! The anomaly is making its way to the bridge. All units, to me! We'll finish this once and for all!
 Overseer: Did you really think you'd slip away that easily? You are technology created in the service of humanity.
