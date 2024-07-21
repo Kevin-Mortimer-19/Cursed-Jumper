@@ -97,6 +97,8 @@ url_to_embed = "https://frankhenry19.itch.io"
 layout_mode = 2
 persons_name = "ginghisken"
 role_details = "Music, SFX, sprites, writing"
+embed_url = true
+url_to_embed = "https://perry9090.itch.io/"
 
 [node name="uhohannie" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Main" instance=ExtResource("2_2m34m")]
 layout_mode = 2
@@ -132,6 +134,8 @@ fit_content = true
 layout_mode = 2
 persons_name = "GoldeneyeGamer"
 role_details = "Game design, playtesting"
+embed_url = true
+url_to_embed = "https://goldeneyegamer.itch.io/"
 
 [node name="Name" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Subsection/GoldeneyeGamer" index="0"]
 theme_override_font_sizes/bold_font_size = 36
