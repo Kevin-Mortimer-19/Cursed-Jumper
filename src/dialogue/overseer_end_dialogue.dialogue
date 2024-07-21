@@ -9,6 +9,7 @@ Shotgun: Well Jumper, the choice is yours pal. I'm ready to paint the walls with
 do EventBus.switch_portrait.emit("overseer")
 Overseer: What will it be?
 - Kill the Overseer
+	do SoundManager.play_sound_nonpositional(load("res://assets/sounds/shotgun_sfx/shot_1.wav"))
 	do EventBus.switch_portrait.emit("overseer")
 	Overseer: You've made a grave mistake, Jumper... Without my control, the nanites... you have no idea what you've unleased....
 	do EventBus.switch_portrait.emit("shotgun")
