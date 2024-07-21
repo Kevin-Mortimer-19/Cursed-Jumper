@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dsc64e5xfn8w7"]
+[gd_scene load_steps=19 format=3 uid="uid://dsc64e5xfn8w7"]
 
 [ext_resource type="Script" path="res://src/menus/curse_shuffle_menu.gd" id="1_sublg"]
 [ext_resource type="Texture2D" uid="uid://bdj0khswrbdvg" path="res://assets/ui/Curse Management Logo.png" id="2_o47ay"]
@@ -9,7 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://qb1mqfs535d4" path="res://assets/sounds/ui_blips/handleSmallLeather.ogg" id="4_30x4k"]
 [ext_resource type="FontFile" uid="uid://qyfgxb15b1ug" path="res://assets/fonts/Outfit-ExtraBold.ttf" id="8_7h2mo"]
 [ext_resource type="FontFile" uid="uid://biiglpqms67tn" path="res://assets/fonts/Outfit-SemiBold.ttf" id="8_y2fc6"]
-[ext_resource type="Texture2D" uid="uid://5smvse84ow5s" path="res://assets/ui/Coin Hud 2.png" id="9_bwvq5"]
 [ext_resource type="Texture2D" uid="uid://bykywn23332dy" path="res://assets/ui/nanocoin.png" id="11_judsb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hb6ex"]
@@ -182,7 +181,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_dm2fo")
 theme_override_styles/focus = SubResource("StyleBoxFlat_dm2fo")
 text = "RE-ROLL
 A CURSE (5)"
-icon = ExtResource("9_bwvq5")
+icon = ExtResource("11_judsb")
 alignment = 0
 icon_alignment = 2
 expand_icon = true

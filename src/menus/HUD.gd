@@ -39,13 +39,14 @@ func update_coin_tracker(amount: int):
 
 
 func toggle_interact_visibility(make_visible: bool) -> void:
-	var tween:= create_tween()
-	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
-	
-	if make_visible:
-		tween.tween_property(interact_tip, "modulate:a", 1, 0.4)
-	else:
-		tween.tween_property(interact_tip, "modulate:a", 0, 0.4)
+	if get_tree()!= null:
+		var tween:= create_tween()
+		tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 		
-	tween.play()
+		if make_visible:
+			tween.tween_property(interact_tip, "modulate:a", 1, 0.4)
+		else:
+			tween.tween_property(interact_tip, "modulate:a", 0, 0.4)
+			
+		tween.play()
 

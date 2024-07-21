@@ -4,7 +4,7 @@ signal lock_curse(index: int)
 signal unlock_curse(index: int)
 
 var unlocked_text: String = "LOCK (%s)"
-var locked_text: String = "UNLOCK"
+var locked_text: String = "UNLOCK (%s)"
 
 @export var index: int
 
@@ -15,6 +15,7 @@ var lock_price = 5
 
 func _ready() -> void:
 	unlocked_text = unlocked_text % lock_price
+	locked_text = locked_text % lock_price
 	text = unlocked_text
 	mouse_entered.connect(SoundManager.play_ui_sound.bind(SoundManager.SOUND_BUTTON_HOVER))
 	focus_entered.connect(SoundManager.play_ui_sound.bind(SoundManager.SOUND_BUTTON_HOVER))
