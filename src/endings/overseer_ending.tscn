@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://7i5to2ctyks7" path="res://assets/fonts/Outfit-Black.ttf" id="1_xf6vh"]
 
 [node name="Overseer Ending" type="Control" node_paths=PackedStringArray("exit_button")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
@@ -14,10 +15,12 @@ exit_button = NodePath("MarginContainer/VBoxContainer/MarginContainer/Button")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 theme_override_constants/margin_top = 250
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(1280, 0)
@@ -30,6 +33,7 @@ autowrap_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_top = 100
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer"]
@@ -38,4 +42,4 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_xf6vh")
 theme_override_font_sizes/font_size = 25
-text = "Exit"
+text = "Next"

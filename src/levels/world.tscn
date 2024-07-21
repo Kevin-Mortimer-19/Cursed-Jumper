@@ -17,7 +17,6 @@
 [ext_resource type="Resource" uid="uid://bhknakqp4dqan" path="res://src/dialogue/mech_assembly.dialogue" id="14_e1cyr"]
 [ext_resource type="Texture2D" uid="uid://vwe34itxqa37" path="res://addons/BurstParticles2D/BurstParticles2D-demo/orb_soft.png" id="14_j52el"]
 [ext_resource type="Resource" uid="uid://dh3ihovaqiuwr" path="res://src/dialogue/overseer_mech_assembly.dialogue" id="15_8aouw"]
-[ext_resource type="Texture2D" uid="uid://c5ipv8mjrepk5" path="res://assets/sprites/overseer sprite.png" id="15_vj2lp"]
 [ext_resource type="PackedScene" uid="uid://f66nck05wp2u" path="res://src/levels/components/dialogue_zone.tscn" id="16_48d03"]
 [ext_resource type="Script" path="res://src/levels/components/shotgun_zone.gd" id="16_j0s4g"]
 [ext_resource type="Resource" uid="uid://brk8xptrbuuud" path="res://src/dialogue/shotgun_bridge.dialogue" id="16_k4jsd"]
@@ -752,9 +751,15 @@ region = Rect2(176, 176, 16, 16)
 atlas = ExtResource("12_mlu30")
 region = Rect2(144, 160, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i5a7"]
+atlas = ExtResource("12_mlu30")
+region = Rect2(96, 192, 16, 32)
+margin = Rect2(0, 0, 0, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_wpq7c"]
 atlas = ExtResource("12_mlu30")
 region = Rect2(112, 160, 16, 16)
+margin = Rect2(0, 0, 0, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wm3n"]
 size = Vector2(66, 114)
@@ -1495,10 +1500,10 @@ sprite_image = SubResource("AtlasTexture_vt828")
 position = Vector2(-24, -2056)
 dialogue = ExtResource("8_7vr1x")
 first_line = "overseer_end_game"
-sprite_image = ExtResource("15_vj2lp")
+sprite_image = SubResource("AtlasTexture_0i5a7")
 
 [node name="Diary" parent="NPCs" instance=ExtResource("2_kwig1")]
-position = Vector2(-232, -472)
+position = Vector2(-232, -456)
 dialogue = ExtResource("23_po4xb")
 first_line = "diary_start"
 sprite_image = SubResource("AtlasTexture_wpq7c")

@@ -10,6 +10,8 @@ extends Area2D
 		if val:
 			sprite.texture = sprite_image
 
+@export var font_override: bool
+
 var player_in_area: bool = false
 
 

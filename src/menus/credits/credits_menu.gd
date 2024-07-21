@@ -14,14 +14,14 @@ func _ready() -> void:
 		if child is CreditSlot:
 			(child as CreditSlot).meta_clicked.connect(_on_label_meta_clicked)
 
-func _on_button_entered(button: Button, initial_size: Vector2) -> void:
+func _on_button_entered(_button: Button, _initial_size: Vector2) -> void:
 	SoundManager.play_ui_sound(SoundManager.SOUND_BUTTON_HOVER)
 	#var tween:= create_tween()
 	#tween.tween_property(button, "size:x", initial_size.x * 1.5, 0.2)
 	#tween.set_ease(Tween.EASE_OUT)
 	#tween.play()
 
-func _on_button_exited(button: Button, initial_size: Vector2) -> void:
+func _on_button_exited(_button: Button, _initial_size: Vector2) -> void:
 	#var tween:= create_tween()
 	#tween.tween_property(button, "size:x", initial_size.x, 0.25)
 	#tween.set_ease(Tween.EASE_OUT)
@@ -33,14 +33,4 @@ func _on_quit_button_pressed() -> void:
 
 func _on_label_meta_clicked(meta) -> void:
 	OS.shell_open(str(meta))
-
-
-
-
-
-
-
-
-
-
 

@@ -27,6 +27,7 @@ font = ExtResource("6_v4qvw")
 font_color = Color(0.548963, 0.548963, 0.548963, 1)
 
 [node name="CreditsMenu" type="MarginContainer" node_paths=PackedStringArray("button_quit")]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
