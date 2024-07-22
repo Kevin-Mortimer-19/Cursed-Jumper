@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://5m2a3ijt2unl"]
+[gd_scene load_steps=10 format=3 uid="uid://5m2a3ijt2unl"]
 
 [ext_resource type="Script" path="res://src/cutscenes/ending_screen.gd" id="1_cjsbk"]
 [ext_resource type="FontFile" uid="uid://7i5to2ctyks7" path="res://assets/fonts/Outfit-Black.ttf" id="2_mbhm0"]
+[ext_resource type="Texture2D" uid="uid://c5ul6m6oo47fg" path="res://assets/background/shotgun_ending.png" id="2_nxv0d"]
 [ext_resource type="Script" path="res://src/cutscenes/cutscene_text.gd" id="3_x7t48"]
 [ext_resource type="Texture2D" uid="uid://dxjknp1e7xo0n" path="res://assets/ui/Button Frame.png" id="4_ecina"]
 
@@ -38,6 +39,7 @@ layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
+texture = ExtResource("2_nxv0d")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0

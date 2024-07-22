@@ -104,6 +104,8 @@ url_to_embed = "https://perry9090.itch.io/"
 layout_mode = 2
 persons_name = "uhohannie"
 role_details = "Character design, portrait art"
+embed_url = true
+url_to_embed = "anniemortimer.com"
 
 [node name="Zach" parent="MarginContainer/VBoxContainer/ScrollContainer/Body/Main" instance=ExtResource("2_2m34m")]
 layout_mode = 2
