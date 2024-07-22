@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="SSJ24"
+config/name="Cursed Jumper"
 run/main_scene="res://src/menus/title_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
