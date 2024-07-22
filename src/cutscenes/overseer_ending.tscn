@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpp7paxcxxp47"]
+[gd_scene load_steps=10 format=3 uid="uid://dpp7paxcxxp47"]
 
 [ext_resource type="Script" path="res://src/cutscenes/ending_screen.gd" id="1_cclhr"]
+[ext_resource type="Texture2D" uid="uid://bm8n2lerch4ag" path="res://assets/background/overseer_ending.png" id="2_3twv4"]
 [ext_resource type="FontFile" uid="uid://7i5to2ctyks7" path="res://assets/fonts/Outfit-Black.ttf" id="2_u8p5a"]
 [ext_resource type="Script" path="res://src/cutscenes/cutscene_text.gd" id="3_nejk1"]
 [ext_resource type="Texture2D" uid="uid://dxjknp1e7xo0n" path="res://assets/ui/Button Frame.png" id="4_xlyqj"]
@@ -32,6 +33,13 @@ anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_cclhr")
 exit_button = NodePath("MarginContainer/VBoxContainer/MarginContainer/Button")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+texture = ExtResource("2_3twv4")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -72,6 +80,9 @@ theme_override_constants/margin_top = 100
 custom_minimum_size = Vector2(300, 64)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.556863, 0.45098, 0.466667, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_u8p5a")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxTexture_3wn7b")
@@ -79,9 +90,3 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_hp1xe")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_2etyk")
 theme_override_styles/focus = SubResource("StyleBoxTexture_lo1hu")
 text = "Next"
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-mouse_filter = 2
